@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zerosoul.github.io/2016/03/25/explore-object-assign/</loc>
+    
+    <lastmod>2016-06-17T05:52:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2016/05/11/download-chrome-standalone/</loc>
+    
+    <lastmod>2016-06-17T05:52:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2016/06/17/take-parents-to-beijing/</loc>
     
-    <lastmod>2016-06-17T05:46:45.000Z</lastmod>
+    <lastmod>2016-06-17T05:50:52.000Z</lastmod>
     
   </url>
   
@@ -44,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2016/05/25/explore-object-assign/</loc>
-    
-    <lastmod>2016-05-25T09:46:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zerosoul.github.io/2014/05/07/outliners/</loc>
     
     <lastmod>2016-05-24T08:42:48.000Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://zerosoul.github.io/2016/03/06/how-to-interview/</loc>
     
     <lastmod>2016-05-24T08:12:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2016/05/23/download-chrome-standalone/</loc>
-    
-    <lastmod>2016-05-23T15:46:20.000Z</lastmod>
     
   </url>
   
@@ -205,7 +205,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -219,7 +219,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
