@@ -1,0 +1,966 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,前端,最佳实践,优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨二小" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概十">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再读雅虎14条军规">
+<meta property="og:url" content="http://zerosoul.github.io/2016/01/30/high-performance-web-sites-note/index.html">
+<meta property="og:site_name" content="杨二小">
+<meta property="og:description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概十">
+<meta property="og:image" content="http://zerosoul.github.io/hp.jpg">
+<meta property="og:updated_time" content="2016-01-30T04:55:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再读雅虎14条军规">
+<meta name="twitter:description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概十">
+<meta name="twitter:image" content="http://zerosoul.github.io/hp.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zerosoul.github.io/2016/01/30/high-performance-web-sites-note/"/>
+
+  <title> 再读雅虎14条军规 | 杨二小 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?25693b171c4e4f11b7e2c8f9ad7a2c5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杨二小</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Variety is the spice of life</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                再读雅虎14条军规
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-30T12:10:05+08:00" content="2016-01-30">
+              2016-01-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/30/high-performance-web-sites-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/30/high-performance-web-sites-note/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ><i class="fa fa-spinner"></i></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章是<a href="http://book.douban.com/subject/3132277/" target="_blank" rel="external">《高性能网站建设指南——前端工程师技能精髓》</a>的读书笔记，即，<a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">雅虎14条军规</a>扩展版。个人认为书名副标题取名并不精确，<strong>前端工程师优化技能精髓</strong>似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。</p><h1 id="通识"><a href="#通识" class="headerlink" title="通识"></a>通识</h1><h2 id="性能黄金法则"><a href="#性能黄金法则" class="headerlink" title="性能黄金法则"></a>性能黄金法则</h2><p>最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。<br><strong>注：该统计出于大概十年前，现在比例应该有所变化，但还是有很大的优化空间</strong></p><h2 id="HTTP备忘点"><a href="#HTTP备忘点" class="headerlink" title="HTTP备忘点"></a>HTTP备忘点</h2><h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>Request：<code>Accept-Encoding: gzip,deflate</code><br>Response:<code>Content-Encoding: gzip</code></p><h3 id="条件Get请求"><a href="#条件Get请求" class="headerlink" title="条件Get请求"></a>条件Get请求</h3><p>Request:<code>If-Modified-Since: Wed, 22 Feb 2016 09:23:44 GMT</code><br>Response:<code>Last-Modified: Wed, 22 Feb 2016 09:23:44 GMT</code></p><h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>Response:<code>Expires: Wed, 22 Feb 2016 09:23:44 GMT</code></p><h3 id="Keep-Alive"><a href="#Keep-Alive" class="headerlink" title="Keep-Alive"></a>Keep-Alive</h3><p>Request:<code>Connection: keep-alive</code><br>Response:<code>Connection: keep-alive</code></p><h1 id="14军规"><a href="#14军规" class="headerlink" title="14军规"></a><a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">14军规</a></h1><h2 id="减少HTTP请求-Make-Fewer-HTTP-Request"><a href="#减少HTTP请求-Make-Fewer-HTTP-Request" class="headerlink" title="减少HTTP请求 Make Fewer HTTP Request"></a>减少HTTP请求 <em>Make Fewer HTTP Request</em></h2><ul><li>图片地图</li><li>CSS Sprites<br>很多人认为合并后的图片会比分离的图片综合要大，因为合并后包含附加的空白区域。实际上恰恰相反，因为它降低了图片自身的开销（颜色表，格式信息，等等）</li><li>内联图片<br><code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code></li><li>合并脚本和样式表</li></ul><h2 id="使用内容发布网络（CDN）"><a href="#使用内容发布网络（CDN）" class="headerlink" title="使用内容发布网络（CDN）"></a>使用内容发布网络（CDN）</h2><ul><li>缺点：修改HTTP响应头必须通过第三方完成。</li></ul><h2 id="添加Expires头"><a href="#添加Expires头" class="headerlink" title="添加Expires头"></a>添加Expires头</h2><ul><li>可以同时制定两个响应头：Expires和Cache-Control的max-age。如果两者同时出现，HTTP规范规定max-age指令将重写Expires头，例如：<br><code>Expires: Mon,15 Apr 2024 20:00:00 GMT</code><br><code>Cache-Control: max-age=312</code></li></ul><h2 id="开启Gzip压缩"><a href="#开启Gzip压缩" class="headerlink" title="开启Gzip压缩"></a>开启Gzip压缩</h2><ul><li>注意点：代理缓存</li><li>在Web服务器相应中添加<code>Vary</code>头，这样就可以告诉代理根据一个或多个请求头来改变缓存的响应。<br><code>Vary: Accept-Encoding</code><br>代理缓存响应的多个版本，当有gzip头的请求时，响应压缩过的，反之是未经压缩的。</li><li>禁用缓存：<code>Vary: *</code>或<code>Cache-Control: private</code></li></ul><h2 id="将样式表放在顶部"><a href="#将样式表放在顶部" class="headerlink" title="将样式表放在顶部"></a>将样式表放在顶部</h2><ul><li>样式表放在底部对加载页面所需的实际时间并没有太大影响，但会导致浏览器阻止内容逐步呈现，这让用户感性上觉得页面加载更慢。</li><li>无样式内容的闪烁FOUC（Flash of Unstyled Content）是浏览器行为，在样式表正确地下载并解析后，已经呈现的文字和图片要用新的样式重绘了。浏览器可以延迟呈现，知道所有样式表下载完毕，这导致了白屏，反之可以逐步呈现，但要承担闪烁的风险，这里没有完美的选择。</li></ul><h2 id="将脚本放在底部"><a href="#将脚本放在底部" class="headerlink" title="将脚本放在底部"></a>将脚本放在底部</h2><ul><li>放在顶部的影响：<ul><li>会阻塞对其后面内容的呈现</li><li>会阻塞对其后面资源的下载</li></ul></li><li><code>defer</code>属性表明脚本不包含<code>document.write</code>，浏览器有这个线索可以继续呈现。</li></ul><h2 id="避免CSS表达式"><a href="#避免CSS表达式" class="headerlink" title="避免CSS表达式"></a>避免CSS表达式</h2><ul><li>谁会想到用户点击了一个文本框会导致IE锁死呢。</li><li>避免方式：创建一次性表达式和使用事件处理器取代CSS表达式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">p&#123;</span><br><span class="line">    background: expression( altBg(this));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function altBg(ele)&#123;</span><br><span class="line">    ele.style.backgroundColor=(new Date()).getHours()%2 ? &quot;#f08&quot;:&quot;B98&quot;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li></ul><h2 id="使用外部javascript和css"><a href="#使用外部javascript和css" class="headerlink" title="使用外部javascript和css"></a>使用外部javascript和css</h2><ul><li>页面浏览量越少，内联论据越强势，反之外置论据越强势。</li></ul><h2 id="减少DNS查找"><a href="#减少DNS查找" class="headerlink" title="减少DNS查找"></a>减少DNS查找</h2><ul><li>将静态资源放在独立域名下较好，但不要超过四个，在减少DNS查找和允许并行下载之间做出权衡。</li></ul><h2 id="精简javascript和CSS"><a href="#精简javascript和CSS" class="headerlink" title="精简javascript和CSS"></a>精简javascript和CSS</h2><ul><li>gzip压缩产生的影响更大，但精简能够进一步减小文件大小。</li></ul><h2 id="避免重定向"><a href="#避免重定向" class="headerlink" title="避免重定向"></a>避免重定向</h2><ul><li>当服务器向浏览器返回一个重定向时，是指一个范围在3XX的状态码，表示用户代理必须执行进一步操作才能完成请求。<ul><li>300 Multiple Choices</li><li>302 Moved Permancently</li><li>302 Moved Temporarily</li><li>303 See other</li><li>304 Not Modified (并非重定向，用来响应条件GET请求)</li><li>305 Use Proxy</li><li>306 不再使用</li><li>307 Temporary Redirect</li></ul></li><li><code>301</code>和<code>302</code>是使用最多的,<code>303</code>和<code>307</code>是HTTP 1.1添加的，用来澄清对302的使用，但现实情况是几乎没人采用。</li><li>还有其他方式：<ul><li>HTML META :<code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=http://google.com&quot;&gt;</code></li></ul></li></ul><h2 id="删除重复脚本"><a href="#删除重复脚本" class="headerlink" title="删除重复脚本"></a>删除重复脚本</h2><ul><li>确保脚本只被包含一次，否则会带来性能损伤。</li></ul><h2 id="配置ETag"><a href="#配置ETag" class="headerlink" title="配置ETag"></a>配置ETag</h2><ul><li>ETag是唯一标识一个静态资源特定版本的字符串。</li><li>If-None-Match比If-Modified-Since具有更高的优先级</li><li>ETag可能会引发性能问题，这时候完全可以移除ETag</li></ul><h2 id="使AJAX可缓存"><a href="#使AJAX可缓存" class="headerlink" title="使AJAX可缓存"></a>使AJAX可缓存</h2><ul><li>当数据被认为是私有的时候，大多会使用<code>Cache-Control: no-store</code>。这样的响应根本不会被写入磁盘。</li><li>确保AJAX请求遵守性能优化原则，尤其应具有长久的Expires头</li></ul><h1 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h1><p>虽然知识点比较基础，但并不过时，读后我立即在自己博客上实践了下：</p><ul><li>图片使用七牛CDN，感谢<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">hexo-qiniu-sync</a>，访问速度明显加快。</li><li>删掉和替换掉了一些鸡肋功能，比如<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT主题</a>自带的浏览图片插件，换成了自己的简洁实现。</li><li>本来想搞一下HTTP配置，由于本站HOST在Github上，无从下手，好在Github在HTTP优化原则上已经做得很好了，省心省力。</li></ul><p>除了HTML/CSS/JavaScript(这三样已经够折腾的了)，一个优秀的前端工程师还应该具备什么样的技能呢？从这本书可以得到点启发：</p><ul><li>理解HTTP协议[<a href="http://book.douban.com/subject/10746113/" target="_blank" rel="external">《HTTP权威指南》</a>足矣]</li><li>了解浏览器工作原理及不同浏览器间的差异</li><li>掌握服务器端编程[可以从Node入手]</li><li>了解网络环境配置[可以学学Nginx]</li></ul><p><img src="hp.jpg" alt="high performance"></p>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/最佳实践/" rel="tag">#最佳实践</a>
+          
+            <a href="/tags/优化/" rel="tag">#优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/25/shoot-the-meeting/" rel="next" title="会议&活动拍摄备忘录">
+                <i class="fa fa-chevron-left"></i> 会议&活动拍摄备忘录
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/06/how-to-interview/" rel="prev" title="前端面试题的思考">
+                前端面试题的思考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+<style>
+/* Default tab style */
+.payment-container{
+	width: 60%;
+	margin:0 auto;
+	display: none;
+	margin-top: 1em;
+}
+
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+.tabs a{
+	text-decoration: none;
+	color:#555;
+}
+.tabs nav ul {
+	border-top: 1px solid #A9B8BD;
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+/* Content */
+.qr-content-wrap {
+	position: relative;
+}
+
+.qr-content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.qr-content-wrap .tip{
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+
+.qr-content-wrap section.content-current {
+	display: block;
+}
+
+.qr-content-wrap section img {
+	width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+	.payment-container{
+		width: 85%;
+	}
+}
+
+/* Individual tab styles */
+
+/*****************************/
+/* Underline */
+/*****************************/
+
+.tabs-style-underline nav {
+	background: #fff;
+}
+
+.tabs-style-underline nav a {
+	padding: 0.25em 0 0.5em;
+	border-left: 1px solid #222;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+	border-bottom: 1px solid #999;
+}
+
+.tabs-style-underline nav li:last-child a {
+	border-right: 1px solid #222;
+}
+
+.tabs-style-underline nav li a::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	background: #222;
+	content: '';
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translate3d(0,150%,0);
+	transform: translate3d(0,150%,0);
+}
+
+.tabs-style-underline nav li.tab-current a::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.tabs-style-underline nav a span {
+	font-weight: 700;
+}
+section.donate{
+	text-align: center;
+	padding: 0 25px;
+}
+section.donate .tip{
+	margin-top: 1em;
+}
+section.donate .donate-circle{
+	font-size: 2em;
+    color: #fff;
+    border-radius: 1em;
+    border: 1px solid rgba(100, 162, 160, 0.5);
+    width: 2em;
+    background: #F38B09;
+    margin: 0 auto;
+}
+</style>
+<section class="donate" style="display:block;">
+	<div class="donate-circle">赏</div>
+	<p class="tip">如果文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+</section>
+<section class="payment-container">
+	<div class="tabs tabs-style-underline">
+		<nav>
+			<ul>
+				<li data-target="section-weixin" class="tab-current"><a href="#"><span>微信</span></a></li>
+				<li data-target="section-zfb"><a href="#"><span>支付宝</span></a></li>
+			</ul>
+		</nav>
+		<div class="qr-content-wrap">
+			<section class="content-current" id="section-weixin">
+				<p class="tip">微信环境下长按识别或保存</p>
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_wexin.jpg" alt="微信支付二维码">
+			</section>
+			<section id="section-zfb">
+				
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_zfb.jpg" alt="支付宝支付二维码">
+			</section>
+		</div><!-- /content -->
+	</div><!-- /tabs -->
+</section>
+<script>
+	(function(d) {
+		d.querySelectorAll(".donate-circle")[0].addEventListener("click",function(evt){
+			d.querySelectorAll(".donate")[0].style.display="none";
+			d.querySelectorAll(".payment-container")[0].style.display="block";
+		});
+		[].slice.call( d.querySelectorAll(".tabs ul li") ).forEach( function( el ) {
+			el.addEventListener("click",function(evt){
+				console.log(evt,this);
+				evt.preventDefault();
+				var idStr=this.getAttribute("data-target");
+				d.querySelectorAll(".tabs ul li.tab-current")[0].classList.remove("tab-current");
+				this.classList.add("tab-current");
+				d.querySelectorAll(".tabs .qr-content-wrap .content-current")[0].classList.remove("content-current");
+				d.getElementById(""+idStr).classList.add("content-current");
+
+			});
+		});
+	})(document);
+</script>
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/30/high-performance-web-sites-note/"
+           data-title="再读雅虎14条军规" data-url="http://zerosoul.github.io/2016/01/30/high-performance-web-sites-note/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="杨二小" />
+          <p class="site-author-name" itemprop="name">杨二小</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zerosoul" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/2365376/yanggc?tab=profile" target="_blank" title="stackoverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  stackoverflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanggc2014" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xxfs.com" title="西西弗斯" target="_blank">西西弗斯</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.laoono.com/" title="老衲前端" target="_blank">老衲前端</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hammx.com/" title="大周的博客" target="_blank">大周的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通识"><span class="nav-number">2.</span> <span class="nav-text">通识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能黄金法则"><span class="nav-number">2.1.</span> <span class="nav-text">性能黄金法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP备忘点"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP备忘点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩"><span class="nav-number">2.2.1.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件Get请求"><span class="nav-number">2.2.2.</span> <span class="nav-text">条件Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expires"><span class="nav-number">2.2.3.</span> <span class="nav-text">Expires</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Keep-Alive"><span class="nav-number">2.2.4.</span> <span class="nav-text">Keep-Alive</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14军规"><span class="nav-number">3.</span> <span class="nav-text">14军规</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少HTTP请求-Make-Fewer-HTTP-Request"><span class="nav-number">3.1.</span> <span class="nav-text">减少HTTP请求 Make Fewer HTTP Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用内容发布网络（CDN）"><span class="nav-number">3.2.</span> <span class="nav-text">使用内容发布网络（CDN）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加Expires头"><span class="nav-number">3.3.</span> <span class="nav-text">添加Expires头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启Gzip压缩"><span class="nav-number">3.4.</span> <span class="nav-text">开启Gzip压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将样式表放在顶部"><span class="nav-number">3.5.</span> <span class="nav-text">将样式表放在顶部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将脚本放在底部"><span class="nav-number">3.6.</span> <span class="nav-text">将脚本放在底部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免CSS表达式"><span class="nav-number">3.7.</span> <span class="nav-text">避免CSS表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用外部javascript和css"><span class="nav-number">3.8.</span> <span class="nav-text">使用外部javascript和css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少DNS查找"><span class="nav-number">3.9.</span> <span class="nav-text">减少DNS查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#精简javascript和CSS"><span class="nav-number">3.10.</span> <span class="nav-text">精简javascript和CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免重定向"><span class="nav-number">3.11.</span> <span class="nav-text">避免重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除重复脚本"><span class="nav-number">3.12.</span> <span class="nav-text">删除重复脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置ETag"><span class="nav-number">3.13.</span> <span class="nav-text">配置ETag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使AJAX可缓存"><span class="nav-number">3.14.</span> <span class="nav-text">使AJAX可缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读后感"><span class="nav-number">4.</span> <span class="nav-text">读后感</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨二小</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zerosoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

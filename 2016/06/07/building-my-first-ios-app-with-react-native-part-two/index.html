@@ -1,0 +1,988 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react,app,翻译,react native," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨二小" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="再续前缘第一篇文章，我们从零开始，一步一步走到最后，构建了一个似乎并没有卵用的APP。但是，我们做了大量的基础工作，不就是为了在接下来的继续更轻松自信些嘛！其实，第一篇的信息量还是很大的，里面的每一个链接都是通往一个新知的大门，如果你觉得掌握得差不多了，那就开始新的旅（Che）程（Dan）吧！第二篇文章也是分五小节叙述，每一节完成一个小功能，最终召唤出还算有点卵用的APP。1.召唤出壁纸和作者首先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native之美：构建我的第一个iOS APP（2）">
+<meta property="og:url" content="http://zerosoul.github.io/2016/06/07/building-my-first-ios-app-with-react-native-part-two/index.html">
+<meta property="og:site_name" content="杨二小">
+<meta property="og:description" content="再续前缘第一篇文章，我们从零开始，一步一步走到最后，构建了一个似乎并没有卵用的APP。但是，我们做了大量的基础工作，不就是为了在接下来的继续更轻松自信些嘛！其实，第一篇的信息量还是很大的，里面的每一个链接都是通往一个新知的大门，如果你觉得掌握得差不多了，那就开始新的旅（Che）程（Dan）吧！第二篇文章也是分五小节叙述，每一节完成一个小功能，最终召唤出还算有点卵用的APP。1.召唤出壁纸和作者首先">
+<meta property="og:image" content="http://zerosoul.github.io/rn.png">
+<meta property="og:image" content="http://zerosoul.github.io/zdw.jpg">
+<meta property="og:image" content="http://zerosoul.github.io/haha.png">
+<meta property="og:image" content="http://zerosoul.github.io/long.jpg">
+<meta property="og:image" content="http://zerosoul.github.io/dir.png">
+<meta property="og:image" content="http://zerosoul.github.io/libs.png">
+<meta property="og:image" content="http://zerosoul.github.io/buildphase.png">
+<meta property="og:image" content="http://zerosoul.github.io/linklib.png">
+<meta property="og:image" content="http://zerosoul.github.io/indicator.png">
+<meta property="og:image" content="http://zerosoul.github.io/withauthor.png">
+<meta property="og:image" content="http://zerosoul.github.io/dese.png">
+<meta property="og:image" content="http://zerosoul.github.io/touched.png">
+<meta property="og:image" content="http://zerosoul.github.io/distance.png">
+<meta property="og:image" content="http://zerosoul.github.io/cameraroll.png">
+<meta property="og:image" content="http://zerosoul.github.io/saved.png">
+<meta property="og:image" content="http://zerosoul.github.io/saving.png">
+<meta property="og:image" content="http://zerosoul.github.io/maomi.jpg">
+<meta property="og:image" content="http://zerosoul.github.io/uncomment.png">
+<meta property="og:image" content="http://zerosoul.github.io/schema.png">
+<meta property="og:image" content="http://zerosoul.github.io/deadcode.png">
+<meta property="og:image" content="http://zerosoul.github.io/runmyphone.png">
+<meta property="og:image" content="http://zerosoul.github.io/icons.png">
+<meta property="og:image" content="http://zerosoul.github.io/tired.jpg">
+<meta property="og:updated_time" content="2016-06-12T08:10:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native之美：构建我的第一个iOS APP（2）">
+<meta name="twitter:description" content="再续前缘第一篇文章，我们从零开始，一步一步走到最后，构建了一个似乎并没有卵用的APP。但是，我们做了大量的基础工作，不就是为了在接下来的继续更轻松自信些嘛！其实，第一篇的信息量还是很大的，里面的每一个链接都是通往一个新知的大门，如果你觉得掌握得差不多了，那就开始新的旅（Che）程（Dan）吧！第二篇文章也是分五小节叙述，每一节完成一个小功能，最终召唤出还算有点卵用的APP。1.召唤出壁纸和作者首先">
+<meta name="twitter:image" content="http://zerosoul.github.io/rn.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zerosoul.github.io/2016/06/07/building-my-first-ios-app-with-react-native-part-two/"/>
+
+  <title> React Native之美：构建我的第一个iOS APP（2） | 杨二小 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?25693b171c4e4f11b7e2c8f9ad7a2c5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杨二小</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Variety is the spice of life</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React Native之美：构建我的第一个iOS APP（2）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-07T10:50:49+08:00" content="2016-06-07">
+              2016-06-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/它山之石/" itemprop="url" rel="index">
+                    <span itemprop="name">它山之石</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/07/building-my-first-ios-app-with-react-native-part-two/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/07/building-my-first-ios-app-with-react-native-part-two/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ><i class="fa fa-spinner"></i></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="rn.png" alt="React Native"></p><h1 id="再续前缘"><a href="#再续前缘" class="headerlink" title="再续前缘"></a>再续前缘</h1><p><a href="http://zerosoul.github.io/2016/06/05/building-my-first-ios-app-with-react-native-part-one/">第一篇文章</a>，我们从零开始，一步一步走到最后，构建了一个似乎并没有卵用的APP。但是，我们做了大量的基础工作，不就是为了在接下来的继续更轻松自信些嘛！<br><img src="zdw.jpg" alt="wtf"><br>其实，第一篇的信息量还是很大的，里面的每一个链接都是通往一个新知的大门，如果你觉得掌握得差不多了，那就开始新的旅（Che）程（Dan）吧！<br><img src="haha.png" alt="你懂的"><br>第二篇文章也是分五小节叙述，每一节完成一个小功能，最终召唤出还算有点卵用的APP。</p><h1 id="1-召唤出壁纸和作者"><a href="#1-召唤出壁纸和作者" class="headerlink" title="1.召唤出壁纸和作者"></a>1.召唤出壁纸和作者</h1><p>首先，我们先研究下数据，下面是从<a href="https://unsplash.it/list" target="_blank" rel="external">Unsplash</a>获取的一个数据实例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    author:&quot;Ben Moore&quot;</span><br><span class="line">    author_url:&quot;https://unsplash.com/@benmoore&quot;</span><br><span class="line">    filename:&quot;0102_pJILiyPdrXI.jpeg&quot;</span><br><span class="line">    format:&quot;jpeg&quot;</span><br><span class="line">    height:3240</span><br><span class="line">    id:102</span><br><span class="line">    post_url:&quot;https://unsplash.com/photos/pJILiyPdrXI&quot;</span><br><span class="line">    width:4320 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>要想获取该实例的图片，在浏览器中输入以下格式的URL<code>http://unsplash.it/{width}/{height}?image={id}</code>，换算到该实例即：<a href="http://unsplash.it/4320/3240?image=102" target="_blank" rel="external"><code>http://unsplash.it/4320/3240?image=102</code></a>。这样，我们就能拿到一张壁纸的地址了。我们可以用<code>Image</code>组件中的<code>source</code>来把图片加载出来。</p><p>但是，进一步想了想，这么大的图片会有一定的加载时间，最好能有个图片的加载进度什么的，让用户不再一脸懵逼地等着。一开始就做对，后面的修改成本会小很多，有两个组件的组合能够做到预期效果：</p><p><a href="https://github.com/oblador/react-native-image-progress" target="_blank" rel="external"><strong>image-native-progress</strong></a>和<a href="https://github.com/oblador/react-native-progress" target="_blank" rel="external"><strong>react-native-progress</strong></a>。</p><p>在项目根目录下运行命令：<code>npm i --save react-native-image-progress react-native-progress</code>，然后，我们在<strong>index.ios.js</strong>中引用：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var NetworkImage = require(&apos;react-native-image-progress&apos;);</span><br><span class="line">var Progress = require(&apos;react-native-progress&apos;);</span><br></pre></td></tr></table></figure><p></p><p>既然要做手机壁纸应用，那么就应该得到手机屏幕的长和宽：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var &#123;width, height&#125; = React.Dimensions.get(&apos;window’);</span><br></pre></td></tr></table></figure><p></p><p>哦对了，为了去掉烦人的<code>React.Dimensions</code>，可以在头部引入<code>Dimensions</code>组件：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">  ActivityIndicatorIOS,</span><br><span class="line">  /***/</span><br><span class="line">  Dimensions </span><br><span class="line">  /***/</span><br><span class="line">&#125; from &apos;react-native&apos;;</span><br></pre></td></tr></table></figure><p></p><p>这样，我们就可以在<code>renderResults</code>中使用<code>NetworkImage</code>了：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;Swiper ... &gt;</span><br><span class="line">  &#123;wallsJSON.map((wallpaper, index) =&gt; &#123;</span><br><span class="line">    return(</span><br><span class="line">    /***/</span><br><span class="line">      &lt;View key=&#123;index&#125;&gt;</span><br><span class="line">        &lt;NetworkImage</span><br><span class="line">          source=&#123;&#123;uri: `https://unsplash.it/$&#123;wallpaper.width&#125;/$&#123;wallpaper.height&#125;?image=$&#123;wallpaper.id&#125;`&#125;&#125;</span><br><span class="line">          indicator=&#123;Progress.Circle&#125;</span><br><span class="line">          style=&#123;styles.wallpaperImage&#125;&gt;</span><br><span class="line">        &lt;/NetworkImage&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    /***/</span><br><span class="line">    ); </span><br><span class="line">  &#125;)&#125;</span><br><span class="line">&lt;/Swiper&gt;</span><br></pre></td></tr></table></figure><p></p><p><strong>注：此处<code>NetworkImage</code>的<code>uri</code>特性用到了ES6的模板字符串特性，懵逼的同学去<a href="http://zerosoul.github.io/2016/06/05/building-my-first-ios-app-with-react-native-part-one/#先谈谈需求">上一篇文章</a>找链接复习一下哈。</strong></p><p>再加个样式：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wallpaperImage: &#123;</span><br><span class="line">  flex: 1,</span><br><span class="line">  width: width,</span><br><span class="line">  height: height,</span><br><span class="line">  backgroundColor: ‘#000’</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>保存然后刷新模拟器，不出意外的话…你将看到一堆报错的页面。<br><img src="long.jpg" alt="成龙"><br>别慌，我们来研究下刚刚加的代码，注意到<code>indicator={Progress.Circle}</code>没有？在<code>react-native-progress</code>文档里有提到（别告诉我你没看<a href="https://github.com/oblador/react-native-progress" target="_blank" rel="external">文档</a>(╯‵□′)╯︵┻━┻），<code>Progress.Circle</code>需要<strong>ReactART</strong>：使用React来画矢量图的类库。我们不需要下载任何新东西，只需要通过Xcode将其引入到项目中。<br>很简单，只是有点繁琐：</p><ol><li>移步 <code>node_modules/react-native/Libraries/ART/</code><br><img src="dir.png" alt="art目录"></li><li>将<em>ART.xcodeproj</em>拖拽到Xcode的<em>PIW/Libraries</em>下<br><img src="libs.png" alt="libs"></li><li>定位到<em>Build Phases</em>，友情提示：它与<em>General</em>,<em>Capabilities</em>等同级。<br><img src="buildphase.png" alt=""></li><li>将<em>ART.xcodeproj/Products</em>下的<em>libART.a</em>拖拽到<em>Build Phases</em>下的<em>Link Binary With Libraries</em>条目下：<br><img src="linklib.png" alt=""></li></ol><p>就这么简单，全是些拖拖拽拽的活儿。</p><p>然后，刷新模拟器。酷！我们已经能够看到带加载进度的壁纸，并且能左右滑动浏览。有没有碰到心动的图片？载下来？莫慌，待会儿来满足你。现在，我们先修改下进度提示的样式，这个在<code>NetworkImage</code>下的<code>indicatorProps</code>可以设置：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;NetworkImage</span><br><span class="line">  source=&#123;&#123;uri: `https://unsplash.it/$&#123;wallpaper.width&#125;/$&#123;wallpaper.height&#125;?image=$&#123;wallpaper.id&#125;`&#125;&#125;</span><br><span class="line">  indicator=&#123;Progress.Circle&#125;</span><br><span class="line">  style=&#123;styles.wallpaperImage&#125;&gt;</span><br><span class="line">  /***/</span><br><span class="line">  indicatorProps=&#123;&#123;</span><br><span class="line">    color:&apos;rgba(255,255,255,0.8)&apos;,</span><br><span class="line">    size:50,</span><br><span class="line">    thickness:4</span><br><span class="line">  &#125;&#125;</span><br><span class="line">  /***/</span><br><span class="line">&lt;/NetworkImage&gt;</span><br></pre></td></tr></table></figure><p></p><p>修改后进度提示应该长这样：<br><img src="indicator.png" alt="indicator"></p><p>接下来，把图片的作者名字加上，我们要做尊重知识版权的好公民：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;NetworkImage</span><br><span class="line">...</span><br><span class="line">&gt;</span><br><span class="line">/***/</span><br><span class="line">    &lt;Text style=&#123;styles.label&#125;&gt;Photo by&lt;/Text&gt;</span><br><span class="line">    &lt;Text style=&#123;styles.label_author_name&#125;&gt;&#123;wallpaper.author&#125;&lt;/Text&gt;</span><br><span class="line">/***/</span><br><span class="line">&lt;/NetworkImage&gt;</span><br></pre></td></tr></table></figure><p></p><p>别忘了创建各自对应的样式对象：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">label:&#123;</span><br><span class="line">    position:&apos;absolute&apos;,</span><br><span class="line">    color:&apos;#fff&apos;,</span><br><span class="line">    fontSize:13,</span><br><span class="line">    backgroundColor:&apos;#000&apos;,</span><br><span class="line">    padding:5,</span><br><span class="line">    paddingLeft:8,</span><br><span class="line">    top:20,</span><br><span class="line">    left:20</span><br><span class="line">  &#125;,</span><br><span class="line">label_author_name:&#123;</span><br><span class="line">    position:&apos;absolute&apos;,</span><br><span class="line">    color:&apos;#fff&apos;,</span><br><span class="line">    fontSize:15,</span><br><span class="line">    backgroundColor:&apos;#000&apos;,</span><br><span class="line">    padding:5,</span><br><span class="line">    paddingLeft:8,</span><br><span class="line">    top:52,</span><br><span class="line">    left:20,</span><br><span class="line">    fontWeight:&apos;bold&apos;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>来来来，我们瞅瞅加了作者后的效果：<br><img src="withauthor.png" alt=""></p><p>有木有瞬间感觉像那么回事儿了！<br><img src="dese.png" alt=""></p><p>走到这儿，这一节算完事儿了，为了能下载壁纸，我们将在下一节做一些更加有技术含量的事儿。</p><h1 id="2-捕捉双击操作-Double-Taps"><a href="#2-捕捉双击操作-Double-Taps" class="headerlink" title="2. 捕捉双击操作(Double-Taps)"></a>2. 捕捉双击操作(Double-Taps)</h1><p>这一节我们要用到的是PanResponder，这个API能做一些很酷的事情，比如捕捉双击操作。</p><p>其实，如果偷懒，完全可以在页面上放一个下载按钮，点击就下载，完活儿！但是，我们要做就做有逼格的事儿，双击图片下载就很符合这个档次，恩，撸起袖子干吧！</p><p>在开始之前，最好阅读一遍<a href="https://facebook.github.io/react-native/docs/panresponder.html" target="_blank" rel="external">PanResponder API</a>文档，因为你不读一遍，也不知道这个文档其实也没啥卵用o(╯□╰)o。不过我们至少知道了PanResponder的基本用法，这就够了。</p><p>废话少说，开始撸代码。首先，在构造函数里声明一个新对象：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.imagePanResponder = &#123;&#125;;</span><br></pre></td></tr></table></figure><p></p><p>别忘了在顶部引入<code>PanResponder</code>的声明：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">  ActivityIndicatorIOS,</span><br><span class="line">  /***/</span><br><span class="line">  PanResponder</span><br><span class="line">  /***/</span><br><span class="line">&#125; from &apos;react-native&apos;;</span><br></pre></td></tr></table></figure><p></p><p>接下来我们要做两件事：</p><ul><li>创建一个<code>PanResponder</code>并赋值<code>imagePanResponder</code></li><li>将<code>imagePanResponder</code>关联到<code>&lt;NetworkImage&gt;</code>组件</li></ul><p>为了完成第一件事，需要新增一个生命周期函数:<code>componentWillMount</code>。这个函数只有在组件首次渲染时才会触发，所以非常适合用于初始化<code>PanResponder</code>：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount() &#123;</span><br><span class="line">    this.imagePanResponder = PanResponder.create(&#123;</span><br><span class="line">      onStartShouldSetPanResponder: this.handleStartShouldSetPanResponder,</span><br><span class="line">      onPanResponderGrant: this.handlePanResponderGrant,</span><br><span class="line">      onPanResponderRelease: this.handlePanResponderEnd,</span><br><span class="line">      onPanResponderTerminate: this.handlePanResponderEnd</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p></p><p>初始化完了，就可以将这些事件关联到<code>NetworkImage</code>组件了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"> &#123;...this.imagePanResponder.panHandlers&#125;&gt;</span><br></pre></td></tr></table></figure><p>注：<code>...</code>是ES6中的扩展运算符，如果懵逼，请移步<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator" target="_blank" rel="external">这里</a>充电。</p><p>一般来说，一个触摸事件有三个阶段：开始（start）、移动（move）、释放（release），一个组件能够通过声明响应特定的触摸事件。<code>PanResponder.create({...</code>下提到的第一个事件<code>onStartShouldSetPanResponder</code>，从英文名字的意思大概也能猜出，这是在请求是否能将<code>PanResponder</code>绑定在该组件上。紧跟其后是一个方法<code>this.handleOnStartShouldSetPanResponder</code>，用于响应该事件，若该方法返回<code>true</code>，则通过请求，然后才能谈下一步，<code>false</code>则相反。所以，你应该知道在此我们应该返回什么，认清你的阶级立场，同志，老大哥在看着你：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleStartShouldSetPanResponder(e, gestureState) &#123;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>紧随其后的<code>onPanResponderGrant</code>是在一旦有了触摸时触发，在此我们先打印一个信息占个坑：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handlePanResponderGrant()&#123;</span><br><span class="line">    console.log(&quot;手指触摸到屏幕啦~~~&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p></p><p>最后两个事件从字面上也都能自解释，在手指离开屏幕时，都能触发，在此我们还是先打印信息占个坑：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handlePanResponderEnd()&#123;</span><br><span class="line">    console.log(&quot;手指离开屏幕啦~~~&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p></p><p>保存代码，壁纸一旦加载完毕，点击一下，应该会看到如下打印信息：<br><img src="touched.png" alt=""></p><p>OK，基于这些认知，我们可以开始捕捉双击操作了。判断是否为双击操作的关键是需要知道上一操作的信息：触摸发生的<strong>坐标</strong>和<strong>时间戳</strong>。在构造函数新增对象<code>prevTouchInfo</code>用于保存触摸信息：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">this.prevTouchInfo = &#123;</span><br><span class="line">  X: 0,</span><br><span class="line">  Y: 0,</span><br><span class="line">  timeStamp: 0</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p></p><p>然后，在<code>handlePanResponderGrant</code>更新这个对象(注意代码的次序)：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">handlePanResponderGrant(e, gestureState) &#123;</span><br><span class="line">/***/</span><br><span class="line">  var currentTouchTimeStamp = Date.now();</span><br><span class="line"></span><br><span class="line">  if( this.isDoubleTap(currentTouchTimeStamp, gestureState) ) </span><br><span class="line">    console.log(&apos;双击操作&apos;);</span><br><span class="line"></span><br><span class="line">  this.prevTouchInfo = &#123;</span><br><span class="line">    X: gestureState.x0,</span><br><span class="line">    Y: gestureState.y0,</span><br><span class="line">    timeStamp: currentTouchTimeStamp</span><br><span class="line">  &#125;;</span><br><span class="line">/***/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>handlePanResponderGrant</code>在每次单击时都会触发，但是有个地方需要特别注意：此处的<code>this</code>并不是指向<code>PIW</code>类，而是<code>PanResponder</code>，为了正确的引用，我们需要在构造函数使用<code>bind</code>重新定向一下。而如果我们一开始选用<code>React.createClass({ ... })</code>来创建组件，就不会存在这个问题，<strong>autobinding</strong>会帮我们搞定这个问题。也算有得有失吧:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.handlePanResponderGrant = this.handlePanResponderGrant.bind(this);</span><br></pre></td></tr></table></figure><p><code>isDoubleTap</code>是我们预先埋好的坑，下面我们填上它：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isDoubleTap(currentTouchTimeStamp, &#123;x0, y0&#125;) &#123;</span><br><span class="line">  var &#123;X, Y, timeStamp&#125; = this.prevTouchInfo;</span><br><span class="line">  var dt = currentTouchTimeStamp - timeStamp;</span><br><span class="line"></span><br><span class="line">  return (dt &lt; DOUBLE_TAP_DELAY &amp;&amp; Utils.distance(X, Y, x0, y0) &lt; DOUBLE_TAP_RADIUS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>好吧，你可能会注意到了，坑里有坑：</p><ul><li><p><code>DOUBLE_TAP_DELAY</code>和<code>DOUBLE_TAP_RADIUS</code>是我们定义的常量，需要在头部初始化一下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const DOUBLE_TAP_DELAY = 400; // milliseconds</span><br><span class="line">const DOUBLE_TAP_RADIUS = 20;</span><br></pre></td></tr></table></figure></li><li><p>新建一个模块<strong>utils.js</strong>，暴露出<code>distance</code>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">distance(x0, y0, x1, y1) &#123;</span><br><span class="line">  return Math.sqrt( Math.pow(( x1 - x0 ), 2) + Math.pow(( y1 - y0 ), 2) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><p><code>distance</code>是用来计算两个坐标之间的直线距离，还记得中学的几何公式吗？<br><img src="distance.png" alt="distance"></p><p><code>handlePanResponderGrant</code>最后一步是更新<code>prevTouchInfo</code>。</p><p>保存代码，等壁纸加载完毕，双击屏幕，如果不出意外的话，控制台里会输出:<strong>双击操作</strong>。</p><h1 id="3-将壁纸保存到本地相册"><a href="#3-将壁纸保存到本地相册" class="headerlink" title="3.将壁纸保存到本地相册"></a>3.将壁纸保存到本地相册</h1><p>现在我们能捕捉到双击的手势了，也就可以开始着手撸保存壁纸的代码了。首先，我们把console代码替换成一个调用的方法，先占坑。<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if( isDoubleTap(currentTouchTimeStamp, gestureState) )</span><br><span class="line">  this.saveCurrentWallpaperToCameraRoll();</span><br></pre></td></tr></table></figure><p></p><p>一会儿我们再来实现<code>saveCurrentWallpaperToCameraRoll</code>，下面我们先来看另一个问题：壁纸有五张，如何定位当前的这一张？<br>我们可以通过从零开始的索引来定位当前图片，每滑动一次就加1或者减1:<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.currentWallIndex = 0;</span><br></pre></td></tr></table></figure><p></p><p>还记得上一篇我们预留的一个坑位吗？<code>Swiper</code>里的<code>onMomentumScrollEnd</code>，在该方法里更新<code>currentWallIndex</code>：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onMomentumScrollEnd(e, state, context) &#123;</span><br><span class="line">  this.currentWallIndex = state.index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>同样的，别忘了在<code>constructor</code>里绑定<code>this</code>:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.onMomentumScrollEnd = this.onMomentumScrollEnd.bind(this);</span><br></pre></td></tr></table></figure><p>好了，我们开始为<code>saveCurrentWallpaperToCameraRoll</code>填坑了。为了能访问相册，需要先引入<code>Camera Roll</code>类库，还记得开头是怎么引入<code>ReactART</code>的吗？没错，照做一遍就可以：<code>node_modules/react-native/Libraries/CameraRoll</code><br><img src="cameraroll.png" alt=""></p><p>然后就可以导入了：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;</span><br><span class="line">  View,</span><br><span class="line">  Text,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Dimensions,</span><br><span class="line">  PanResponder,</span><br><span class="line">  /***/</span><br><span class="line">  CameraRoll, // 访问相册</span><br><span class="line">  AlertIOS // iOS的弹出框</span><br><span class="line">  /***/</span><br><span class="line">&#125; from &apos;react-native&apos;;</span><br></pre></td></tr></table></figure><p></p><p>一旦壁纸保存到相册，我们需要给用户一个保存成功的提示，<code>AlertIOS</code>帮我们做到这一点。现在，我们可以着手实现<code>saveCurrentWallpaperToCameraRoll</code>：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">saveCurrentWallpaperToCameraRoll() &#123;</span><br><span class="line">  var &#123;wallsJSON&#125; = this.state;</span><br><span class="line">  var currentWall = wallsJSON[this.currentWallIndex];</span><br><span class="line">  var currentWallURL = `http://unsplash.it/$&#123;currentWall.width&#125;/$&#123;currentWall.height&#125;?image=$&#123;currentWall.id&#125;`;</span><br><span class="line"></span><br><span class="line">  CameraRoll.saveImageWithTag(currentWallURL)</span><br><span class="line">  .then((data) =&gt; &#123;</span><br><span class="line">    AlertIOS.alert(</span><br><span class="line">      &apos;保存成功&apos;,</span><br><span class="line">      &apos;壁纸已保存到本地相册&apos;,</span><br><span class="line">      [</span><br><span class="line">        &#123;text: &apos;好哒!&apos;, onPress: () =&gt; console.log(&apos;OK Pressed!&apos;)&#125;</span><br><span class="line">      ]</span><br><span class="line">    );</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch((err) =&gt;&#123;</span><br><span class="line">    console.log(&apos;Error saving to camera roll&apos;, err);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>以上代码都能做到自解释，不懂的地方移步：<a href="https://facebook.github.io/react-native/docs/cameraroll.html" target="_blank" rel="external">CameraRoll</a>和<a href="https://facebook.github.io/react-native/docs/alertios.html" target="_blank" rel="external">AlertIOS</a>，你懂的。</p><p>好啦，保存代码，去模拟器体验一下保存壁纸功能：（首次保存需要手动同意获取访问相册的权限）<br><img src="saved.png" alt=""><br>完美！额，等等，从双击到壁纸保存成功，好像有那么几秒的等待时间，用户可能会认为双击不成功，然后再双击一次，这不是我们的期望，下一节专门解决这个问题！</p><h1 id="4-创建一个等待组件：Waiting-js"><a href="#4-创建一个等待组件：Waiting-js" class="headerlink" title="4.创建一个等待组件：Waiting.js"></a>4.创建一个等待组件：Waiting.js</h1><p>如果没记错的话，我们将创建第一个组件：Waiting.js。这个组件用于异步操作的等待时间，比如保存壁纸到相册的操作，就很有必要加一个等待提示，让用户知道APP在做什么。</p><p>在项目根目录新建文件：<strong>Waiting.js</strong>：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">import &#123;</span><br><span class="line">  View,</span><br><span class="line">  Text,</span><br><span class="line">  Component,</span><br><span class="line">  ActivityIndicatorIOS,</span><br><span class="line">&#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class default Waiting extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props); </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    var &#123;width, height, isVisible&#125; = this.props;</span><br><span class="line">    if( isVisible ) &#123;</span><br><span class="line">      return(</span><br><span class="line">        &lt;View </span><br><span class="line">         style=&#123;&#123;</span><br><span class="line">          flex: 1,</span><br><span class="line">          flexDirection: &apos;row&apos;,</span><br><span class="line">          justifyContent: &apos;center&apos;,</span><br><span class="line">          alignItems: &apos;center&apos;,</span><br><span class="line">          width: width,</span><br><span class="line">          height: height,</span><br><span class="line">          position: &apos;absolute&apos;,</span><br><span class="line">          top: 0,</span><br><span class="line">          left: 0,</span><br><span class="line">          backgroundColor: &apos;rgba(0, 0, 0, 0.5)&apos;</span><br><span class="line">         &#125;&#125;&gt;</span><br><span class="line">         &lt;ActivityIndicatorIOS</span><br><span class="line">            animating=&#123;true&#125;</span><br><span class="line">            color=&#123;&apos;#fff&apos;&#125;</span><br><span class="line">            size=&#123;&apos;large&apos;&#125; </span><br><span class="line">            style=&#123;&#123;margin: 15&#125;&#125; /&gt;</span><br><span class="line">           &lt;Text style=&#123;&#123;color:’#fff’&#125;&#125;&gt;正在保存，请稍后...&lt;/Text&gt;</span><br><span class="line">        &lt;/View&gt; </span><br><span class="line">      );</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return(&lt;View&gt;&lt;/View&gt;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = Waiting;</span><br></pre></td></tr></table></figure><p></p><p><code>render</code>第一行代码作用是从组件的<code>props</code>中获取相应的属性，其中<code>isVisible</code>用于判断是否显示该组件，使用该组件的格式：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Waiting width=&#123;width&#125; height=&#123;height&#125; isVisible=&#123;isWaitingVisible&#125;/&gt;</span><br></pre></td></tr></table></figure><p></p><p>在<strong>index.ios.js</strong>中引入<strong>Waiting.js</strong><br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Waiting = require(&apos;./Waiting.js&apos;);</span><br></pre></td></tr></table></figure><p></p><p>为了能控制Waiting组件的显示与隐藏，需要在<strong>index.ios.js</strong>新增一个状态：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">this.state = &#123;</span><br><span class="line">  wallsJSON: [],</span><br><span class="line">  isLoading: true,</span><br><span class="line">/***/</span><br><span class="line">  isWaitngVisible: false // 默认不显示</span><br><span class="line">/***/</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p></p><p>现在，我们可以在<code>&lt;/Swiper</code>之后放入<code>&lt;Waiting&gt;</code>组件了，不过，直接这样做会导致报错，因为<a href="https://facebook.github.io/react/tips/maximum-number-of-jsx-root-nodes.html" target="_blank" rel="external">React不允许返回多个组件</a>。为了解决这个问题，我们需要用<code>&lt;View&gt;&lt;/View&gt;</code>再做一个简单的包裹：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">renderResults() &#123;</span><br><span class="line">  var &#123;wallsJSON, isWaitngVisible&#125; = this.state;</span><br><span class="line">  return (</span><br><span class="line">  /***/</span><br><span class="line">    &lt;View&gt;</span><br><span class="line">  /***/</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      ...&gt;</span><br><span class="line"></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  /***/</span><br><span class="line">    &lt;Waiting width=&#123;width&#125; height=&#123;height&#125; isVisible=&#123;isWaitngVisible&#125;/&gt;</span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  /***/</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>既然有了<code>isWaitngVisible</code>状态，我们就应该想一想在哪些时机来改变它的状态：双击触发时置为<code>true</code>，保存成功时置为<code>false</code>，对应到代码就是：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">saveCurrentWallpaperToCameraRoll() &#123;</span><br><span class="line"></span><br><span class="line">/***/</span><br><span class="line">  // Waiting 组件显示</span><br><span class="line">  this.setState(&#123;isWaitingVisible: true&#125;);</span><br><span class="line">/***/</span><br><span class="line"></span><br><span class="line">  var &#123;wallsJSON&#125; = this.state;</span><br><span class="line">  var currentWall = wallsJSON[this.currentWallIndex];</span><br><span class="line">  var currentWallURL = `http://unsplash.it/$&#123;currentWall.width&#125;/$&#123;currentWall.height&#125;?image=$&#123;currentWall.id&#125;`;</span><br><span class="line"></span><br><span class="line">  CameraRoll.saveImageWithTag(currentWallURL, (data) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">/***/</span><br><span class="line">    // Waiting 组件隐藏</span><br><span class="line">    this.setState(&#123;isWaitingVisible: false&#125;);</span><br><span class="line">/***/</span><br><span class="line"></span><br><span class="line">    AlertIOS.alert(</span><br><span class="line">      &apos;保存成功&apos;,</span><br><span class="line">      &apos;壁纸已保存到本地相册&apos;,</span><br><span class="line">      [</span><br><span class="line">        &#123;text: &apos;好哒！&apos;, onPress: () =&gt; console.log(&apos;OK Pressed!&apos;)&#125;</span><br><span class="line">      ]</span><br><span class="line">    );</span><br><span class="line">  &#125;,(err) =&gt;&#123;</span><br><span class="line">    console.log(&apos;Error saving to camera roll&apos;, err);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>模拟器刷新，双击壁纸，等待组件出现，稍后保存成功的弹窗出现，等待组件消失，完美！</p><p>额，等等，真的很完美吗？有没有注意到保存完图片，屏幕跳到了第一张图片。这是因为我们在<code>saveWallpaperToCameraRoll</code>调用<code>this.setState()</code>，改变了<code>isWaitingVisible</code>的状态，触发了<code>render()</code>，从而<code>swiper</code>重新加载数据并从第一张图显示。</p><p>为了解决这个bug，我们可以通过<code>Swiper</code>的<code>index</code>入手：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Swiper ...</span><br><span class="line">        index=&#123;this.currentWallIndex&#125;&gt;</span><br></pre></td></tr></table></figure><p></p><p>这样，就保证了每次重新渲染，都从保存的那张开始。<br><img src="saving.png" alt="saving"><br>好了，写到这里，我们基本完工一个核心功能完备的小应用：</p><ul><li>能加载随机精美壁纸</li><li>能浏览</li><li>能保存</li></ul><p>如果对随机的五张壁纸无感，想换一批，怎么破？当然，我们可以放置一个按钮，点击便能更新随机的壁纸数据，可是…能不能做得酷一些呢？比如只需要摇一摇手机，便更新了一批壁纸！</p><p>年轻人，下一节我们做这件酷酷的事儿…<br><img src="maomi.jpg" alt=""></p><h1 id="5-摇一摇动作（Shake）和真机测试"><a href="#5-摇一摇动作（Shake）和真机测试" class="headerlink" title="5.摇一摇动作（Shake）和真机测试"></a>5.摇一摇动作（Shake）和真机测试</h1><p>为了使我们的APP能够捕捉到摇一摇的动作，需要新增一个模块：<a href="https://www.npmjs.com/package/react-native-shake-event-ios" target="_blank" rel="external">react-native-shake-event-ios</a>。项目根目录运行：<code>npm install --save react-native-shake-event-ios</code>。</p><p>另外，我们还需要做的是链接相应的类库。如果没记错的话，这是第三次，也是最后一次做这样的操作，我就不多说了，应该熟练了，少年。温馨提示：<code>node_modules/react-native-shake-event-ios/</code>下的<code>RNShakeEvent.xcodeproj</code></p><p>引用该类库：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ShakeEvent = require(&apos;react-native-shake-event-ios&apos;);</span><br></pre></td></tr></table></figure><p></p><p>我们在<code>componentWillMount</code>新增摇一摇的监听动作：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount() &#123;</span><br><span class="line">  ...</span><br><span class="line">/***/</span><br><span class="line">  // 摇一摇，更新数据</span><br><span class="line">  ShakeEvent.addEventListener(&apos;shake&apos;, () =&gt; &#123;</span><br><span class="line">    this.initialize();</span><br><span class="line">    this.fetchWallsJSON();</span><br><span class="line">  &#125;);</span><br><span class="line">/***/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p><code>initialize</code>填坑，其实就是初始化各种状态：<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">initialize() &#123;</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    wallsJSON: [],</span><br><span class="line">    isLoading: true,</span><br><span class="line">    isWaitingVisible: false</span><br><span class="line">  &#125;);</span><br><span class="line">  this.currentWallIndex = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>保存代码，接下来我们开始真机测试。当然，如果没有真机，也可以通过快捷键组合：<code>CMD + Ctrl + Z</code>模拟摇一摇操作。不过，我还是期望你有一部真机，因为…这样可以拿来装X啊，少年！</p><p>真机测试意味着我们将脱离开发环境，像平时通过AppStore安装APP那样把我们的APP放到手机内。按照<a href="https://facebook.github.io/react-native/docs/running-on-device-ios.html#using-offline-bundle" target="_blank" rel="external">官方文档</a>来做，其实很简单：</p><ol><li><p>找到<code>Xcode/PIW/PIW/AppDeletegate.m</code>，做以下操作：<br><img src="uncomment.png" alt=""></p></li><li><p><code>Product → Scheme → Edit Scheme</code>或者直接快捷键：<code>CMD + Shift + ,</code>，划入的窗口中将<code>Build Configuration</code>从<code>debug</code>改为<code>Release</code>:<br><img src="schema.png" alt=""><br>这样做的目的是为了防止摇一摇弹出调试菜单。</p></li><li><p>转向<code>Build Setting</code>，禁掉<code>Dead Code Stripping</code>，别问我这是为啥，我也不清楚，可能这就是人生，年轻人。<br><img src="deadcode.png" alt=""></p></li></ol><p>联接你的iPhone到Mac上，选择真机运行：<br><img src="runmyphone.png" alt=""></p><p>好啦，万事俱备，只欠一个点击。首次打包和安装会持续较长时间，请耐心等候。安装过程中甭管蹦出什么，选择<strong>相信</strong>就行。注意，如果想恢复到开发环境，把上面的步骤1和步骤2撤销就可以了。</p><p>安装完毕，手机桌面上就应该多出一个巨丑的APP图标，没错，那就是这么长时间我们辛苦做出的APP，快快打开体验一番吧！</p><p>最后，我们把图标也加上：</p><ol><li>下载<a href="http://7xo6wq.com1.z0.glb.clouddn.com/SplashWallIcons.zip" target="_blank" rel="external">图标文件</a>。当然，你也可以自己按照<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html" target="_blank" rel="external">苹果图标规定</a>来设计一套</li><li>调转到Xcode<code>PIW/PIW/Images.xcassets</code>，选择AppIcon</li><li>将图标文件按照规格拖拽到对应的框内，一个萝卜一个坑，so easy!<br><img src="icons.png" alt=""></li></ol><p>再次打包和运行，这次那个巨丑无比的图标应该不见了。</p><p>卧槽，我们目前是不是可以说正式完成了一个APP版本的迭代？是的，我们做到了！</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>又到了总结时间了，这一次我们都做了哪些事情呢：</p><ul><li><code>NetworkImage</code>组件让我们能够显示出带加载进度的图片</li><li><code>PanResponder</code>API让我们能够捕捉到双击操作</li><li><code>Camera Roll</code>让我们能够将壁纸保存到本地相册</li><li><code>Waiting</code>是我们首个自定义的组件，让用户在保存壁纸的同时不再懵逼</li><li><code>react-native-shake-event-ios</code>让我们能够检测到摇一摇操作，并在恰当的时机，更新随机数据</li></ul><p>目前为止，我们已经完成了一个功能较完备的APP，同时也学习了许多新知，没有过多地深入，但均给出了深入的入口，也就是文章中的链接。其实，这个APP还可以加入许多好玩的特性，比如：</p><ul><li>既然有双击操作，是不是可以考虑加一个单击操作：单击壁纸，隐藏顶部的两个小黑条和底部的分页，也就是全屏显示壁纸，看得更爽一些，再次单击，恢复隐藏的元素。</li><li>有没有可能做一个设置壁纸前的预览功能呢？虽然可能从API上有所限制，但我们可以通过一些hack的方式来达到类似的目的，至于什么方式，发挥你的脑洞去试试吧。</li><li>每次打开APP都要从第三方获取数据，对于在非WiFi环境，用户可能会有所顾虑，是不是应该做一个本地缓存第三方数据的功能，甚至图片？</li><li>现在我们的代码组织并不很模块化，这一点可不可以做些优化？</li><li>React Native 也可以做安卓开发，尝尝鲜？</li></ul><p>以上是我能想到的一些功能点和优化点，如果我们能一步一步走到现在，相信这些好玩的特性也不会那么难实现。或许，我还会写个番外篇，讲一讲如何继续迭代<strong>PIW</strong>。</p><p>通过这个简单的APP，我们接触到了许多知识点，但React Native的学习远不止这些，一些高级话题我们还没涉猎，比如<code>Flux/Redux</code>。但万变不离阅读官方文档，加之实例练习，边学边总结，是我的节奏。Hey，man，你的节奏找到了吗？好了，我累了，打烊了…<br><img src="tired.jpg" alt="姚明"><br>哦对了，最新代码放在了<a href="https://github.com/zerosoul/PIW" target="_blank" rel="external">Github上</a>，欢迎指正。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.smashingmagazine.com/2016/04/how-to-build-your-first-ios-app-with-javascript/#" target="_blank" rel="external">The Beauty Of React Native: Building Your First iOS App With JavaScript (Part 2)</a></p>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag">#react</a>
+          
+            <a href="/tags/app/" rel="tag">#app</a>
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+            <a href="/tags/react-native/" rel="tag">#react native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/05/building-my-first-ios-app-with-react-native-part-one/" rel="next" title="React Native之美：构建我的第一个iOS APP（1）">
+                <i class="fa fa-chevron-left"></i> React Native之美：构建我的第一个iOS APP（1）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/17/take-parents-to-beijing/" rel="prev" title="世界那么大，TA们想看看">
+                世界那么大，TA们想看看 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+<style>
+/* Default tab style */
+.payment-container{
+	width: 60%;
+	margin:0 auto;
+	display: none;
+	margin-top: 1em;
+}
+
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+.tabs a{
+	text-decoration: none;
+	color:#555;
+}
+.tabs nav ul {
+	border-top: 1px solid #A9B8BD;
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+/* Content */
+.qr-content-wrap {
+	position: relative;
+}
+
+.qr-content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.qr-content-wrap .tip{
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+
+.qr-content-wrap section.content-current {
+	display: block;
+}
+
+.qr-content-wrap section img {
+	width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+	.payment-container{
+		width: 85%;
+	}
+}
+
+/* Individual tab styles */
+
+/*****************************/
+/* Underline */
+/*****************************/
+
+.tabs-style-underline nav {
+	background: #fff;
+}
+
+.tabs-style-underline nav a {
+	padding: 0.25em 0 0.5em;
+	border-left: 1px solid #222;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+	border-bottom: 1px solid #999;
+}
+
+.tabs-style-underline nav li:last-child a {
+	border-right: 1px solid #222;
+}
+
+.tabs-style-underline nav li a::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	background: #222;
+	content: '';
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translate3d(0,150%,0);
+	transform: translate3d(0,150%,0);
+}
+
+.tabs-style-underline nav li.tab-current a::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.tabs-style-underline nav a span {
+	font-weight: 700;
+}
+section.donate{
+	text-align: center;
+	padding: 0 25px;
+}
+section.donate .tip{
+	margin-top: 1em;
+}
+section.donate .donate-circle{
+	font-size: 2em;
+    color: #fff;
+    border-radius: 1em;
+    border: 1px solid rgba(100, 162, 160, 0.5);
+    width: 2em;
+    background: #F38B09;
+    margin: 0 auto;
+}
+</style>
+<section class="donate" style="display:block;">
+	<div class="donate-circle">赏</div>
+	<p class="tip">如果文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+</section>
+<section class="payment-container">
+	<div class="tabs tabs-style-underline">
+		<nav>
+			<ul>
+				<li data-target="section-weixin" class="tab-current"><a href="#"><span>微信</span></a></li>
+				<li data-target="section-zfb"><a href="#"><span>支付宝</span></a></li>
+			</ul>
+		</nav>
+		<div class="qr-content-wrap">
+			<section class="content-current" id="section-weixin">
+				<p class="tip">微信环境下长按识别或保存</p>
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_wexin.jpg" alt="微信支付二维码">
+			</section>
+			<section id="section-zfb">
+				
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_zfb.jpg" alt="支付宝支付二维码">
+			</section>
+		</div><!-- /content -->
+	</div><!-- /tabs -->
+</section>
+<script>
+	(function(d) {
+		d.querySelectorAll(".donate-circle")[0].addEventListener("click",function(evt){
+			d.querySelectorAll(".donate")[0].style.display="none";
+			d.querySelectorAll(".payment-container")[0].style.display="block";
+		});
+		[].slice.call( d.querySelectorAll(".tabs ul li") ).forEach( function( el ) {
+			el.addEventListener("click",function(evt){
+				console.log(evt,this);
+				evt.preventDefault();
+				var idStr=this.getAttribute("data-target");
+				d.querySelectorAll(".tabs ul li.tab-current")[0].classList.remove("tab-current");
+				this.classList.add("tab-current");
+				d.querySelectorAll(".tabs .qr-content-wrap .content-current")[0].classList.remove("content-current");
+				d.getElementById(""+idStr).classList.add("content-current");
+
+			});
+		});
+	})(document);
+</script>
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/07/building-my-first-ios-app-with-react-native-part-two/"
+           data-title="React Native之美：构建我的第一个iOS APP（2）" data-url="http://zerosoul.github.io/2016/06/07/building-my-first-ios-app-with-react-native-part-two/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="杨二小" />
+          <p class="site-author-name" itemprop="name">杨二小</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zerosoul" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/2365376/yanggc?tab=profile" target="_blank" title="stackoverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  stackoverflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanggc2014" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xxfs.com" title="西西弗斯" target="_blank">西西弗斯</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.laoono.com/" title="老衲前端" target="_blank">老衲前端</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hammx.com/" title="大周的博客" target="_blank">大周的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#再续前缘"><span class="nav-number">1.</span> <span class="nav-text">再续前缘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-召唤出壁纸和作者"><span class="nav-number">2.</span> <span class="nav-text">1.召唤出壁纸和作者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-捕捉双击操作-Double-Taps"><span class="nav-number">3.</span> <span class="nav-text">2. 捕捉双击操作(Double-Taps)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-将壁纸保存到本地相册"><span class="nav-number">4.</span> <span class="nav-text">3.将壁纸保存到本地相册</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-创建一个等待组件：Waiting-js"><span class="nav-number">5.</span> <span class="nav-text">4.创建一个等待组件：Waiting.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-摇一摇动作（Shake）和真机测试"><span class="nav-number">6.</span> <span class="nav-text">5.摇一摇动作（Shake）和真机测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">8.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨二小</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zerosoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
