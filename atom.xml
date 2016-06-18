@@ -153,9 +153,9 @@
     
       <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
     
-      <category term="ES6" scheme="http://zerosoul.github.io/tags/ES6/"/>
-    
       <category term="promise" scheme="http://zerosoul.github.io/tags/promise/"/>
+    
+      <category term="ES6" scheme="http://zerosoul.github.io/tags/ES6/"/>
     
   </entry>
   
@@ -179,11 +179,11 @@
     
       <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
-    
       <category term="彼得蒂尔" scheme="http://zerosoul.github.io/tags/%E5%BD%BC%E5%BE%97%E8%92%82%E5%B0%94/"/>
     
       <category term="商业与未来" scheme="http://zerosoul.github.io/tags/%E5%95%86%E4%B8%9A%E4%B8%8E%E6%9C%AA%E6%9D%A5/"/>
+    
+      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
     
   </entry>
   
@@ -397,13 +397,13 @@
     
       <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
+      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
+    
       <category term="清醒思考的艺术" scheme="http://zerosoul.github.io/tags/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF/"/>
     
       <category term="思维错误" scheme="http://zerosoul.github.io/tags/%E6%80%9D%E7%BB%B4%E9%94%99%E8%AF%AF/"/>
     
       <category term="认知偏差" scheme="http://zerosoul.github.io/tags/%E8%AE%A4%E7%9F%A5%E5%81%8F%E5%B7%AE/"/>
-    
-      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
     
   </entry>
   
@@ -425,9 +425,9 @@
       <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="面试" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="面试题" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
@@ -682,6 +682,30 @@
   </entry>
   
   <entry>
+    <title>探索JSON</title>
+    <link href="http://zerosoul.github.io/2015/06/18/explore-json/"/>
+    <id>http://zerosoul.github.io/2015/06/18/explore-json/</id>
+    <published>2015-06-18T02:44:17.000Z</published>
+    <updated>2016-06-18T03:05:23.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;json.png&quot; alt=&quot;json&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;JSON(JavaScript Object Notation) 是一种轻量级数据交换格式。 易于阅读和编写，也易于机器解析和生成。 它基于&lt;a href=&quot;http://www.crockford.com/javascript&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript Programming Language&lt;/a&gt;, &lt;a href=&quot;http://www.ecma-international.org/publications/files/ecma-st/ECMA-262.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Standard ECMA-262 3rd Edition - December 1999&lt;/a&gt;的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。&lt;/p&gt;&lt;h1 id=&quot;标准&quot;&gt;&lt;a href=&quot;#标准&quot; class=&quot;headerlink&quot; title=&quot;标准&quot;&gt;&lt;/a&gt;标准&lt;/h1&gt;&lt;p&gt;JSON建构于两种结构：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。&lt;/li&gt;&lt;li&gt;值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;这些都是常见的数据结构。事实上大部分现代计算机语言都以某种形式支持它们。这使得一种数据格式在同样基于这些结构的编程语言之间交换成为可能。&lt;/p&gt;&lt;p&gt;JSON具有以下这些形式：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;对象是一个无序的“‘名称/值’对”集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“‘名称/值’ 对”之间使用“,”（逗号）分隔。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;object.gif&quot; alt=&quot;object&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;数组是值（value）的有序集合。一个数组以“[”（左中括号）开始，“]”（右中括号）结束。值之间使用“,”（逗号）分隔。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;array.gif&quot; alt=&quot;array&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;值（value）可以是双引号括起来的字符串（string）、数值(number)、true、false、 null、对象（object）或者数组（array）。这些结构可以嵌套。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;value.gif&quot; alt=&quot;value&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;字符串（string）是由双引号包围的任意数量Unicode字符的集合，使用反斜线转义。一个字符（character）即一个单独的字符串（character string）。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;字符串（string）与C或者Java的字符串非常相似。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;string.gif&quot; alt=&quot;string&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;数值（number）也与C或者Java的数值非常相似。除去未曾使用的八进制与十六进制格式。除去一些编码细节。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;number.gif&quot; alt=&quot;number&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;注意：空白可以加入到任何符号之间。&lt;/em&gt;&lt;/p&gt;&lt;h1 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.json.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JSON官网&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;json.png&quot; alt=&quot;json&quot;&gt;&lt;/p&gt;&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;JSON(JavaScript Object Notation)
+    
+    </summary>
+    
+      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
+    
+      <category term="JSON" scheme="http://zerosoul.github.io/tags/JSON/"/>
+    
+  </entry>
+  
+  <entry>
     <title>程序员看了会流泪，产品经理看了会沉默</title>
     <link href="http://zerosoul.github.io/2015/05/22/fuck-the-pm/"/>
     <id>http://zerosoul.github.io/2015/05/22/fuck-the-pm/</id>
@@ -753,11 +777,11 @@
     
       <category term="随笔" scheme="http://zerosoul.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
-      <category term="家乡" scheme="http://zerosoul.github.io/tags/%E5%AE%B6%E4%B9%A1/"/>
-    
       <category term="故乡" scheme="http://zerosoul.github.io/tags/%E6%95%85%E4%B9%A1/"/>
     
       <category term="书屋" scheme="http://zerosoul.github.io/tags/%E4%B9%A6%E5%B1%8B/"/>
+    
+      <category term="家乡" scheme="http://zerosoul.github.io/tags/%E5%AE%B6%E4%B9%A1/"/>
     
   </entry>
   
@@ -810,36 +834,6 @@
       <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
     
       <category term="delegation" scheme="http://zerosoul.github.io/tags/delegation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读《学习的艺术》（乔希·维茨金）</title>
-    <link href="http://zerosoul.github.io/2014/05/07/the-art-of-learning/"/>
-    <id>http://zerosoul.github.io/2014/05/07/the-art-of-learning/</id>
-    <published>2014-05-07T08:29:09.000Z</published>
-    <updated>2016-05-24T08:39:54.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;the_art_of_learning.jpg&quot; alt=&quot;the art of learning&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;成为他人眼中的巅峰人物与生活质量毫无关系，我所追求的是内心的平静。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我把所有时间都放在的学习技巧、原理与理论上，使之成为潜意识的一部分。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;完全融入某项活动，挖掘自己思维的潜能。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我必须更深入地认识“精华”、“质”、“原则”、“直觉”和“智慧”等概念，以便可以理解自己的经历，并有机会将其表达出来。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;以数字摆脱数字，以形式摆脱形式，画小圈。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我所擅长的既不是太极，也不是象棋，而是学习的艺术。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;从未让技术性的东西影响了我对象棋的内在感觉。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;学习的基本原则就是要钻研微观的细节事物，从而来理解是什么促成了这些宏观上的问题。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;不要做一个招式的收集者。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我们能成为顶尖选手并没有什么秘诀，而是对可能是基本技能的东西有更深的理解。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;如果我想做到最好，那我就不得不冒别人想避免的险，不得不经常充分挖掘当时的学习潜力，逆转困境为我所用。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;如何做到熟练？首先，从基础开始，通过理解训练的原则所在建立扎实的基础，然后在你个人倾向的指挥下拓宽并完善自己的技能，同时和你认为是艺术的必要实质的东西在抽象层面上保持联系。结果就是你可以更好地吸收各种知识，使得这些从个人的着重点中拓展开来的知识相互连接成一个网络。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;正如各门行当一样，最精深的技巧往往建立在最简单原始的原理上。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;如果我们只以“度过此生”来作为生活标准，那么永远都不能指望杰出。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;对那些生活的强者来说，从容应对每天的学习过程的心理就如同他人梦想着在危机时分能体验最高潮瞬间的那种执着。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我崇尚简单，深入到平凡中，发现以藏于生活之中的丰富才是成功，还有幸福的根源。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;当我们真正做到水滴石穿时，不断成长的真正力量才会发挥作用和影响。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我成长过程中，下一步要做的便是在越来越困难的条件下保持自我。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;只有当我们的工作超越熟练阶段而成为自身的一种表达时，学习才成为一门真正的艺术&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;选择一组技艺，内化它们，直到大脑感知到无穷的细节！&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;真正的掌握需要通过自己发现一些最能够引起共鸣的信息，并将其彻底地融合进来，直至成为一体，这样我们才能随心所欲地驾驭它。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;the_art_of_learning.jpg&quot; alt=&quot;the art of learning&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;成为他人眼中的巅峰人物与生活质量毫无关系，我所追求的是内心的平静。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;我把所有时间都放在的学习
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://zerosoul.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="大学" scheme="http://zerosoul.github.io/tags/%E5%A4%A7%E5%AD%A6/"/>
-    
-      <category term="国际象棋" scheme="http://zerosoul.github.io/tags/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/"/>
-    
-      <category term="学习" scheme="http://zerosoul.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="乔希·维茨金" scheme="http://zerosoul.github.io/tags/%E4%B9%94%E5%B8%8C%C2%B7%E7%BB%B4%E8%8C%A8%E9%87%91/"/>
     
   </entry>
   
