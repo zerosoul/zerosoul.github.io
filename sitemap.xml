@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2016/06/19/building-my-first-ios-app-with-react-native-part-three/</loc>
-    
-    <lastmod>2016-06-19T09:34:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zerosoul.github.io/2016/06/07/building-my-first-ios-app-with-react-native-part-two/</loc>
     
     <lastmod>2016-06-19T08:43:16.000Z</lastmod>
@@ -219,21 +212,14 @@
   </url>
   
   <url>
+    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2012/05/14/graduate-riding-part-one/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -247,14 +233,21 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    <loc>http://zerosoul.github.io/2012/05/14/graduate-riding-part-one/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
