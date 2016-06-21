@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zerosoul.github.io/about/index.html</loc>
+    
+    <lastmod>2016-06-21T00:36:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2016/06/15/upgrade-hexo-to-3-2/</loc>
+    
+    <lastmod>2016-06-19T15:22:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2016/06/19/building-my-first-ios-app-with-react-native-part-three/</loc>
+    
+    <lastmod>2016-06-19T09:34:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2016/06/07/building-my-first-ios-app-with-react-native-part-two/</loc>
+    
+    <lastmod>2016-06-19T08:43:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2016/06/18/about-full-stack-engineer/</loc>
     
     <lastmod>2016-06-18T10:10:04.000Z</lastmod>
@@ -19,13 +47,6 @@
     <loc>http://zerosoul.github.io/2014/03/18/explore-html-meta/</loc>
     
     <lastmod>2016-06-18T01:58:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2016/06/15/upgrade-hexo-to-3-2/</loc>
-    
-    <lastmod>2016-06-17T08:39:01.000Z</lastmod>
     
   </url>
   
@@ -61,13 +82,6 @@
     <loc>http://zerosoul.github.io/2014/05/12/JavaScript-Event-Delegation/</loc>
     
     <lastmod>2016-06-12T08:35:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2016/06/07/building-my-first-ios-app-with-react-native-part-two/</loc>
-    
-    <lastmod>2016-06-12T08:10:31.000Z</lastmod>
     
   </url>
   
@@ -124,13 +138,6 @@
     <loc>http://zerosoul.github.io/2010/05/02/about-a-primary-school-teacher/</loc>
     
     <lastmod>2016-05-02T03:47:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/about/index.html</loc>
-    
-    <lastmod>2016-05-01T02:57:33.000Z</lastmod>
     
   </url>
   
@@ -212,7 +219,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -233,7 +240,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
+    <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -247,7 +254,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
