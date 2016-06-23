@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zerosoul.github.io/2014/08/23/async-and-defer-in-html5-script-tag/</loc>
+    
+    <lastmod>2016-06-23T03:06:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2016/06/22/running-life/</loc>
     
     <lastmod>2016-06-22T08:32:05.000Z</lastmod>
@@ -219,21 +226,14 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -247,14 +247,21 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
+    <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
