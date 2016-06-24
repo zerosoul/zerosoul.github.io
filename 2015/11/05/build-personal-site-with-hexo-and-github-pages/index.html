@@ -90,18 +90,45 @@
 
 
 
-<meta name="description" content="准备工作Github登陆你的Github新建一个Repository将之命名为yourGithubName.github.io(注意替换yourGithubName)关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把SSH的地址copy一份，后面有用到Hexo打开终端Hexo依赖 Node 环境，如果没有先安装 Node &amp;amp; npm，参考官网安装 Hexonpm install -g">
+<meta name="description" content="准备工作Github
+登陆你的Github
+新建一个Repository
+将之命名为yourGithubName.github.io(注意替换yourGithubName)
+关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把SSH的地址copy一份，后面有用到
+
+Hexo
+打开终端
+Hexo依赖 Node 环境，如果没有先安装 Node &amp;amp; npm，参考官网
+安装 Hexonpm in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科学地使用 Hexo 和 Github Pages 装X">
 <meta property="og:url" content="http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/index.html">
 <meta property="og:site_name" content="杨二小">
-<meta property="og:description" content="准备工作Github登陆你的Github新建一个Repository将之命名为yourGithubName.github.io(注意替换yourGithubName)关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把SSH的地址copy一份，后面有用到Hexo打开终端Hexo依赖 Node 环境，如果没有先安装 Node &amp;amp; npm，参考官网安装 Hexonpm install -g">
+<meta property="og:description" content="准备工作Github
+登陆你的Github
+新建一个Repository
+将之命名为yourGithubName.github.io(注意替换yourGithubName)
+关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把SSH的地址copy一份，后面有用到
+
+Hexo
+打开终端
+Hexo依赖 Node 环境，如果没有先安装 Node &amp;amp; npm，参考官网
+安装 Hexonpm in">
 <meta property="og:image" content="http://zerosoul.github.io/godaddy_setting.jpg">
 <meta property="og:image" content="http://zerosoul.github.io/godaddy_saving.jpg">
 <meta property="og:updated_time" content="2016-01-19T02:44:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科学地使用 Hexo 和 Github Pages 装X">
-<meta name="twitter:description" content="准备工作Github登陆你的Github新建一个Repository将之命名为yourGithubName.github.io(注意替换yourGithubName)关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把SSH的地址copy一份，后面有用到Hexo打开终端Hexo依赖 Node 环境，如果没有先安装 Node &amp;amp; npm，参考官网安装 Hexonpm install -g">
+<meta name="twitter:description" content="准备工作Github
+登陆你的Github
+新建一个Repository
+将之命名为yourGithubName.github.io(注意替换yourGithubName)
+关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把SSH的地址copy一份，后面有用到
+
+Hexo
+打开终端
+Hexo依赖 Node 环境，如果没有先安装 Node &amp;amp; npm，参考官网
+安装 Hexonpm in">
 <meta name="twitter:image" content="http://zerosoul.github.io/godaddy_setting.jpg">
 
 
@@ -346,7 +373,55 @@
       
 
       
-        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="http://github.com" target="_blank" rel="external">Github</a></h2><ol><li>登陆你的Github</li><li>新建一个Repository</li><li>将之命名为<em>yourGithubName.github.io</em>(注意替换yourGithubName)</li><li>关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把<em>SSH</em>的地址copy一份，后面有用到</li></ol><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><a href="http://hexo.io" target="_blank" rel="external">Hexo</a></h2><ol><li>打开终端</li><li>Hexo依赖 Node 环境，如果没有先安装 Node &amp; npm，参考<a href="http://nodejs.org" target="_blank" rel="external">官网</a></li><li>安装 Hexo<br><code>npm install -g hexo</code></li><li>齐活，Hexo准备完毕</li></ol><h1 id="开始使用Hexo撸Github需要的东西"><a href="#开始使用Hexo撸Github需要的东西" class="headerlink" title="开始使用Hexo撸Github需要的东西"></a>开始使用Hexo撸Github需要的东西</h1><ol><li>进入到你想放置github pages repository的目录</li><li>在此创建Hexo Project<br><code>hexo init yourGithubName.github.io</code></li><li>切换到刚刚创建的目录<br><code>cd yourGithubName.github.io</code></li><li>安装依赖&amp;生成静态文件&amp;启动本地服务器<br><code>npm install &amp; hexo g &amp; hexo s</code></li><li>目测现在就可以通过访问localhost:4000来瞅瞅网站啥样了</li></ol><h1 id="部署到Github上"><a href="#部署到Github上" class="headerlink" title="部署到Github上"></a>部署到Github上</h1><ol><li>首先，停掉Hexo <code>Control + C</code></li><li>打开根目录的_config.yml，设置Github地址<br><code>deploy: type: git repo: git@github.com:yourGithubName/yourGithubName.github.io.git</code></li><li>部署前，先确认有没有安装<em><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a></em><br><code>npm install hexo-deployer-git --save</code></li><li>部署<br><code>hexo d</code></li><li>打开浏览器，访问 <em>yourGithubName.github.io</em></li></ol><h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><ol><li>使用Markdown写作，完事后保存到source/_posts/</li><li>重新生成静态文件<br><code>hexo g</code></li><li>运行<code>hexo s</code>在本地查看刚刚写的文章</li><li>木问题的话，更新至Github<br><code>hexo d</code></li></ol><h1 id="绑定自己的域名"><a href="#绑定自己的域名" class="headerlink" title="绑定自己的域名"></a>绑定自己的域名</h1><blockquote><p>我通过淘宝代理<a href="https://www.godaddy.com/" target="_blank" rel="external">Godaddy</a>购买了 <a href="http://zerosou.us" target="_blank" rel="external">zerosoul.github.io</a> 域名，就拿这个举例如何绑定吧</p></blockquote><ol><li>Github上进入 zerosoul.github.io</li><li>创建并提交CNAME文件，里面只有一行内容，就是域名：<code>zerosoul.github.io</code></li><li>去Godaddy网站管理域名页面<br><img src="godaddy_setting.jpg" alt="godaddy setting"></li><li>增加一条 A 记录:host=<code>@</code>，Points to=<code>192.30.252.153</code></li><li>增加一条 CNAME 记录:host=<code>www</code>，Points to=<code>zerosoul.github.io</code></li><li>最后，一定要记得保存更改！<br><img src="godaddy_saving.jpg" alt="godaddy saving"></li><li>静待更改生效，大概一两个小时。</li></ol><h1 id="两个小时后…"><a href="#两个小时后…" class="headerlink" title="两个小时后…"></a>两个小时后…</h1><p><strong>装X成功！</strong></p><h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://hexo.io/docs/" target="_blank" rel="external">hexo doc</a><br><a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="external">github pages basic</a><br><a href="http://andrewsturges.com/blog/jekyll/tutorial/2014/11/06/github-and-godaddy.html" target="_blank" rel="external">Configuring a Godaddy domain name with github pages</a></p>
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="http://github.com" target="_blank" rel="external">Github</a></h2><ol>
+<li>登陆你的Github</li>
+<li>新建一个Repository</li>
+<li>将之命名为<em>yourGithubName.github.io</em>(注意替换yourGithubName)</li>
+<li>关键步骤已经完成，其他选项随意啦。点击新建后，别忘了把<em>SSH</em>的地址copy一份，后面有用到</li>
+</ol>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><a href="http://hexo.io" target="_blank" rel="external">Hexo</a></h2><ol>
+<li>打开终端</li>
+<li>Hexo依赖 Node 环境，如果没有先安装 Node &amp; npm，参考<a href="http://nodejs.org" target="_blank" rel="external">官网</a></li>
+<li>安装 Hexo<br><code>npm install -g hexo</code></li>
+<li>齐活，Hexo准备完毕</li>
+</ol>
+<h1 id="开始使用Hexo撸Github需要的东西"><a href="#开始使用Hexo撸Github需要的东西" class="headerlink" title="开始使用Hexo撸Github需要的东西"></a>开始使用Hexo撸Github需要的东西</h1><ol>
+<li>进入到你想放置github pages repository的目录</li>
+<li>在此创建Hexo Project<br><code>hexo init yourGithubName.github.io</code></li>
+<li>切换到刚刚创建的目录<br><code>cd yourGithubName.github.io</code></li>
+<li>安装依赖&amp;生成静态文件&amp;启动本地服务器<br><code>npm install &amp; hexo g &amp; hexo s</code></li>
+<li>目测现在就可以通过访问localhost:4000来瞅瞅网站啥样了</li>
+</ol>
+<h1 id="部署到Github上"><a href="#部署到Github上" class="headerlink" title="部署到Github上"></a>部署到Github上</h1><ol>
+<li>首先，停掉Hexo <code>Control + C</code></li>
+<li>打开根目录的_config.yml，设置Github地址<br><code>deploy:
+ type: git
+ repo: git@github.com:yourGithubName/yourGithubName.github.io.git</code></li>
+<li>部署前，先确认有没有安装<em><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a></em><br><code>npm install hexo-deployer-git --save</code></li>
+<li>部署<br><code>hexo d</code></li>
+<li>打开浏览器，访问 <em>yourGithubName.github.io</em></li>
+</ol>
+<h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><ol>
+<li>使用Markdown写作，完事后保存到source/_posts/</li>
+<li>重新生成静态文件<br><code>hexo g</code></li>
+<li>运行<code>hexo s</code>在本地查看刚刚写的文章</li>
+<li>木问题的话，更新至Github<br><code>hexo d</code></li>
+</ol>
+<h1 id="绑定自己的域名"><a href="#绑定自己的域名" class="headerlink" title="绑定自己的域名"></a>绑定自己的域名</h1><blockquote>
+<p>我通过淘宝代理<a href="https://www.godaddy.com/" target="_blank" rel="external">Godaddy</a>购买了 <a href="http://zerosou.us" target="_blank" rel="external">zerosoul.github.io</a> 域名，就拿这个举例如何绑定吧</p>
+</blockquote>
+<ol>
+<li>Github上进入 zerosoul.github.io</li>
+<li>创建并提交CNAME文件，里面只有一行内容，就是域名：<code>zerosoul.github.io</code></li>
+<li>去Godaddy网站管理域名页面<br><img src="godaddy_setting.jpg" alt="godaddy setting"></li>
+<li>增加一条 A 记录:host=<code>@</code>，Points to=<code>192.30.252.153</code></li>
+<li>增加一条 CNAME 记录:host=<code>www</code>，Points to=<code>zerosoul.github.io</code></li>
+<li>最后，一定要记得保存更改！<br><img src="godaddy_saving.jpg" alt="godaddy saving"></li>
+<li>静待更改生效，大概一两个小时。</li>
+</ol>
+<h1 id="两个小时后…"><a href="#两个小时后…" class="headerlink" title="两个小时后…"></a>两个小时后…</h1><p><strong>装X成功！</strong></p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://hexo.io/docs/" target="_blank" rel="external">hexo doc</a><br><a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="external">github pages basic</a><br><a href="http://andrewsturges.com/blog/jekyll/tutorial/2014/11/06/github-and-godaddy.html" target="_blank" rel="external">Configuring a Godaddy domain name with github pages</a></p>
+
       
     </div>
 
@@ -692,7 +767,7 @@ section.donate .donate-circle{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -709,7 +784,7 @@ section.donate .donate-circle{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-count">116</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

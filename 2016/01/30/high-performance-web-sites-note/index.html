@@ -90,17 +90,20 @@
 
 
 
-<meta name="description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概十">
+<meta name="description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。
+通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概">
 <meta property="og:type" content="article">
 <meta property="og:title" content="再读雅虎14条军规">
 <meta property="og:url" content="http://zerosoul.github.io/2016/01/30/high-performance-web-sites-note/index.html">
 <meta property="og:site_name" content="杨二小">
-<meta property="og:description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概十">
+<meta property="og:description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。
+通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概">
 <meta property="og:image" content="http://zerosoul.github.io/hp.jpg">
 <meta property="og:updated_time" content="2016-01-30T04:55:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再读雅虎14条军规">
-<meta name="twitter:description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概十">
+<meta name="twitter:description" content="前言这篇文章是《高性能网站建设指南——前端工程师技能精髓》的读书笔记，即，雅虎14条军规扩展版。个人认为书名副标题取名并不精确，前端工程师优化技能精髓似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。
+通识性能黄金法则最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。注：该统计出于大概">
 <meta name="twitter:image" content="http://zerosoul.github.io/hp.jpg">
 
 
@@ -345,7 +348,100 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章是<a href="http://book.douban.com/subject/3132277/" target="_blank" rel="external">《高性能网站建设指南——前端工程师技能精髓》</a>的读书笔记，即，<a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">雅虎14条军规</a>扩展版。个人认为书名副标题取名并不精确，<strong>前端工程师优化技能精髓</strong>似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。</p><h1 id="通识"><a href="#通识" class="headerlink" title="通识"></a>通识</h1><h2 id="性能黄金法则"><a href="#性能黄金法则" class="headerlink" title="性能黄金法则"></a>性能黄金法则</h2><p>最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。<br><strong>注：该统计出于大概十年前，现在比例应该有所变化，但还是有很大的优化空间</strong></p><h2 id="HTTP备忘点"><a href="#HTTP备忘点" class="headerlink" title="HTTP备忘点"></a>HTTP备忘点</h2><h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>Request：<code>Accept-Encoding: gzip,deflate</code><br>Response:<code>Content-Encoding: gzip</code></p><h3 id="条件Get请求"><a href="#条件Get请求" class="headerlink" title="条件Get请求"></a>条件Get请求</h3><p>Request:<code>If-Modified-Since: Wed, 22 Feb 2016 09:23:44 GMT</code><br>Response:<code>Last-Modified: Wed, 22 Feb 2016 09:23:44 GMT</code></p><h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>Response:<code>Expires: Wed, 22 Feb 2016 09:23:44 GMT</code></p><h3 id="Keep-Alive"><a href="#Keep-Alive" class="headerlink" title="Keep-Alive"></a>Keep-Alive</h3><p>Request:<code>Connection: keep-alive</code><br>Response:<code>Connection: keep-alive</code></p><h1 id="14军规"><a href="#14军规" class="headerlink" title="14军规"></a><a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">14军规</a></h1><h2 id="减少HTTP请求-Make-Fewer-HTTP-Request"><a href="#减少HTTP请求-Make-Fewer-HTTP-Request" class="headerlink" title="减少HTTP请求 Make Fewer HTTP Request"></a>减少HTTP请求 <em>Make Fewer HTTP Request</em></h2><ul><li>图片地图</li><li>CSS Sprites<br>很多人认为合并后的图片会比分离的图片综合要大，因为合并后包含附加的空白区域。实际上恰恰相反，因为它降低了图片自身的开销（颜色表，格式信息，等等）</li><li>内联图片<br><code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code></li><li>合并脚本和样式表</li></ul><h2 id="使用内容发布网络（CDN）"><a href="#使用内容发布网络（CDN）" class="headerlink" title="使用内容发布网络（CDN）"></a>使用内容发布网络（CDN）</h2><ul><li>缺点：修改HTTP响应头必须通过第三方完成。</li></ul><h2 id="添加Expires头"><a href="#添加Expires头" class="headerlink" title="添加Expires头"></a>添加Expires头</h2><ul><li>可以同时制定两个响应头：Expires和Cache-Control的max-age。如果两者同时出现，HTTP规范规定max-age指令将重写Expires头，例如：<br><code>Expires: Mon,15 Apr 2024 20:00:00 GMT</code><br><code>Cache-Control: max-age=312</code></li></ul><h2 id="开启Gzip压缩"><a href="#开启Gzip压缩" class="headerlink" title="开启Gzip压缩"></a>开启Gzip压缩</h2><ul><li>注意点：代理缓存</li><li>在Web服务器相应中添加<code>Vary</code>头，这样就可以告诉代理根据一个或多个请求头来改变缓存的响应。<br><code>Vary: Accept-Encoding</code><br>代理缓存响应的多个版本，当有gzip头的请求时，响应压缩过的，反之是未经压缩的。</li><li>禁用缓存：<code>Vary: *</code>或<code>Cache-Control: private</code></li></ul><h2 id="将样式表放在顶部"><a href="#将样式表放在顶部" class="headerlink" title="将样式表放在顶部"></a>将样式表放在顶部</h2><ul><li>样式表放在底部对加载页面所需的实际时间并没有太大影响，但会导致浏览器阻止内容逐步呈现，这让用户感性上觉得页面加载更慢。</li><li>无样式内容的闪烁FOUC（Flash of Unstyled Content）是浏览器行为，在样式表正确地下载并解析后，已经呈现的文字和图片要用新的样式重绘了。浏览器可以延迟呈现，知道所有样式表下载完毕，这导致了白屏，反之可以逐步呈现，但要承担闪烁的风险，这里没有完美的选择。</li></ul><h2 id="将脚本放在底部"><a href="#将脚本放在底部" class="headerlink" title="将脚本放在底部"></a>将脚本放在底部</h2><ul><li>放在顶部的影响：<ul><li>会阻塞对其后面内容的呈现</li><li>会阻塞对其后面资源的下载</li></ul></li><li><code>defer</code>属性表明脚本不包含<code>document.write</code>，浏览器有这个线索可以继续呈现。</li></ul><h2 id="避免CSS表达式"><a href="#避免CSS表达式" class="headerlink" title="避免CSS表达式"></a>避免CSS表达式</h2><ul><li>谁会想到用户点击了一个文本框会导致IE锁死呢。</li><li>避免方式：创建一次性表达式和使用事件处理器取代CSS表达式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">p&#123;</span><br><span class="line">    background: expression( altBg(this));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function altBg(ele)&#123;</span><br><span class="line">    ele.style.backgroundColor=(new Date()).getHours()%2 ? &quot;#f08&quot;:&quot;B98&quot;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li></ul><h2 id="使用外部javascript和css"><a href="#使用外部javascript和css" class="headerlink" title="使用外部javascript和css"></a>使用外部javascript和css</h2><ul><li>页面浏览量越少，内联论据越强势，反之外置论据越强势。</li></ul><h2 id="减少DNS查找"><a href="#减少DNS查找" class="headerlink" title="减少DNS查找"></a>减少DNS查找</h2><ul><li>将静态资源放在独立域名下较好，但不要超过四个，在减少DNS查找和允许并行下载之间做出权衡。</li></ul><h2 id="精简javascript和CSS"><a href="#精简javascript和CSS" class="headerlink" title="精简javascript和CSS"></a>精简javascript和CSS</h2><ul><li>gzip压缩产生的影响更大，但精简能够进一步减小文件大小。</li></ul><h2 id="避免重定向"><a href="#避免重定向" class="headerlink" title="避免重定向"></a>避免重定向</h2><ul><li>当服务器向浏览器返回一个重定向时，是指一个范围在3XX的状态码，表示用户代理必须执行进一步操作才能完成请求。<ul><li>300 Multiple Choices</li><li>302 Moved Permancently</li><li>302 Moved Temporarily</li><li>303 See other</li><li>304 Not Modified (并非重定向，用来响应条件GET请求)</li><li>305 Use Proxy</li><li>306 不再使用</li><li>307 Temporary Redirect</li></ul></li><li><code>301</code>和<code>302</code>是使用最多的,<code>303</code>和<code>307</code>是HTTP 1.1添加的，用来澄清对302的使用，但现实情况是几乎没人采用。</li><li>还有其他方式：<ul><li>HTML META :<code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=http://google.com&quot;&gt;</code></li></ul></li></ul><h2 id="删除重复脚本"><a href="#删除重复脚本" class="headerlink" title="删除重复脚本"></a>删除重复脚本</h2><ul><li>确保脚本只被包含一次，否则会带来性能损伤。</li></ul><h2 id="配置ETag"><a href="#配置ETag" class="headerlink" title="配置ETag"></a>配置ETag</h2><ul><li>ETag是唯一标识一个静态资源特定版本的字符串。</li><li>If-None-Match比If-Modified-Since具有更高的优先级</li><li>ETag可能会引发性能问题，这时候完全可以移除ETag</li></ul><h2 id="使AJAX可缓存"><a href="#使AJAX可缓存" class="headerlink" title="使AJAX可缓存"></a>使AJAX可缓存</h2><ul><li>当数据被认为是私有的时候，大多会使用<code>Cache-Control: no-store</code>。这样的响应根本不会被写入磁盘。</li><li>确保AJAX请求遵守性能优化原则，尤其应具有长久的Expires头</li></ul><h1 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h1><p>虽然知识点比较基础，但并不过时，读后我立即在自己博客上实践了下：</p><ul><li>图片使用七牛CDN，感谢<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">hexo-qiniu-sync</a>，访问速度明显加快。</li><li>删掉和替换掉了一些鸡肋功能，比如<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT主题</a>自带的浏览图片插件，换成了自己的简洁实现。</li><li>本来想搞一下HTTP配置，由于本站HOST在Github上，无从下手，好在Github在HTTP优化原则上已经做得很好了，省心省力。</li></ul><p>除了HTML/CSS/JavaScript(这三样已经够折腾的了)，一个优秀的前端工程师还应该具备什么样的技能呢？从这本书可以得到点启发：</p><ul><li>理解HTTP协议[<a href="http://book.douban.com/subject/10746113/" target="_blank" rel="external">《HTTP权威指南》</a>足矣]</li><li>了解浏览器工作原理及不同浏览器间的差异</li><li>掌握服务器端编程[可以从Node入手]</li><li>了解网络环境配置[可以学学Nginx]</li></ul><p><img src="hp.jpg" alt="high performance"></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章是<a href="http://book.douban.com/subject/3132277/" target="_blank" rel="external">《高性能网站建设指南——前端工程师技能精髓》</a>的读书笔记，即，<a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">雅虎14条军规</a>扩展版。个人认为书名副标题取名并不精确，<strong>前端工程师优化技能精髓</strong>似乎更适合，本文粗线条地记录了我觉得应该记录下来的知识点。个人备忘录，不具备连贯性，看不懂就对了。</p>
+<h1 id="通识"><a href="#通识" class="headerlink" title="通识"></a>通识</h1><h2 id="性能黄金法则"><a href="#性能黄金法则" class="headerlink" title="性能黄金法则"></a>性能黄金法则</h2><p>最终用户只有10%~20%的响应时间花在了下载HTML文档上，其余的80%~90%时间花在了下载页面中的所有组件上。<br><strong>注：该统计出于大概十年前，现在比例应该有所变化，但还是有很大的优化空间</strong></p>
+<h2 id="HTTP备忘点"><a href="#HTTP备忘点" class="headerlink" title="HTTP备忘点"></a>HTTP备忘点</h2><h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>Request：<code>Accept-Encoding: gzip,deflate</code><br>Response:<code>Content-Encoding: gzip</code></p>
+<h3 id="条件Get请求"><a href="#条件Get请求" class="headerlink" title="条件Get请求"></a>条件Get请求</h3><p>Request:<code>If-Modified-Since: Wed, 22 Feb 2016 09:23:44 GMT</code><br>Response:<code>Last-Modified: Wed, 22 Feb 2016 09:23:44 GMT</code></p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>Response:<code>Expires: Wed, 22 Feb 2016 09:23:44 GMT</code></p>
+<h3 id="Keep-Alive"><a href="#Keep-Alive" class="headerlink" title="Keep-Alive"></a>Keep-Alive</h3><p>Request:<code>Connection: keep-alive</code><br>Response:<code>Connection: keep-alive</code></p>
+<h1 id="14军规"><a href="#14军规" class="headerlink" title="14军规"></a><a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">14军规</a></h1><h2 id="减少HTTP请求-Make-Fewer-HTTP-Request"><a href="#减少HTTP请求-Make-Fewer-HTTP-Request" class="headerlink" title="减少HTTP请求 Make Fewer HTTP Request"></a>减少HTTP请求 <em>Make Fewer HTTP Request</em></h2><ul>
+<li>图片地图</li>
+<li>CSS Sprites<br>很多人认为合并后的图片会比分离的图片综合要大，因为合并后包含附加的空白区域。实际上恰恰相反，因为它降低了图片自身的开销（颜色表，格式信息，等等）</li>
+<li>内联图片<br><code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code></li>
+<li>合并脚本和样式表</li>
+</ul>
+<h2 id="使用内容发布网络（CDN）"><a href="#使用内容发布网络（CDN）" class="headerlink" title="使用内容发布网络（CDN）"></a>使用内容发布网络（CDN）</h2><ul>
+<li>缺点：修改HTTP响应头必须通过第三方完成。</li>
+</ul>
+<h2 id="添加Expires头"><a href="#添加Expires头" class="headerlink" title="添加Expires头"></a>添加Expires头</h2><ul>
+<li>可以同时制定两个响应头：Expires和Cache-Control的max-age。如果两者同时出现，HTTP规范规定max-age指令将重写Expires头，例如：<br><code>Expires: Mon,15 Apr 2024 20:00:00 GMT</code><br><code>Cache-Control: max-age=312</code></li>
+</ul>
+<h2 id="开启Gzip压缩"><a href="#开启Gzip压缩" class="headerlink" title="开启Gzip压缩"></a>开启Gzip压缩</h2><ul>
+<li>注意点：代理缓存</li>
+<li>在Web服务器相应中添加<code>Vary</code>头，这样就可以告诉代理根据一个或多个请求头来改变缓存的响应。<br><code>Vary: Accept-Encoding</code><br>代理缓存响应的多个版本，当有gzip头的请求时，响应压缩过的，反之是未经压缩的。</li>
+<li>禁用缓存：<code>Vary: *</code>或<code>Cache-Control: private</code></li>
+</ul>
+<h2 id="将样式表放在顶部"><a href="#将样式表放在顶部" class="headerlink" title="将样式表放在顶部"></a>将样式表放在顶部</h2><ul>
+<li>样式表放在底部对加载页面所需的实际时间并没有太大影响，但会导致浏览器阻止内容逐步呈现，这让用户感性上觉得页面加载更慢。</li>
+<li>无样式内容的闪烁FOUC（Flash of Unstyled Content）是浏览器行为，在样式表正确地下载并解析后，已经呈现的文字和图片要用新的样式重绘了。浏览器可以延迟呈现，知道所有样式表下载完毕，这导致了白屏，反之可以逐步呈现，但要承担闪烁的风险，这里没有完美的选择。</li>
+</ul>
+<h2 id="将脚本放在底部"><a href="#将脚本放在底部" class="headerlink" title="将脚本放在底部"></a>将脚本放在底部</h2><ul>
+<li>放在顶部的影响：<ul>
+<li>会阻塞对其后面内容的呈现</li>
+<li>会阻塞对其后面资源的下载</li>
+</ul>
+</li>
+<li><code>defer</code>属性表明脚本不包含<code>document.write</code>，浏览器有这个线索可以继续呈现。</li>
+</ul>
+<h2 id="避免CSS表达式"><a href="#避免CSS表达式" class="headerlink" title="避免CSS表达式"></a>避免CSS表达式</h2><ul>
+<li>谁会想到用户点击了一个文本框会导致IE锁死呢。</li>
+<li>避免方式：创建一次性表达式和使用事件处理器取代CSS表达式  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">p&#123;</span><br><span class="line">    background: expression( altBg(this));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function altBg(ele)&#123;</span><br><span class="line">    ele.style.backgroundColor=(new Date()).getHours()%2 ? &quot;#f08&quot;:&quot;B98&quot;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用外部javascript和css"><a href="#使用外部javascript和css" class="headerlink" title="使用外部javascript和css"></a>使用外部javascript和css</h2><ul>
+<li>页面浏览量越少，内联论据越强势，反之外置论据越强势。</li>
+</ul>
+<h2 id="减少DNS查找"><a href="#减少DNS查找" class="headerlink" title="减少DNS查找"></a>减少DNS查找</h2><ul>
+<li>将静态资源放在独立域名下较好，但不要超过四个，在减少DNS查找和允许并行下载之间做出权衡。</li>
+</ul>
+<h2 id="精简javascript和CSS"><a href="#精简javascript和CSS" class="headerlink" title="精简javascript和CSS"></a>精简javascript和CSS</h2><ul>
+<li>gzip压缩产生的影响更大，但精简能够进一步减小文件大小。</li>
+</ul>
+<h2 id="避免重定向"><a href="#避免重定向" class="headerlink" title="避免重定向"></a>避免重定向</h2><ul>
+<li>当服务器向浏览器返回一个重定向时，是指一个范围在3XX的状态码，表示用户代理必须执行进一步操作才能完成请求。<ul>
+<li>300 Multiple Choices</li>
+<li>302 Moved Permancently</li>
+<li>302 Moved Temporarily</li>
+<li>303 See other</li>
+<li>304 Not Modified (并非重定向，用来响应条件GET请求)</li>
+<li>305 Use Proxy</li>
+<li>306 不再使用</li>
+<li>307 Temporary Redirect</li>
+</ul>
+</li>
+<li><code>301</code>和<code>302</code>是使用最多的,<code>303</code>和<code>307</code>是HTTP 1.1添加的，用来澄清对302的使用，但现实情况是几乎没人采用。</li>
+<li>还有其他方式：<ul>
+<li>HTML META :<code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=http://google.com&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="删除重复脚本"><a href="#删除重复脚本" class="headerlink" title="删除重复脚本"></a>删除重复脚本</h2><ul>
+<li>确保脚本只被包含一次，否则会带来性能损伤。</li>
+</ul>
+<h2 id="配置ETag"><a href="#配置ETag" class="headerlink" title="配置ETag"></a>配置ETag</h2><ul>
+<li>ETag是唯一标识一个静态资源特定版本的字符串。</li>
+<li>If-None-Match比If-Modified-Since具有更高的优先级</li>
+<li>ETag可能会引发性能问题，这时候完全可以移除ETag</li>
+</ul>
+<h2 id="使AJAX可缓存"><a href="#使AJAX可缓存" class="headerlink" title="使AJAX可缓存"></a>使AJAX可缓存</h2><ul>
+<li>当数据被认为是私有的时候，大多会使用<code>Cache-Control: no-store</code>。这样的响应根本不会被写入磁盘。</li>
+<li>确保AJAX请求遵守性能优化原则，尤其应具有长久的Expires头</li>
+</ul>
+<h1 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h1><p>虽然知识点比较基础，但并不过时，读后我立即在自己博客上实践了下：</p>
+<ul>
+<li>图片使用七牛CDN，感谢<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">hexo-qiniu-sync</a>，访问速度明显加快。</li>
+<li>删掉和替换掉了一些鸡肋功能，比如<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT主题</a>自带的浏览图片插件，换成了自己的简洁实现。</li>
+<li>本来想搞一下HTTP配置，由于本站HOST在Github上，无从下手，好在Github在HTTP优化原则上已经做得很好了，省心省力。</li>
+</ul>
+<p>除了HTML/CSS/JavaScript(这三样已经够折腾的了)，一个优秀的前端工程师还应该具备什么样的技能呢？从这本书可以得到点启发：</p>
+<ul>
+<li>理解HTTP协议[<a href="http://book.douban.com/subject/10746113/" target="_blank" rel="external">《HTTP权威指南》</a>足矣]</li>
+<li>了解浏览器工作原理及不同浏览器间的差异</li>
+<li>掌握服务器端编程[可以从Node入手]</li>
+<li>了解网络环境配置[可以学学Nginx]</li>
+</ul>
+<p><img src="hp.jpg" alt="high performance"></p>
+
       
     </div>
 
@@ -691,7 +787,7 @@ section.donate .donate-circle{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -708,7 +804,7 @@ section.donate .donate-circle{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-count">116</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

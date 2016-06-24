@@ -90,17 +90,32 @@
 
 
 
-<meta name="description" content="引子我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（spambot）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。怎么办上面提到的问题解决办法有许多，这里列举几个常用的：使用图片（使用谷歌邮箱的同学应该有所体会）使用javascript输出（爬虫只探测静态HTML）使用AT, DOT,代替@,.（好像现在一些爬虫也能识别了）简单加密">
+<meta name="description" content="引子我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（spambot）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。
+怎么办上面提到的问题解决办法有许多，这里列举几个常用的：
+
+使用图片（使用谷歌邮箱的同学应该有所体会）
+使用javascript输出（爬虫只探测静态HTML）
+使用AT, DOT,代替@,.（好像现在一些爬虫也能识别">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐藏email地址的小技巧">
 <meta property="og:url" content="http://zerosoul.github.io/2016/01/23/another-email-hiding-technique/index.html">
 <meta property="og:site_name" content="杨二小">
-<meta property="og:description" content="引子我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（spambot）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。怎么办上面提到的问题解决办法有许多，这里列举几个常用的：使用图片（使用谷歌邮箱的同学应该有所体会）使用javascript输出（爬虫只探测静态HTML）使用AT, DOT,代替@,.（好像现在一些爬虫也能识别了）简单加密">
+<meta property="og:description" content="引子我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（spambot）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。
+怎么办上面提到的问题解决办法有许多，这里列举几个常用的：
+
+使用图片（使用谷歌邮箱的同学应该有所体会）
+使用javascript输出（爬虫只探测静态HTML）
+使用AT, DOT,代替@,.（好像现在一些爬虫也能识别">
 <meta property="og:image" content="http://zerosoul.github.io/spambot.jpg">
 <meta property="og:updated_time" content="2016-01-23T04:57:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐藏email地址的小技巧">
-<meta name="twitter:description" content="引子我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（spambot）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。怎么办上面提到的问题解决办法有许多，这里列举几个常用的：使用图片（使用谷歌邮箱的同学应该有所体会）使用javascript输出（爬虫只探测静态HTML）使用AT, DOT,代替@,.（好像现在一些爬虫也能识别了）简单加密">
+<meta name="twitter:description" content="引子我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（spambot）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。
+怎么办上面提到的问题解决办法有许多，这里列举几个常用的：
+
+使用图片（使用谷歌邮箱的同学应该有所体会）
+使用javascript输出（爬虫只探测静态HTML）
+使用AT, DOT,代替@,.（好像现在一些爬虫也能识别">
 <meta name="twitter:image" content="http://zerosoul.github.io/spambot.jpg">
 
 
@@ -345,7 +360,43 @@
       
 
       
-        <p><img src="spambot.jpg" alt="spam bot"></p><h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（<a href="https://en.wikipedia.org/wiki/Spambot" target="_blank" rel="external">spambot</a>）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。</p><h1 id="怎么办"><a href="#怎么办" class="headerlink" title="怎么办"></a>怎么办</h1><p>上面提到的问题解决办法有许多，这里列举几个常用的：</p><ul><li>使用图片（使用谷歌邮箱的同学应该有所体会）</li><li>使用javascript输出（爬虫只探测静态HTML）</li><li>使用AT, DOT,代替<code>@</code>,<code>.</code>（好像现在一些爬虫也能识别了）</li><li>简单加密，比如：foo@REMOVETHISbar.baz，真正的email是去掉 <strong>REMOVETHIS</strong>之后的（也可以更形象点foo@<del>REMOVETHIS</del>bar.baz）</li><li>使用CSS中的伪类<code>:after</code></li></ul><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p:after &#123; content: "foo\40bar.baz"; &#125;</span><br><span class="line">&lt;p&gt;email me: &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">/* \40 是Unicode字符 '@'*/</span><br><span class="line">email me: foo@bar.baz</span><br></pre></td></tr></table></figure><ul><li>使用flash</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;media/flash/articles/email.swf&quot;</span><br><span class="line">    codebase=&quot;http://fpdownload.macromedia.com</span><br><span class="line">    /pub/shockwave/cabs/flash/swflash.cab</span><br><span class="line">    #version=6,0,0,0&quot;&gt;</span><br><span class="line">    &lt;param name=&quot;movie&quot; value=&quot;media/email.swf&quot;&gt;</span><br><span class="line">&lt;/object&gt;</span><br></pre></td></tr></table></figure><p><ul></ul></p><h1 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h1><blockquote><p>世界上本来没有最优解，用的人觉得很爽，于是就有了。 —詹姆斯.杨二</p></blockquote><p>我个人比较喜欢最小化成本解决问题，所以除了上述几种方式，我更倾向于下面这种：<br>不知道你有没有发现，Unicode中有个和 <strong>@</strong>符号很像的字符：<code>0xFF20</code>，除此之外，还有个和 <strong>.</strong>很像的字符：<code>0x2024</code>。那么这两个Unicode字符在此处就有用武之地了。在网页里，我们可以把foo@bar.com编码为<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo&amp;#xFF20;BAR&amp;#X2024;com</span><br></pre></td></tr></table></figure><p></p><p>最终显示效果：<strong>foo&#xFF20;BAR&#X2024;com</strong></p><p>很强大有木有！</p><p>这种方式也不是完美无缺：</p><ul><li>如果流行普及了，爬虫会重新设计算法将其也计入探测范围。</li><li>使用复制粘贴并非预期文本</li></ul><p>总之，没有最好，只有最合适的。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><p><a href="http://www.csarven.ca/hiding-email-addresses" target="_blank" rel="external">Methods to hide email addresses from page source</a></p></li><li><p><a href="http://lea.verou.me/2009/11/exploring-browser-supported-unicode-characters-and-a-tweet-shortening-experiment/" target="_blank" rel="external">exploring browser-supported Unicode characters</a></p></li><li><p><a href="http://lea.verou.me/2009/11/yet-another-email-hiding-technique/" target="_blank" rel="external">Yet another email hiding technique?</a></p></li></ul>
+        <p><img src="spambot.jpg" alt="spam bot"></p>
+<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>我们经常会受到垃圾邮件的骚扰，究其原因，其中主要就是平时email地址赤裸裸地暴露在网页中，被垃圾邮件程序（<a href="https://en.wikipedia.org/wiki/Spambot" target="_blank" rel="external">spambot</a>）探测到，进而向你的邮箱发送大量的营销信息，恶心到吐。</p>
+<h1 id="怎么办"><a href="#怎么办" class="headerlink" title="怎么办"></a>怎么办</h1><p>上面提到的问题解决办法有许多，这里列举几个常用的：</p>
+<ul>
+<li>使用图片（使用谷歌邮箱的同学应该有所体会）</li>
+<li>使用javascript输出（爬虫只探测静态HTML）</li>
+<li>使用AT, DOT,代替<code>@</code>,<code>.</code>（好像现在一些爬虫也能识别了）</li>
+<li>简单加密，比如：foo@REMOVETHISbar.baz，真正的email是去掉 <strong>REMOVETHIS</strong>之后的（也可以更形象点foo@<del>REMOVETHIS</del>bar.baz）</li>
+<li>使用CSS中的伪类<code>:after</code> </li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p:after &#123; content: "foo\40bar.baz"; &#125;</span><br><span class="line">&lt;p&gt;email me: &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">/* \40 是Unicode字符 '@'*/</span><br><span class="line">email me: foo@bar.baz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用flash</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;media/flash/articles/email.swf&quot;</span><br><span class="line">    codebase=&quot;http://fpdownload.macromedia.com</span><br><span class="line">    /pub/shockwave/cabs/flash/swflash.cab</span><br><span class="line">    #version=6,0,0,0&quot;&gt;</span><br><span class="line">    &lt;param name=&quot;movie&quot; value=&quot;media/email.swf&quot;&gt;</span><br><span class="line">&lt;/object&gt;</span><br></pre></td></tr></table></figure>
+<p><ul></ul></p>
+<h1 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h1><blockquote>
+<p>世界上本来没有最优解，用的人觉得很爽，于是就有了。     —詹姆斯.杨二</p>
+</blockquote>
+<p>我个人比较喜欢最小化成本解决问题，所以除了上述几种方式，我更倾向于下面这种：<br>不知道你有没有发现，Unicode中有个和 <strong>@</strong>符号很像的字符：<code>0xFF20</code>，除此之外，还有个和 <strong>.</strong>很像的字符：<code>0x2024</code>。那么这两个Unicode字符在此处就有用武之地了。在网页里，我们可以把foo@bar.com编码为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo&amp;#xFF20;BAR&amp;#X2024;com</span><br></pre></td></tr></table></figure></p>
+<p>最终显示效果：<strong>foo&#xFF20;BAR&#X2024;com</strong></p>
+<p>很强大有木有！</p>
+<p>这种方式也不是完美无缺：</p>
+<ul>
+<li>如果流行普及了，爬虫会重新设计算法将其也计入探测范围。</li>
+<li>使用复制粘贴并非预期文本</li>
+</ul>
+<p>总之，没有最好，只有最合适的。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><p><a href="http://www.csarven.ca/hiding-email-addresses" target="_blank" rel="external">Methods to hide email addresses from page source</a></p>
+</li>
+<li><p><a href="http://lea.verou.me/2009/11/exploring-browser-supported-unicode-characters-and-a-tweet-shortening-experiment/" target="_blank" rel="external">exploring browser-supported Unicode characters</a></p>
+</li>
+<li><p><a href="http://lea.verou.me/2009/11/yet-another-email-hiding-technique/" target="_blank" rel="external">Yet another email hiding technique?</a></p>
+</li>
+</ul>
+
       
     </div>
 
@@ -689,7 +740,7 @@ section.donate .donate-circle{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -706,7 +757,7 @@ section.donate .donate-circle{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-count">116</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

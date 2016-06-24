@@ -90,16 +90,28 @@
 
 
 
-<meta name="description" content="早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。1&amp;lt;script src=&quot;test.js&quot;&amp;gt;&amp;lt;/script&amp;gt;页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。1&amp;lt;script src=&quot;test.js&quot; defer&amp;gt;&amp;lt;/script&amp;gt;页面的绘制不会停下，test">
+<meta name="description" content="早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。
+1&amp;lt;script src=&quot;test.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。
+1&amp;lt;script src=&quot;test.js&quot; defer&amp;gt;&amp;lt;/script&amp;gt;
+页面的绘制不会停下，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="script标签中async和defer的差别">
 <meta property="og:url" content="http://zerosoul.github.io/2014/08/23/async-and-defer-in-html5-script-tag/index.html">
 <meta property="og:site_name" content="杨二小">
-<meta property="og:description" content="早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。1&amp;lt;script src=&quot;test.js&quot;&amp;gt;&amp;lt;/script&amp;gt;页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。1&amp;lt;script src=&quot;test.js&quot; defer&amp;gt;&amp;lt;/script&amp;gt;页面的绘制不会停下，test">
+<meta property="og:description" content="早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。
+1&amp;lt;script src=&quot;test.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。
+1&amp;lt;script src=&quot;test.js&quot; defer&amp;gt;&amp;lt;/script&amp;gt;
+页面的绘制不会停下，">
 <meta property="og:updated_time" content="2016-06-23T03:06:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="script标签中async和defer的差别">
-<meta name="twitter:description" content="早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。1&amp;lt;script src=&quot;test.js&quot;&amp;gt;&amp;lt;/script&amp;gt;页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。1&amp;lt;script src=&quot;test.js&quot; defer&amp;gt;&amp;lt;/script&amp;gt;页面的绘制不会停下，test">
+<meta name="twitter:description" content="早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。
+1&amp;lt;script src=&quot;test.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。
+1&amp;lt;script src=&quot;test.js&quot; defer&amp;gt;&amp;lt;/script&amp;gt;
+页面的绘制不会停下，">
 
 
 
@@ -343,7 +355,15 @@
       
 
       
-        <p>早就知道HTML5 script标签多了个<code>async</code>特性，但没注意到<code>async</code>和<code>defer</code>的差别。通过<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank" rel="external">查文档</a>，终于懂了。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"test.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>页面的绘制会停下，等<code>test.js</code>下载完并执行完，才会继续绘制。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"test.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>页面的绘制不会停下，<code>test.js</code>在背景下载，待<a href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded" target="_blank" rel="external">DOMContentLoaded</a>再执行<code>test.js</code>。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"test.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>页面的绘制不会停下，<code>test.js</code>在背景下载，待其下载完毕，页面绘制会停下，执行<code>test.js</code>，执行完毕，页面继续绘制。</p><p>另，这儿有张<a href="http://peter.sh/2010/09/last-week-asynchronous-script-execution-and-gpu-acceleration-by-default/" target="_blank" rel="external">时序图</a>可参考。</p>
+        <p>早就知道HTML5 script标签多了个<code>async</code>特性，但没注意到<code>async</code>和<code>defer</code>的差别。通过<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank" rel="external">查文档</a>，终于懂了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"test.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>页面的绘制会停下，等<code>test.js</code>下载完并执行完，才会继续绘制。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"test.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>页面的绘制不会停下，<code>test.js</code>在背景下载，待<a href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded" target="_blank" rel="external">DOMContentLoaded</a>再执行<code>test.js</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"test.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>页面的绘制不会停下，<code>test.js</code>在背景下载，待其下载完毕，页面绘制会停下，执行<code>test.js</code>，执行完毕，页面继续绘制。</p>
+<p>另，这儿有张<a href="http://peter.sh/2010/09/last-week-asynchronous-script-execution-and-gpu-acceleration-by-default/" target="_blank" rel="external">时序图</a>可参考。</p>
+
       
     </div>
 
@@ -689,7 +709,7 @@ section.donate .donate-circle{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -706,7 +726,7 @@ section.donate .donate-circle{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-count">116</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
