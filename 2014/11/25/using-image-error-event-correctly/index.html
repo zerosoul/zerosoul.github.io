@@ -347,7 +347,7 @@
 
       
         <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>经常遇到图片加载不上的问题，一般解决这个问题的方式就是给<code>image</code>绑定<code>error</code>事件，当图片加载出错，触发该事件，然后给image重新指定一个通用图片：</p>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"image.png"</span> <span class="attr">onerror</span>=<span class="string">"imgError(this);"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">function imgError(image) &#123;</span><br><span class="line">    image.onerror = "";</span><br><span class="line">    image.src = "/images/error.gif";</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"image.png"</span> <span class="attr">onerror</span>=<span class="string">"imgError(this);"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">imgError</span>(<span class="params">image</span>) </span>&#123;</span><br><span class="line">    image.onerror = <span class="string">""</span>;</span><br><span class="line">    image.src = <span class="string">"/images/error.gif"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>更简短的方式：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"image.png"</span> <span class="attr">onError</span>=<span class="string">"this.onerror=null;this.src='/images/noimage.gif';"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p>有个地方值得注意：当触发错误事件时，首先要做的就是清楚错误事件<code>image.onerror = &quot;&quot;;</code>，否则万一后面重新指定图片时，依然报错，就会陷入死循环，直接stack overflow了。</p>
@@ -699,7 +699,7 @@ section.donate .donate-circle{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -716,7 +716,7 @@ section.donate .donate-circle{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-count">121</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
