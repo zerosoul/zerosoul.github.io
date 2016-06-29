@@ -1356,9 +1356,9 @@
       <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="面试" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="面试题" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
@@ -2036,13 +2036,13 @@
     
       <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
     
+      <category term="json" scheme="http://zerosoul.github.io/tags/json/"/>
+    
       <category term="jquery" scheme="http://zerosoul.github.io/tags/jquery/"/>
     
       <category term="jsonp" scheme="http://zerosoul.github.io/tags/jsonp/"/>
     
       <category term="ajax" scheme="http://zerosoul.github.io/tags/ajax/"/>
-    
-      <category term="json" scheme="http://zerosoul.github.io/tags/json/"/>
     
   </entry>
   
