@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zerosoul.github.io/2016/03/06/jquery-best-practice/</loc>
+    
+    <lastmod>2016-07-06T10:00:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2014/07/29/convert-query-params-to-json/</loc>
     
     <lastmod>2016-06-29T07:45:40.000Z</lastmod>
@@ -268,7 +275,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
+    <loc>http://zerosoul.github.io/2012/05/14/graduate-riding-part-one/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -276,13 +283,6 @@
   
   <url>
     <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2012/05/14/graduate-riding-part-one/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -297,6 +297,13 @@
   
   <url>
     <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     

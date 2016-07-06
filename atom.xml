@@ -635,11 +635,11 @@
       <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
     
     
+      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
+    
       <category term="译文" scheme="http://zerosoul.github.io/tags/%E8%AF%91%E6%96%87/"/>
     
       <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
     
       <category term="promise" scheme="http://zerosoul.github.io/tags/promise/"/>
     
@@ -1222,6 +1222,141 @@
   </entry>
   
   <entry>
+    <title>jQuery最佳实践</title>
+    <link href="http://zerosoul.github.io/2016/03/06/jquery-best-practice/"/>
+    <id>http://zerosoul.github.io/2016/03/06/jquery-best-practice/</id>
+    <published>2016-03-06T06:46:55.000Z</published>
+    <updated>2016-07-06T10:00:47.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;jquery.jpg&quot; alt=&quot;jquery&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;使用&lt;a href=&quot;http://jquery.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jQuery&lt;/a&gt;已经有两年，其&lt;a href=&quot;https://api.jquery.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;API&lt;/a&gt;用起来非常的爽，甚至都成为了事实上的标准，以至于好多前端小白把jQuery等同于Javascript。虽然jQuery的普及度很高，但遵循最佳实践来写jQuery代码的却寥寥无几，下面就自己在工作的积累来写一些jQuery的最佳实践（也有从网络上搜集的）。&lt;/p&gt;
+&lt;h1 id=&quot;加载jQuery&quot;&gt;&lt;a href=&quot;#加载jQuery&quot; class=&quot;headerlink&quot; title=&quot;加载jQuery&quot;&gt;&lt;/a&gt;加载jQuery&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用CDN加载，&lt;a href=&quot;http://www.paulirish.com/2010/the-protocol-relative-url/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;去掉&lt;code&gt;http:&lt;/code&gt;或者&lt;code&gt;https:&lt;/code&gt;&lt;/a&gt;，同时做好本地fallback。&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;window.jQuery || document.write(&#39;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;js/jquery-2.1.4.min.js&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;\&lt;/span&gt;/&lt;span class=&quot;attr&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&#39;)&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果可能，请在底部加载jQuery外部文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;有关版本问题&lt;ul&gt;
+&lt;li&gt;如果需要支持Internet Explorer 6/7/8，那就不要使用2.x&lt;/li&gt;
+&lt;li&gt;对于web app，请大胆使用最新版本的jQuery，当然，也可以选择&lt;a href=&quot;http://zeptojs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zepto.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;不要使用&lt;a href=&quot;http://blog.jquery.com/2014/07/03/dont-use-jquery-latest-js/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jquery-last.js CDN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;检测浏览器特性，请用&lt;a href=&quot;http://modernizr.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Modernizr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;变量&quot;&gt;&lt;a href=&quot;#变量&quot; class=&quot;headerlink&quot; title=&quot;变量&quot;&gt;&lt;/a&gt;变量&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;所有的jQuery对象命名最好加个&lt;code&gt;$&lt;/code&gt;前缀加以区分&lt;/li&gt;
+&lt;li&gt;缓存通过选择符获取的jQuery对象，以待复用：&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $myDiv = $(&lt;span class=&quot;string&quot;&gt;&quot;#myDiv&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$myDiv.click(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;...&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;DOM操作&quot;&gt;&lt;a href=&quot;#DOM操作&quot; class=&quot;headerlink&quot; title=&quot;DOM操作&quot;&gt;&lt;/a&gt;DOM操作&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对于一些较为复杂的DOM操作，可以先&lt;code&gt;.detach()&lt;/code&gt;，原因&lt;a href=&quot;http://learn.jquery.com/performance/detach-elements-before-work-with-them/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考此处&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $myList = $(&lt;span class=&quot;string&quot;&gt;&quot;#list-container &amp;gt; ul&quot;&lt;/span&gt;).detach();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//...在$myList上做了一系列复杂的操作后...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$myList.appendTo(&lt;span class=&quot;string&quot;&gt;&quot;#list-container&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;链式调用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;链式调用让代码更具可读性&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#myDiv&quot;&lt;/span&gt;).addClass(&lt;span class=&quot;string&quot;&gt;&quot;error&quot;&lt;/span&gt;).show();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当调用过多时，注意合理加缩进，时刻维持代码可读性&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#myLink&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .addClass(&lt;span class=&quot;string&quot;&gt;&quot;bold&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .on(&lt;span class=&quot;string&quot;&gt;&quot;click&quot;&lt;/span&gt;, myClickHandler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .on(&lt;span class=&quot;string&quot;&gt;&quot;mouseover&quot;&lt;/span&gt;, myMouseOverHandler)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .show();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;选择器&quot;&gt;&lt;a href=&quot;#选择器&quot; class=&quot;headerlink&quot; title=&quot;选择器&quot;&gt;&lt;/a&gt;选择器&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;尽可能使用ID选择器，因为jQuery源码中调用的是&lt;code&gt;document.getElementById()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当使用类选择器时，没必要再附加元素标签了&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $products = $(&lt;span class=&quot;string&quot;&gt;&quot;div.products&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// SLOW&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $products = $(&lt;span class=&quot;string&quot;&gt;&quot;.products&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// FAST&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对于像&lt;em&gt;Id-&amp;gt;Child&lt;/em&gt;这样的嵌套选择器，使用&lt;code&gt;.find()&lt;/code&gt;性能更好些，因为id选择器不走Sizzle引擎，这能节约一些性能损耗。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// BAD, 全部走的Sizzle选择器引擎&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $productIds = $(&lt;span class=&quot;string&quot;&gt;&quot;#products div.id&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// GOOD, #products 走的是document.getElementById()，因此只有div.id走Sizzle 选择器引擎&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $productIds = $(&lt;span class=&quot;string&quot;&gt;&quot;#products&quot;&lt;/span&gt;).find(&lt;span class=&quot;string&quot;&gt;&quot;div.id&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择器父类越模糊越好，子类越详细越好。&lt;a href=&quot;http://learn.jquery.com/performance/optimize-selectors/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考此处&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 未经优化的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;div.data .gonzalez&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 优化后的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;.data td.gonzalez&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;给选择器以上下文&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// SLOWER 遍历了整个文档的class&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;.class&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// FASTER 只在#class-container下遍历&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;.class&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;#class-container&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;避免使用通配符&lt;code&gt;*&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;div.container &amp;gt; *&#39;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;div.container&#39;&lt;/span&gt;).children(); &lt;span class=&quot;comment&quot;&gt;// BETTER&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;没有必要嵌套或组合使用ID选择器&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;#outer #inner&#39;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;div#inner&#39;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;.outer-container #inner&#39;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;#inner&#39;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// GOOD,  document.getElementById()搞定一切&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;事件&quot;&gt;&lt;a href=&quot;#事件&quot; class=&quot;headerlink&quot; title=&quot;事件&quot;&gt;&lt;/a&gt;事件&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;每个页面有且仅有一个DOMReady事件，便于调试。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;尽量不要使用匿名函数来用作事件处理，因为不利于调试，测试，维护和复用。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#myLink&quot;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&quot;click&quot;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;...&amp;#125;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// GOOD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myLinkClickHandler&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;...&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#myLink&quot;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&quot;click&quot;&lt;/span&gt;, myLinkClickHandler);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;避免HTML结构中声明并绑定事件处理函数，这非常不利于调试，也破坏了HTML紧做结构表现的职责。&lt;/p&gt;
+  &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- BAD --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;myLink&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;onclick&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;myEventHandler();&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;my link&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+  &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#myLink&quot;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&quot;click&quot;&lt;/span&gt;, myEventHandler); &lt;span class=&quot;comment&quot;&gt;// GOOD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;a href=&quot;http://learn.jquery.com/events/event-delegation/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;事件代理机制&lt;/a&gt;，一个明显的好处就是当有新子元素插入时，不用重新绑定事件，&lt;a href=&quot;http://api.jquery.com/on/#direct-and-delegated-events&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考此处&lt;/a&gt;。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#list a&quot;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&quot;click&quot;&lt;/span&gt;, myClickHandler); &lt;span class=&quot;comment&quot;&gt;// BAD, 相当于给list下的所有a元素都绑定了click事件.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#list&quot;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&quot;click&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;, myClickHandler); &lt;span class=&quot;comment&quot;&gt;//GOOD, 只给父元素list绑定了click事件.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Ajax&quot;&gt;&lt;a href=&quot;#Ajax&quot; class=&quot;headerlink&quot; title=&quot;Ajax&quot;&gt;&lt;/a&gt;Ajax&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;熟习&lt;code&gt;$.ajax()&lt;/code&gt;，尽量不要用&lt;code&gt;.get()&lt;/code&gt;,&lt;code&gt;.getJson()&lt;/code&gt;这样的简洁方式。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ajax模板&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; jqxhr = $.ajax(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    url: url,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    type: &lt;span class=&quot;string&quot;&gt;&quot;POST&quot;&lt;/span&gt;, &lt;span class=&quot;comment&quot;&gt;// 默认GET&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cache: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;, &lt;span class=&quot;comment&quot;&gt;// 默认true, 但对于dataType为&#39;script&#39;或者&#39;jsonp&#39;，则为false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    data: &amp;#123;&amp;#125;, &lt;span class=&quot;comment&quot;&gt;// 请求附带的参数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    dataType: &lt;span class=&quot;string&quot;&gt;&quot;json&quot;&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    jsonp: &lt;span class=&quot;string&quot;&gt;&quot;callback&quot;&lt;/span&gt;, &lt;span class=&quot;comment&quot;&gt;// 指定回调参数的名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    statusCode: &amp;#123; &lt;span class=&quot;comment&quot;&gt;// 在此指定相应的响应状态的回调函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;number&quot;&gt;404&lt;/span&gt;: handler404,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;: handler500&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;jqxhr.done(successHandler);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;jqxhr.fail(failureHandler);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;请求地址最好用&lt;em&gt;无协议的URL&lt;/em&gt;，即去除&lt;code&gt;http:/https:&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;code&gt;data&lt;/code&gt;对象传送数据，而非附加在URL里&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 可读性不好...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$.ajax(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    url: &lt;span class=&quot;string&quot;&gt;&quot;something.php?param1=test1&amp;amp;param2=test2&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 更具可读性...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$.ajax(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    url: &lt;span class=&quot;string&quot;&gt;&quot;something.php&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    data: &amp;#123; param1: test1, param2: test2 &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用Promise风格，&lt;a href=&quot;http://www.htmlgoodies.com/beyond/javascript/making-promises-with-jquery-deferred.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;例子&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$.ajax(&amp;#123; ... &amp;#125;).then(successHandler, failureHandler);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// OR&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; jqxhr = $.ajax(&amp;#123; ... &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;jqxhr.done(successHandler);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;jqxhr.fail(failureHandler);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;动画效果&quot;&gt;&lt;a href=&quot;#动画效果&quot; class=&quot;headerlink&quot; title=&quot;动画效果&quot;&gt;&lt;/a&gt;动画效果&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;不要滥用动画效果，或者干脆不用，直到PM有切实需求。&lt;/li&gt;
+&lt;li&gt;如果用动画，优先使用像&lt;code&gt;show/hide&lt;/code&gt;和&lt;code&gt;slideUp/slideDown&lt;/code&gt;这样的简单API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;插件&quot;&gt;&lt;a href=&quot;#插件&quot; class=&quot;headerlink&quot; title=&quot;插件&quot;&gt;&lt;/a&gt;插件&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;优先考虑有良好文档，有测试用例，有社区支持的插件&lt;/li&gt;
+&lt;li&gt;使用插件前不要忘记检测与你正在使用的jQuery版本是否冲突&lt;/li&gt;
+&lt;li&gt;任何可复用的组件都应该插件化，这里有个&lt;a href=&quot;https://john-dugan.com/jquery-plugin-boilerplate-explained/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;插件模板&lt;/a&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;其他&quot;&gt;&lt;a href=&quot;#其他&quot; class=&quot;headerlink&quot; title=&quot;其他&quot;&gt;&lt;/a&gt;其他&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用对象字面量设置特性&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$myLink.attr(&lt;span class=&quot;string&quot;&gt;&quot;href&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;).attr(&lt;span class=&quot;string&quot;&gt;&quot;title&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;my link&quot;&lt;/span&gt;).attr(&lt;span class=&quot;string&quot;&gt;&quot;rel&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;external&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// GOOD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$myLink.attr(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    href: &lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    title: &lt;span class=&quot;string&quot;&gt;&quot;my link&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    rel: &lt;span class=&quot;string&quot;&gt;&quot;external&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;避免使用jQuery添加CSS&lt;/p&gt;
+  &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#mydiv&quot;&lt;/span&gt;).css(&amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;color&#39;&lt;/span&gt;:red, &lt;span class=&quot;string&quot;&gt;&#39;font-weight&#39;&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&#39;bold&#39;&lt;/span&gt;&amp;#125;); &lt;span class=&quot;comment&quot;&gt;// BAD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  定义好CSS rule&lt;/p&gt;
+  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.error&lt;/span&gt; &amp;#123; &lt;span class=&quot;attribute&quot;&gt;color&lt;/span&gt;: red; &lt;span class=&quot;attribute&quot;&gt;font-weight&lt;/span&gt;: bold; &amp;#125; &lt;span class=&quot;comment&quot;&gt;/* GOOD */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  然后通过jQuery添加class&lt;/p&gt;
+  &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;#mydiv&quot;&lt;/span&gt;).addClass(&lt;span class=&quot;string&quot;&gt;&quot;error&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// GOOD&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;优秀资源&quot;&gt;&lt;a href=&quot;#优秀资源&quot; class=&quot;headerlink&quot; title=&quot;优秀资源&quot;&gt;&lt;/a&gt;优秀资源&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://api.jquery.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jQuery API Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://learn.jquery.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jQuery Learn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://learn.jquery.com/performance/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jQuery Performance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://john-dugan.com/jquery-plugin-boilerplate-explained/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;A jQuery Plugin Boilerplate Explained&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;jquery.jpg&quot; alt=&quot;jquery&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;使用&lt;a href=&quot;http://jquery.co
+    
+    </summary>
+    
+      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="jquery" scheme="http://zerosoul.github.io/tags/jquery/"/>
+    
+      <category term="最佳实践" scheme="http://zerosoul.github.io/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>前端面试题的思考</title>
     <link href="http://zerosoul.github.io/2016/03/06/how-to-interview/"/>
     <id>http://zerosoul.github.io/2016/03/06/how-to-interview/</id>
@@ -1356,9 +1491,9 @@
       <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="面试" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="面试" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="面试题" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
@@ -2151,54 +2286,6 @@
       <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
     
       <category term="JSON" scheme="http://zerosoul.github.io/tags/JSON/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程序员看了会流泪，产品经理看了会沉默</title>
-    <link href="http://zerosoul.github.io/2015/05/22/fuck-the-pm/"/>
-    <id>http://zerosoul.github.io/2015/05/22/fuck-the-pm/</id>
-    <published>2015-05-22T04:23:04.000Z</published>
-    <updated>2016-05-02T04:47:53.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;pm.png&quot; alt=&quot;pm expression&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;这篇文章来自于微信公众号&lt;strong&gt;产品小妖&lt;/strong&gt;，具体作者是谁忘记了，如有侵权，请与我联系。文章有共鸣，讲的都是经验之谈，程序员看了会流泪，产品经理看了会沉默，其中一些场景我也碰到过，感同身受。做产品没那么简单，尤其是团队化来完成一个项目，专业素养和沟通同样重要。&lt;/p&gt;
-&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;h2 id=&quot;开始实施之前&quot;&gt;&lt;a href=&quot;#开始实施之前&quot; class=&quot;headerlink&quot; title=&quot;开始实施之前&quot;&gt;&lt;/a&gt;开始实施之前&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;说不清需求价值&lt;/strong&gt;，技术问“为什么要做”的时候，支支吾吾，或者说“老板要的、运营要的”，成为了传话筒，是最Low的，相反，能有理有据的顶老板的产品经理，通常会在大家的眼中逼格满满；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;没想到功能细节&lt;/strong&gt;，表现为技术问细节（当然，是涉及业务的细节，不是技术实现细节）的时候，自己还没想过，现场想，被发现了，或者因为是接二手需求，并不知道、也没有去追溯这个需求的初衷；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;帮技术评估工作量&lt;/strong&gt;，特别是技术出身的产品经理容易犯这个错，潜台词就是“希望加活”，我评估过了，这些都能做掉的，不要给我偷懒；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;逼着技术团队承诺&lt;/strong&gt;，产品经理想的是，如果技术承诺了，但却做不到，这样自己就没责任了，但很多事情，在开始的时候是谁也不知道的，应该大家在一条船上同舟共济，这就是“接力跑”和“踢足球”在交棒/传球之后的区别。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;实施过程中&quot;&gt;&lt;a href=&quot;#实施过程中&quot; class=&quot;headerlink&quot; title=&quot;实施过程中&quot;&gt;&lt;/a&gt;实施过程中&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;做了一半改需求&lt;/strong&gt;，scrum里的表现就是sprint内的非受迫需求变更，大家很难忍受的是产品经理自己没想清楚，而导致的劳动浪费，俗话说“没有变更就没有伤害”，碰到性子烈的就直接要干架了，当然，如果是外部市场变了，大家都可以理解；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;开发过程中消失&lt;/strong&gt;，你可以出差、可以开会，但是要能及时响应技术的问题，要不然，为了进度大家照着自己的想法做下去，验收的时候产品经理跑出来说“这不是我要的”，可不要怪没人理你；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;过度关注实现细节&lt;/strong&gt;，帮技术决定技术方案，也是技术出身的产品经理容易犯的错，越俎代庖了，会降低技术同学的积极性，渐渐的就完全打工心态了。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;产品发布之后&quot;&gt;&lt;a href=&quot;#产品发布之后&quot; class=&quot;headerlink&quot; title=&quot;产品发布之后&quot;&gt;&lt;/a&gt;产品发布之后&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;发布后没有反馈&lt;/strong&gt;，技术人员也需要从市场、用户那里获得反馈，从而知道自己做的事情产生了价值，提升成就感，做完发布，石沉大海，大家是不可能有owner感的；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;无节奏感&lt;/strong&gt;，让技术人员忙一阵闲一阵，发布之后再忙着研究接下来做什么，让技术人员在干死干活的高强度之后突然不知道做什么，几天后又开始要赶进度。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;全过程都有&quot;&gt;&lt;a href=&quot;#全过程都有&quot; class=&quot;headerlink&quot; title=&quot;全过程都有&quot;&gt;&lt;/a&gt;全过程都有&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;优柔寡断无决断&lt;/strong&gt;，是产品经理最要不得的品质，就是在已经讨论完毕后，大家都等着你拍板的时候“你说吧，往哪儿走我们就跟着办”，这时候你说“啊，那个，各种方案各有利弊啊，我也不知道怎么办啊，你们有什么好想法……”，你就完蛋了；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;报喜不报忧&lt;/strong&gt;，产品经理总想藏着掖着一些信息，比如“老板在考虑干掉这个项目”这类信息，出发点可能是好的，但，当大家通过其他途径知道了以后，互信就完全打破了，大家会觉得“你还是把我们当资源”。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;pm.png&quot; alt=&quot;pm expression&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;这篇文章来自于微信公众号&lt;strong&gt;产品小妖
-    
-    </summary>
-    
-      <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
-    
-    
-      <category term="转载" scheme="http://zerosoul.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="产品经理" scheme="http://zerosoul.github.io/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
-    
-      <category term="经验之谈" scheme="http://zerosoul.github.io/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/"/>
     
   </entry>
   
