@@ -404,11 +404,11 @@
     
       <category term="react" scheme="http://zerosoul.github.io/tags/react/"/>
     
-      <category term="react native" scheme="http://zerosoul.github.io/tags/react-native/"/>
-    
       <category term="app" scheme="http://zerosoul.github.io/tags/app/"/>
     
       <category term="翻译" scheme="http://zerosoul.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="react native" scheme="http://zerosoul.github.io/tags/react-native/"/>
     
   </entry>
   
@@ -535,11 +535,11 @@
     
       <category term="react" scheme="http://zerosoul.github.io/tags/react/"/>
     
+      <category term="ReactNative" scheme="http://zerosoul.github.io/tags/ReactNative/"/>
+    
       <category term="app" scheme="http://zerosoul.github.io/tags/app/"/>
     
       <category term="翻译" scheme="http://zerosoul.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="ReactNative" scheme="http://zerosoul.github.io/tags/ReactNative/"/>
     
   </entry>
   
@@ -635,11 +635,11 @@
       <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
     
     
-      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
+      <category term="译文" scheme="http://zerosoul.github.io/tags/%E8%AF%91%E6%96%87/"/>
     
       <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="译文" scheme="http://zerosoul.github.io/tags/%E8%AF%91%E6%96%87/"/>
+      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
     
       <category term="promise" scheme="http://zerosoul.github.io/tags/promise/"/>
     
@@ -745,11 +745,11 @@
       <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+      <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
       <category term="Chrome" scheme="http://zerosoul.github.io/tags/Chrome/"/>
     
       <category term="翻墙" scheme="http://zerosoul.github.io/tags/%E7%BF%BB%E5%A2%99/"/>
-    
-      <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="小记" scheme="http://zerosoul.github.io/tags/%E5%B0%8F%E8%AE%B0/"/>
     
@@ -834,9 +834,9 @@
       <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
     
     
-      <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
-    
       <category term="译文" scheme="http://zerosoul.github.io/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="node.js" scheme="http://zerosoul.github.io/tags/node-js/"/>
     
