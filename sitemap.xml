@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://zerosoul.github.io/2014/08/01/svn-rollback/</loc>
+    <loc>http://zerosoul.github.io/2014/08/22/amd-commonjs-and-umd/</loc>
     
-    <lastmod>2016-08-01T02:21:54.000Z</lastmod>
+    <lastmod>2016-08-02T10:51:26.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/11/30/14-advices-for-programmer/</loc>
+    <loc>http://zerosoul.github.io/2015/04/24/hackers-and-painters/</loc>
     
-    <lastmod>2016-07-30T07:54:36.000Z</lastmod>
+    <lastmod>2016-08-02T09:45:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2013/11/30/14-advices-for-programmer/</loc>
+    
+    <lastmod>2016-08-01T07:48:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2014/08/01/svn-rollback/</loc>
+    
+    <lastmod>2016-08-01T02:21:54.000Z</lastmod>
     
   </url>
   
@@ -219,13 +233,6 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2016/04/24/hackers-and-painters/</loc>
-    
-    <lastmod>2016-04-24T08:43:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zerosoul.github.io/2016/04/10/about-chinese-business/</loc>
     
     <lastmod>2016-04-24T08:29:20.000Z</lastmod>
@@ -296,21 +303,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
-    
-    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -325,6 +318,20 @@
   
   <url>
     <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    
+    <lastmod>2016-01-19T02:44:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zerosoul.github.io/2012/06/02/graduate-riding-part-two/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
