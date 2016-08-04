@@ -635,11 +635,11 @@
       <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
     
     
-      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
-    
       <category term="译文" scheme="http://zerosoul.github.io/tags/%E8%AF%91%E6%96%87/"/>
     
       <category term="技术" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
     
       <category term="promise" scheme="http://zerosoul.github.io/tags/promise/"/>
     
@@ -712,11 +712,11 @@
     
       <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
-    
       <category term="彼得蒂尔" scheme="http://zerosoul.github.io/tags/%E5%BD%BC%E5%BE%97%E8%92%82%E5%B0%94/"/>
     
       <category term="商业与未来" scheme="http://zerosoul.github.io/tags/%E5%95%86%E4%B8%9A%E4%B8%8E%E6%9C%AA%E6%9D%A5/"/>
+    
+      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
     
   </entry>
   
@@ -1136,13 +1136,13 @@
     
       <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
+      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
+    
       <category term="清醒思考的艺术" scheme="http://zerosoul.github.io/tags/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF/"/>
     
       <category term="思维错误" scheme="http://zerosoul.github.io/tags/%E6%80%9D%E7%BB%B4%E9%94%99%E8%AF%AF/"/>
     
       <category term="认知偏差" scheme="http://zerosoul.github.io/tags/%E8%AE%A4%E7%9F%A5%E5%81%8F%E5%B7%AE/"/>
-    
-      <category term="社科" scheme="http://zerosoul.github.io/tags/%E7%A4%BE%E7%A7%91/"/>
     
   </entry>
   
@@ -1416,9 +1416,9 @@
       <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="面试" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="面试" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="面试题" scheme="http://zerosoul.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
@@ -2156,6 +2156,42 @@
   </entry>
   
   <entry>
+    <title>改变元素类型（jQuery）</title>
+    <link href="http://zerosoul.github.io/2015/08/08/change-element-type-using-jquery/"/>
+    <id>http://zerosoul.github.io/2015/08/08/change-element-type-using-jquery/</id>
+    <published>2015-08-08T13:07:39.000Z</published>
+    <updated>2016-08-04T13:48:05.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h1&gt;&lt;p&gt;工作当中遇到个有点意思的技术需求：把某个&lt;code&gt;div&lt;/code&gt;元素替换成&lt;code&gt;a&lt;/code&gt;元素。本以为使用jQuery会有现成的API，类似&lt;code&gt;$(element).changeType(&amp;quot;a&amp;quot;)&lt;/code&gt;啥的，一行代码搞定，结果没找到o(╯□╰)o，看来好久没用jQuery的后果就是喜欢意淫没有的API。自己动手，丰衣足食。&lt;/p&gt;
+&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;获取要替换的元素特性集合，暂存到一个变量里。&lt;/li&gt;
+&lt;li&gt;构造新的元素，即目标元素，并将暂存的特性赋到该元素中。&lt;/li&gt;
+&lt;li&gt;使用&lt;a href=&quot;http://api.jquery.com/replaceWith/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jQuery API:replaceWith&lt;/a&gt;，将要替换的元素用新构造的元素替换之。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;代码实现&quot;&gt;&lt;a href=&quot;#代码实现&quot; class=&quot;headerlink&quot; title=&quot;代码实现&quot;&gt;&lt;/a&gt;代码实现&lt;/h1&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//source element:div.from &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; attrs = &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $srcEle = $(&lt;span class=&quot;string&quot;&gt;&quot;div.from&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$.each($srcEle[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].attributes, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;idx, attr&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   attrs[attr.nodeName] = attr.nodeValue;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $targetEle = $(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;a/&amp;gt;&quot;&lt;/span&gt;,attrs).append($srcEle.contents());             &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;).replaceWith(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $targetEle;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;当然，为了更具通用性，可以做成一个插件：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;$&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $.fn.changeElementType = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;newType&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.each(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; attrs = &amp;#123;&amp;#125;;             &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            $.each(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.attributes, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;idx, attr&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               attrs[attr.nodeName] = attr.nodeValue;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            $(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;).replaceWith(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;&quot;&lt;/span&gt; + newType + &lt;span class=&quot;string&quot;&gt;&quot;/&amp;gt;&quot;&lt;/span&gt;, attrs).append($(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;).contents());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)(jQuery);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;最后说一句&quot;&gt;&lt;a href=&quot;#最后说一句&quot; class=&quot;headerlink&quot; title=&quot;最后说一句&quot;&gt;&lt;/a&gt;最后说一句&lt;/h1&gt;&lt;p&gt;意淫没关系，或许正是开始创作的好契机。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h1&gt;&lt;p&gt;工作当中遇到个有点意思的技术需求：把某个&lt;code&gt;div&lt;/code&gt;元素替换成&lt;code&gt;a&lt;/code&gt;元素。本以为使用jQuery会
+    
+    </summary>
+    
+      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
+    
+      <category term="技巧" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+      <category term="jQuery" scheme="http://zerosoul.github.io/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
     <title>探索JSON</title>
     <link href="http://zerosoul.github.io/2015/06/18/explore-json/"/>
     <id>http://zerosoul.github.io/2015/06/18/explore-json/</id>
@@ -2211,54 +2247,6 @@
       <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
     
       <category term="JSON" scheme="http://zerosoul.github.io/tags/JSON/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程序员看了会流泪，产品经理看了会沉默</title>
-    <link href="http://zerosoul.github.io/2015/05/22/fuck-the-pm/"/>
-    <id>http://zerosoul.github.io/2015/05/22/fuck-the-pm/</id>
-    <published>2015-05-22T04:23:04.000Z</published>
-    <updated>2016-05-02T04:47:53.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;pm.png&quot; alt=&quot;pm expression&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;这篇文章来自于微信公众号&lt;strong&gt;产品小妖&lt;/strong&gt;，具体作者是谁忘记了，如有侵权，请与我联系。文章有共鸣，讲的都是经验之谈，程序员看了会流泪，产品经理看了会沉默，其中一些场景我也碰到过，感同身受。做产品没那么简单，尤其是团队化来完成一个项目，专业素养和沟通同样重要。&lt;/p&gt;
-&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;h2 id=&quot;开始实施之前&quot;&gt;&lt;a href=&quot;#开始实施之前&quot; class=&quot;headerlink&quot; title=&quot;开始实施之前&quot;&gt;&lt;/a&gt;开始实施之前&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;说不清需求价值&lt;/strong&gt;，技术问“为什么要做”的时候，支支吾吾，或者说“老板要的、运营要的”，成为了传话筒，是最Low的，相反，能有理有据的顶老板的产品经理，通常会在大家的眼中逼格满满；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;没想到功能细节&lt;/strong&gt;，表现为技术问细节（当然，是涉及业务的细节，不是技术实现细节）的时候，自己还没想过，现场想，被发现了，或者因为是接二手需求，并不知道、也没有去追溯这个需求的初衷；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;帮技术评估工作量&lt;/strong&gt;，特别是技术出身的产品经理容易犯这个错，潜台词就是“希望加活”，我评估过了，这些都能做掉的，不要给我偷懒；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;逼着技术团队承诺&lt;/strong&gt;，产品经理想的是，如果技术承诺了，但却做不到，这样自己就没责任了，但很多事情，在开始的时候是谁也不知道的，应该大家在一条船上同舟共济，这就是“接力跑”和“踢足球”在交棒/传球之后的区别。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;实施过程中&quot;&gt;&lt;a href=&quot;#实施过程中&quot; class=&quot;headerlink&quot; title=&quot;实施过程中&quot;&gt;&lt;/a&gt;实施过程中&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;做了一半改需求&lt;/strong&gt;，scrum里的表现就是sprint内的非受迫需求变更，大家很难忍受的是产品经理自己没想清楚，而导致的劳动浪费，俗话说“没有变更就没有伤害”，碰到性子烈的就直接要干架了，当然，如果是外部市场变了，大家都可以理解；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;开发过程中消失&lt;/strong&gt;，你可以出差、可以开会，但是要能及时响应技术的问题，要不然，为了进度大家照着自己的想法做下去，验收的时候产品经理跑出来说“这不是我要的”，可不要怪没人理你；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;过度关注实现细节&lt;/strong&gt;，帮技术决定技术方案，也是技术出身的产品经理容易犯的错，越俎代庖了，会降低技术同学的积极性，渐渐的就完全打工心态了。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;产品发布之后&quot;&gt;&lt;a href=&quot;#产品发布之后&quot; class=&quot;headerlink&quot; title=&quot;产品发布之后&quot;&gt;&lt;/a&gt;产品发布之后&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;发布后没有反馈&lt;/strong&gt;，技术人员也需要从市场、用户那里获得反馈，从而知道自己做的事情产生了价值，提升成就感，做完发布，石沉大海，大家是不可能有owner感的；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;无节奏感&lt;/strong&gt;，让技术人员忙一阵闲一阵，发布之后再忙着研究接下来做什么，让技术人员在干死干活的高强度之后突然不知道做什么，几天后又开始要赶进度。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;全过程都有&quot;&gt;&lt;a href=&quot;#全过程都有&quot; class=&quot;headerlink&quot; title=&quot;全过程都有&quot;&gt;&lt;/a&gt;全过程都有&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;优柔寡断无决断&lt;/strong&gt;，是产品经理最要不得的品质，就是在已经讨论完毕后，大家都等着你拍板的时候“你说吧，往哪儿走我们就跟着办”，这时候你说“啊，那个，各种方案各有利弊啊，我也不知道怎么办啊，你们有什么好想法……”，你就完蛋了；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;报喜不报忧&lt;/strong&gt;，产品经理总想藏着掖着一些信息，比如“老板在考虑干掉这个项目”这类信息，出发点可能是好的，但，当大家通过其他途径知道了以后，互信就完全打破了，大家会觉得“你还是把我们当资源”。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;pm.png&quot; alt=&quot;pm expression&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;这篇文章来自于微信公众号&lt;strong&gt;产品小妖
-    
-    </summary>
-    
-      <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
-    
-    
-      <category term="转载" scheme="http://zerosoul.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="产品经理" scheme="http://zerosoul.github.io/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
-    
-      <category term="经验之谈" scheme="http://zerosoul.github.io/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/"/>
     
   </entry>
   

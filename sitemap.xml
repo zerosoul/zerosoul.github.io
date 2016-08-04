@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zerosoul.github.io/2015/08/08/change-element-type-using-jquery/</loc>
+    
+    <lastmod>2016-08-04T13:48:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2014/08/22/amd-commonjs-and-umd/</loc>
     
     <lastmod>2016-08-02T10:51:26.000Z</lastmod>
@@ -296,14 +303,14 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
+    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
+    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -317,14 +324,14 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    <loc>http://zerosoul.github.io/2015/12/20/about-2016/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
