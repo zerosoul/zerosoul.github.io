@@ -1,0 +1,987 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS,小技巧," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨二小" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="引子浏览网页时有时会遇到图片加载失败的场景，浏览器往往会给出一个非常丑陋的显示效果：为了更好的用户体验，这里可以仅仅通过CSS来优化一下样式。恰巧最近工作上遇到了这样的需求，在此记录下自己是如何解决的。
+思路需要注意两个偏理论上的知识点：
+
+img标签是个可替换元素，即其呈现是由外部资源决定的，也因此:before和:after这两个伪元素对其不起作用。但是，当图片加载失败时，伪元素就能派上用场了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用CSS美化加载出错的图片">
+<meta property="og:url" content="http://zerosoul.github.io/2015/05/07/style-broken-image-using-css/index.html">
+<meta property="og:site_name" content="杨二小">
+<meta property="og:description" content="引子浏览网页时有时会遇到图片加载失败的场景，浏览器往往会给出一个非常丑陋的显示效果：为了更好的用户体验，这里可以仅仅通过CSS来优化一下样式。恰巧最近工作上遇到了这样的需求，在此记录下自己是如何解决的。
+思路需要注意两个偏理论上的知识点：
+
+img标签是个可替换元素，即其呈现是由外部资源决定的，也因此:before和:after这两个伪元素对其不起作用。但是，当图片加载失败时，伪元素就能派上用场了">
+<meta property="og:image" content="http://zerosoul.github.io/img_err.png">
+<meta property="og:image" content="http://zerosoul.github.io/img_err_styled.png">
+<meta property="og:updated_time" content="2016-08-07T04:32:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用CSS美化加载出错的图片">
+<meta name="twitter:description" content="引子浏览网页时有时会遇到图片加载失败的场景，浏览器往往会给出一个非常丑陋的显示效果：为了更好的用户体验，这里可以仅仅通过CSS来优化一下样式。恰巧最近工作上遇到了这样的需求，在此记录下自己是如何解决的。
+思路需要注意两个偏理论上的知识点：
+
+img标签是个可替换元素，即其呈现是由外部资源决定的，也因此:before和:after这两个伪元素对其不起作用。但是，当图片加载失败时，伪元素就能派上用场了">
+<meta name="twitter:image" content="http://zerosoul.github.io/img_err.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zerosoul.github.io/2015/05/07/style-broken-image-using-css/"/>
+
+  <title> 使用CSS美化加载出错的图片 | 杨二小 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?25693b171c4e4f11b7e2c8f9ad7a2c5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杨二小</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Machine repeats,Human creates.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用CSS美化加载出错的图片
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-07T11:50:44+08:00" content="2015-05-07">
+              2015-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/07/style-broken-image-using-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/07/style-broken-image-using-css/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ><i class="fa fa-spinner"></i></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>浏览网页时有时会遇到图片加载失败的场景，浏览器往往会给出一个非常丑陋的显示效果：<br><img src="img_err.png" alt="加载失败"><br>为了更好的用户体验，这里可以仅仅通过CSS来优化一下样式。恰巧最近工作上遇到了这样的需求，在此记录下自己是如何解决的。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>需要注意两个偏理论上的知识点：</p>
+<ol>
+<li><code>img</code>标签是个<a href="https://www.w3.org/TR/CSS21/generate.html#before-after-content" target="_blank" rel="external">可替换元素</a>，即其呈现是由外部资源决定的，也因此<code>:before</code>和<code>:after</code>这两个伪元素对其不起作用。但是，当图片加载失败时，伪元素就能派上用场了。</li>
+<li>可以对<code>img</code>标签使用排版相关的CSS规则，比如字体，这些规则只对<code>alt</code>特性起作用。</li>
+</ol>
+<p>运用上面两个特性，我们就能做到当图片加载失败时，对其美化。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>使用下面结构当做例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://www.somewhere.com/images/broken.jpg"</span> <span class="attr">alt</span>=<span class="string">"马蛋，图片加载出错了..."</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>图片加载失败，下面的CSS会发挥作用：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">img &#123; </span><br><span class="line">    font-family: 'Helvetica'; </span><br><span class="line">    font-weight: 300; </span><br><span class="line">    line-height: 2; </span><br><span class="line">    text-align: center; //自此以上的css会影响alt的样式</span><br><span class="line">    width: 100%; </span><br><span class="line">    height: auto; </span><br><span class="line">    display: block; </span><br><span class="line">    position: relative; </span><br><span class="line">&#125;</span><br><span class="line">img:before &#123; </span><br><span class="line">        content: "\f1c5" " " attr(alt);  //content的使用方式请自行谷歌之</span><br><span class="line">        font-family: FontAwesome; //注意使用的是font awesome 哦，别忘了引入。</span><br><span class="line">        color: rgb(100, 100, 100); </span><br><span class="line">        display: block; </span><br><span class="line">        position: absolute; </span><br><span class="line">        z-index: 2; </span><br><span class="line">        top: 0; </span><br><span class="line">        left: 0; </span><br><span class="line">        width: 100%; </span><br><span class="line">        height: 100%; </span><br><span class="line">        background-color: #fff; </span><br><span class="line">&#125; </span><br><span class="line"> img:after &#123; </span><br><span class="line">        content: "(url: " attr(src) ")"; </span><br><span class="line">        display: block; </span><br><span class="line">        position: relative; </span><br><span class="line">        color: #00aeef; </span><br><span class="line">        bottom: -10px; </span><br><span class="line">        z-index: 1000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，如果图片加载失败，将呈现如下样式：<br><img src="img_err_styled.png" alt="加载失败"></p>
+<p>肿么样，是不是好看了很多！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+            <a href="/tags/小技巧/" rel="tag">#小技巧</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/24/hackers-and-painters/" rel="next" title="读《黑客与画家》">
+                <i class="fa fa-chevron-left"></i> 读《黑客与画家》
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/22/fuck-the-pm/" rel="prev" title="程序员看了会流泪，产品经理看了会沉默">
+                程序员看了会流泪，产品经理看了会沉默 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+<style>
+/* Default tab style */
+.payment-container{
+	width: 60%;
+	margin:0 auto;
+	display: none;
+	margin-top: 1em;
+}
+
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+.tabs a{
+	text-decoration: none;
+	color:#555;
+}
+.tabs nav ul {
+	border-top: 1px solid #A9B8BD;
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+/* Content */
+.qr-content-wrap {
+	position: relative;
+}
+
+.qr-content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.qr-content-wrap .tip{
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+
+.qr-content-wrap section.content-current {
+	display: block;
+}
+
+.qr-content-wrap section img {
+	width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+	.payment-container{
+		width: 85%;
+	}
+}
+
+/* Individual tab styles */
+
+/*****************************/
+/* Underline */
+/*****************************/
+
+.tabs-style-underline nav {
+	background: #fff;
+}
+
+.tabs-style-underline nav a {
+	padding: 0.25em 0 0.5em;
+	border-left: 1px solid #222;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+	border-bottom: 1px solid #999;
+}
+
+.tabs-style-underline nav li:last-child a {
+	border-right: 1px solid #222;
+}
+
+.tabs-style-underline nav li a::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	background: #222;
+	content: '';
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translate3d(0,150%,0);
+	transform: translate3d(0,150%,0);
+}
+
+.tabs-style-underline nav li.tab-current a::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.tabs-style-underline nav a span {
+	font-weight: 700;
+}
+section.donate{
+	text-align: center;
+	padding: 0 25px;
+}
+section.donate .tip{
+	margin-top: 1em;
+}
+section.donate .donate-circle{
+	font-size: 2em;
+    color: #fff;
+    border-radius: 1em;
+    border: 1px solid rgba(100, 162, 160, 0.5);
+    width: 2em;
+    background: #F38B09;
+    margin: 0 auto;
+}
+</style>
+<section class="donate" style="display:block;">
+	<div class="donate-circle">赏</div>
+	<p class="tip">如果文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+</section>
+<section class="payment-container">
+	<div class="tabs tabs-style-underline">
+		<nav>
+			<ul>
+				<li data-target="section-weixin" class="tab-current"><a href="#"><span>微信</span></a></li>
+				<li data-target="section-zfb"><a href="#"><span>支付宝</span></a></li>
+			</ul>
+		</nav>
+		<div class="qr-content-wrap">
+			<section class="content-current" id="section-weixin">
+				<p class="tip">微信环境下长按识别或保存</p>
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_wexin.jpg" alt="微信支付二维码">
+			</section>
+			<section id="section-zfb">
+				
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_zfb.jpg" alt="支付宝支付二维码">
+			</section>
+		</div><!-- /content -->
+	</div><!-- /tabs -->
+</section>
+<script>
+	(function(d) {
+		d.querySelectorAll(".donate-circle")[0].addEventListener("click",function(evt){
+			d.querySelectorAll(".donate")[0].style.display="none";
+			d.querySelectorAll(".payment-container")[0].style.display="block";
+		});
+		[].slice.call( d.querySelectorAll(".tabs ul li") ).forEach( function( el ) {
+			el.addEventListener("click",function(evt){
+				console.log(evt,this);
+				evt.preventDefault();
+				var idStr=this.getAttribute("data-target");
+				d.querySelectorAll(".tabs ul li.tab-current")[0].classList.remove("tab-current");
+				this.classList.add("tab-current");
+				d.querySelectorAll(".tabs .qr-content-wrap .content-current")[0].classList.remove("content-current");
+				d.getElementById(""+idStr).classList.add("content-current");
+
+			});
+		});
+	})(document);
+</script>
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/05/07/style-broken-image-using-css/"
+           data-title="使用CSS美化加载出错的图片" data-url="http://zerosoul.github.io/2015/05/07/style-broken-image-using-css/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="杨二小" />
+          <p class="site-author-name" itemprop="name">杨二小</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zerosoul" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/2365376/yanggc?tab=profile" target="_blank" title="stackoverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  stackoverflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanggc2014" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xxfs.com" title="西西弗斯" target="_blank">西西弗斯</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.laoono.com/" title="老衲前端" target="_blank">老衲前端</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hammx.com/" title="大周的博客" target="_blank">大周的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daraw.cn/" title="DaraW" target="_blank">DaraW</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨二小</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zerosoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

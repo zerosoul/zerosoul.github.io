@@ -402,6 +402,134 @@
             
               
                 
+                <a class="post-title-link" href="/2015/05/07/style-broken-image-using-css/" itemprop="url">
+                  使用CSS美化加载出错的图片
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-07T11:50:44+08:00" content="2015-05-07">
+              2015-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/07/style-broken-image-using-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/07/style-broken-image-using-css/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          引子浏览网页时有时会遇到图片加载失败的场景，浏览器往往会给出一个非常丑陋的显示效果：为了更好的用户体验，这里可以仅仅通过CSS来优化一下样式。恰巧最近工作上遇到了这样的需求，在此记录下自己是如何解决的。
+思路需要注意两个偏理论上的知识点：
+
+img标签是个可替换元素，即其呈现是由外部资源决定的，也因此:before和:after这两个伪元素对其不起作用。但是
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/07/style-broken-image-using-css/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/04/24/hackers-and-painters/" itemprop="url">
                   读《黑客与画家》
                 </a>
@@ -1404,136 +1532,6 @@ AMD：Asynchronous Module Def
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/07/29/convert-query-params-to-json/" itemprop="url">
-                  查询字符串参数转化为JSON对象
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-07-29T15:36:25+08:00" content="2014-07-29">
-              2014-07-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/07/29/convert-query-params-to-json/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/29/convert-query-params-to-json/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          引子工作中经常需要获取浏览器地址栏URL的参数，常用的套路便是将这些参数转化为键值对，方法有许多，我喜欢简单明了，所以尝试自己总结下。
-过程首先，获取参数字符串
-1location.search.slice(1);
-这里用到了location和slice
-然后，将参数转为数组，然后在数组里做文章。
-1var pairs=location.search.sli
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/07/29/convert-query-params-to-json/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1579,7 +1577,7 @@ AMD：Asynchronous Module Def
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1596,7 +1594,7 @@ AMD：Asynchronous Module Def
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-count">131</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
