@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zerosoul.github.io/"/>
-  <updated>2016-06-22T08:32:05.000Z</updated>
+  <updated>2016-11-29T08:06:12.000Z</updated>
   <id>http://zerosoul.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Javascript中Array.filter()的妙用</title>
+    <link href="http://zerosoul.github.io/2016/11/29/array-filter-trick/"/>
+    <id>http://zerosoul.github.io/2016/11/29/array-filter-trick/</id>
+    <published>2016-11-29T07:54:09.000Z</published>
+    <updated>2016-11-29T08:06:12.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;filter简述&quot;&gt;&lt;a href=&quot;#filter简述&quot; class=&quot;headerlink&quot; title=&quot;filter简述&quot;&gt;&lt;/a&gt;filter简述&lt;/h1&gt;&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;是Javascript中Array常用的操作，它用于把Array的某些元素过滤掉，然后返回剩下的元素。&lt;/p&gt;
+&lt;p&gt;和&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;map&lt;/code&gt;&lt;/a&gt;类似，Array的&lt;code&gt;filter&lt;/code&gt;也接收一个函数。但是和map不同的是，&lt;code&gt;filter&lt;/code&gt;把传入的函数依次作用于每个元素，然后根据返回值是&lt;code&gt;true&lt;/code&gt;还是&lt;code&gt;false&lt;/code&gt;决定保留还是丢弃该元素。&lt;/p&gt;
+&lt;p&gt;例如，在一个Array中，删掉偶数，只保留奇数，可以这么写：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r = arr.filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;x&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; x % &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; !== &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;r; &lt;span class=&quot;comment&quot;&gt;// [1, 5, 9, 15]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;把一个Array中的空字符串删掉，可以这么写：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = [&lt;span class=&quot;string&quot;&gt;&#39;A&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;B&#39;&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;C&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;  &#39;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r = arr.filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;s&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; s &amp;amp;&amp;amp; s.trim(); &lt;span class=&quot;comment&quot;&gt;// 注：IE9(不包含IE9)以下的版本没有trim()方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;arr; &lt;span class=&quot;comment&quot;&gt;// [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可见用&lt;code&gt;filter&lt;/code&gt;这个高阶函数，关键在于正确实现一个“筛选”函数。&lt;/p&gt;
+&lt;h1 id=&quot;回调函数&quot;&gt;&lt;a href=&quot;#回调函数&quot; class=&quot;headerlink&quot; title=&quot;回调函数&quot;&gt;&lt;/a&gt;回调函数&lt;/h1&gt;&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;接收的回调函数，其实可以有多个参数。通常我们仅使用第一个参数，表示Array的某个元素。回调函数还可以接收另外两个参数，表示元素的位置和数组本身：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = [&lt;span class=&quot;string&quot;&gt;&#39;A&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;B&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;C&#39;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r = arr.filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;element, index, self&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(element); &lt;span class=&quot;comment&quot;&gt;// 依次打印&#39;A&#39;, &#39;B&#39;, &#39;C&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(index); &lt;span class=&quot;comment&quot;&gt;// 依次打印0, 1, 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(self); &lt;span class=&quot;comment&quot;&gt;// self就是变量arr&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;利用&lt;code&gt;filter&lt;/code&gt;，可以巧妙地去除Array的重复元素：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    arr = [&lt;span class=&quot;string&quot;&gt;&#39;apple&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;strawberry&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;banana&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;pear&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;apple&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;orange&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;orange&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;strawberry&#39;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;r = arr.filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;element, index, self&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; self.indexOf(element) === index;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(r.toString());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;去除重复元素依靠的是&lt;code&gt;indexOf&lt;/code&gt;总是返回第一个元素的位置，后续的重复元素位置与&lt;code&gt;indexOf&lt;/code&gt;返回的位置不相等，因此被&lt;code&gt;filter&lt;/code&gt;滤掉了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;filter简述&quot;&gt;&lt;a href=&quot;#filter简述&quot; class=&quot;headerlink&quot; title=&quot;filter简述&quot;&gt;&lt;/a&gt;filter简述&lt;/h1&gt;&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;是Javascript中Array常用的操作，它用于把
+    
+    </summary>
+    
+      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://zerosoul.github.io/tags/javascript/"/>
+    
+      <category term="array" scheme="http://zerosoul.github.io/tags/array/"/>
+    
+  </entry>
   
   <entry>
     <title>村上春树：人生马拉松</title>
@@ -2188,65 +2220,6 @@
       <category term="技巧" scheme="http://zerosoul.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
     
       <category term="jQuery" scheme="http://zerosoul.github.io/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>探索JSON</title>
-    <link href="http://zerosoul.github.io/2015/06/18/explore-json/"/>
-    <id>http://zerosoul.github.io/2015/06/18/explore-json/</id>
-    <published>2015-06-18T02:44:17.000Z</published>
-    <updated>2016-06-18T03:05:23.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;json.png&quot; alt=&quot;json&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;JSON(JavaScript Object Notation) 是一种轻量级数据交换格式。 易于阅读和编写，也易于机器解析和生成。 它基于&lt;a href=&quot;http://www.crockford.com/javascript&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript Programming Language&lt;/a&gt;, &lt;a href=&quot;http://www.ecma-international.org/publications/files/ecma-st/ECMA-262.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Standard ECMA-262 3rd Edition - December 1999&lt;/a&gt;的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。&lt;/p&gt;
-&lt;h1 id=&quot;标准&quot;&gt;&lt;a href=&quot;#标准&quot; class=&quot;headerlink&quot; title=&quot;标准&quot;&gt;&lt;/a&gt;标准&lt;/h1&gt;&lt;p&gt;JSON建构于两种结构：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。&lt;/li&gt;
-&lt;li&gt;值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这些都是常见的数据结构。事实上大部分现代计算机语言都以某种形式支持它们。这使得一种数据格式在同样基于这些结构的编程语言之间交换成为可能。&lt;/p&gt;
-&lt;p&gt;JSON具有以下这些形式：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;对象是一个无序的“‘名称/值’对”集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“‘名称/值’ 对”之间使用“,”（逗号）分隔。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;object.gif&quot; alt=&quot;object&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;数组是值（value）的有序集合。一个数组以“[”（左中括号）开始，“]”（右中括号）结束。值之间使用“,”（逗号）分隔。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;array.gif&quot; alt=&quot;array&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;值（value）可以是双引号括起来的字符串（string）、数值(number)、true、false、 null、对象（object）或者数组（array）。这些结构可以嵌套。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;value.gif&quot; alt=&quot;value&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;字符串（string）是由双引号包围的任意数量Unicode字符的集合，使用反斜线转义。一个字符（character）即一个单独的字符串（character string）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;字符串（string）与C或者Java的字符串非常相似。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;string.gif&quot; alt=&quot;string&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;数值（number）也与C或者Java的数值非常相似。除去未曾使用的八进制与十六进制格式。除去一些编码细节。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;number.gif&quot; alt=&quot;number&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;注意：空白可以加入到任何符号之间。&lt;/em&gt;&lt;/p&gt;
-&lt;h1 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.json.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JSON官网&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;json.png&quot; alt=&quot;json&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;JSON(JavaScript Object Notation
-    
-    </summary>
-    
-      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
-    
-      <category term="JSON" scheme="http://zerosoul.github.io/tags/JSON/"/>
     
   </entry>
   
