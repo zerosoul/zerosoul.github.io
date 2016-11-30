@@ -274,6 +274,134 @@
             
               
                 
+                <a class="post-title-link" href="/2015/08/08/change-element-type-using-jquery/" itemprop="url">
+                  改变元素类型（jQuery）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-08T21:07:39+08:00" content="2015-08-08">
+              2015-08-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/08/change-element-type-using-jquery/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/change-element-type-using-jquery/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          起因工作当中遇到个有点意思的技术需求：把某个div元素替换成a元素。本以为使用jQuery会有现成的API，类似$(element).changeType(&quot;a&quot;)啥的，一行代码搞定，结果没找到o(╯□╰)o，看来好久没用jQuery的后果就是喜欢意淫没有的API。自己动手，丰衣足食。
+思路
+获取要替换的元素特性集合，暂存到一个变量里。
+
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/08/change-element-type-using-jquery/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/06/18/explore-json/" itemprop="url">
                   探索JSON
                 </a>
@@ -1400,134 +1528,6 @@ If true … else传统写法：123456var test;if(x&gt;10)&#123;    test=true;&#1
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/23/async-and-defer-in-html5-script-tag/" itemprop="url">
-                  script标签中async和defer的差别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-23T10:44:24+08:00" content="2014-08-23">
-              2014-08-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/23/async-and-defer-in-html5-script-tag/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/23/async-and-defer-in-html5-script-tag/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          早就知道HTML5 script标签多了个async特性，但没注意到async和defer的差别。通过查文档，终于懂了。
-1&lt;script src="test.js"&gt;&lt;/script&gt;
-页面的绘制会停下，等test.js下载完并执行完，才会继续绘制。
-1&lt;script src="test.js" defer&gt;&lt;/s
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/23/async-and-defer-in-html5-script-tag/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1573,7 +1573,7 @@ If true … else传统写法：123456var test;if(x&gt;10)&#123;    test=true;&#1
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
