@@ -1,0 +1,1001 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="译文,javascript,array," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨二小" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="写在前面的话前几天写了篇文章科普了下Javascript中Array.filter()的妙用，后来无意间发现了一篇好文章，一次性科普了三个API：filter、map和reduce，生动形象，尤其是配图，显然是用了心思。下面是译文：
+译文
+最近，一直在为一个客户做一个视觉化数据的项目，从服务端API拉取数据回来然后转换出视觉效果，自然少不了大量的数据操作，为此我一再使用Javascript中的Ar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Array中的filter、map和reduce">
+<meta property="og:url" content="http://zerosoul.github.io/2016/12/06/array-filter-map-reduce-in-js/index.html">
+<meta property="og:site_name" content="杨二小">
+<meta property="og:description" content="写在前面的话前几天写了篇文章科普了下Javascript中Array.filter()的妙用，后来无意间发现了一篇好文章，一次性科普了三个API：filter、map和reduce，生动形象，尤其是配图，显然是用了心思。下面是译文：
+译文
+最近，一直在为一个客户做一个视觉化数据的项目，从服务端API拉取数据回来然后转换出视觉效果，自然少不了大量的数据操作，为此我一再使用Javascript中的Ar">
+<meta property="og:image" content="http://zerosoul.github.io/array-1.png">
+<meta property="og:image" content="http://zerosoul.github.io/array-map.png">
+<meta property="og:image" content="http://zerosoul.github.io/array-filter.png">
+<meta property="og:image" content="http://zerosoul.github.io/array-reduce.png">
+<meta property="og:image" content="http://zerosoul.github.io/transform.gif">
+<meta property="og:updated_time" content="2016-12-06T09:46:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript Array中的filter、map和reduce">
+<meta name="twitter:description" content="写在前面的话前几天写了篇文章科普了下Javascript中Array.filter()的妙用，后来无意间发现了一篇好文章，一次性科普了三个API：filter、map和reduce，生动形象，尤其是配图，显然是用了心思。下面是译文：
+译文
+最近，一直在为一个客户做一个视觉化数据的项目，从服务端API拉取数据回来然后转换出视觉效果，自然少不了大量的数据操作，为此我一再使用Javascript中的Ar">
+<meta name="twitter:image" content="http://zerosoul.github.io/array-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zerosoul.github.io/2016/12/06/array-filter-map-reduce-in-js/"/>
+
+  <title> Javascript Array中的filter、map和reduce | 杨二小 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?25693b171c4e4f11b7e2c8f9ad7a2c5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杨二小</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Machine repeats,Human creates.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript Array中的filter、map和reduce
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-06T11:00:15+08:00" content="2016-12-06">
+              2016-12-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/它山之石/" itemprop="url" rel="index">
+                    <span itemprop="name">它山之石</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/06/array-filter-map-reduce-in-js/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/06/array-filter-map-reduce-in-js/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ><i class="fa fa-spinner"></i></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>前几天<a href="http://zerosoul.github.io/2016/11/29/array-filter-trick/">写了篇文章</a>科普了下Javascript中<code>Array.filter()</code>的妙用，后来无意间发现了<a href="http://atendesigngroup.com/blog/array-map-filter-and-reduce-js" target="_blank" rel="external">一篇好文章</a>，一次性科普了三个API：<code>filter</code>、<code>map</code>和<code>reduce</code>，生动形象，尤其是配图，显然是用了心思。下面是译文：</p>
+<h1 id="译文"><a href="#译文" class="headerlink" title="译文"></a>译文</h1><p><img src="array-1.png" alt="array top image"></p>
+<p>最近，一直在为一个客户做一个视觉化数据的项目，从服务端API拉取数据回来然后转换出视觉效果，自然少不了大量的数据操作，为此我一再使用Javascript中的Array 三个API：<code>filter</code>、<code>map</code>和<code>reduce</code>。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="external">Map</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="external">Filter</a>和<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="external">Reduce</a>常常被用于对一个数组做一些操作，进而转换成某个新的东西（数据类型不一定还是数组哦~）。下面是我对这三个API的直观认识：</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><img src="array-map.png" alt="array-map"><br>你想将一个数组中的每一项做个转换，结果生成了一个新数组，并且新数组的长度和原数组一致。</p>
+<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><p><img src="array-filter.png" alt="array-filter"><br>你想将一个数组做一个过滤，按照某规则提取出一些特定的项来。结果也生成了一个新数组，但新数组的长度小于或等于原数组。</p>
+<h2 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h2><p><img src="array-reduce.png" alt="array-reduce"><br>你想通过遍历一个数组的每一项来计算出一个新东西，最后生成的结果可以是任何类型的变量：一个新数组，一个新对象，一个新布尔值…</p>
+<p><code>filter</code>、<code>map</code>和<code>reduce</code>共同点就是并不会对原数组做任何改动，结果都是生成一个新变量。让我们来看一些例子：</p>
+<h2 id="Array-map"><a href="#Array-map" class="headerlink" title="Array.map()"></a>Array.map()</h2><p>现在我们有一个对象列表，其中每个对象代表的是一种变形金刚（译注：看来这位歪果仁是个变形金刚粉丝）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> transformers = [</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Optimus Prime'</span>,</div><div class="line">    form: <span class="string">'Freightliner Truck'</span>,</div><div class="line">    team: <span class="string">'Autobot'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Megatron'</span>,</div><div class="line">    form: <span class="string">'Gun'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Bumblebee'</span>,</div><div class="line">    form: <span class="string">'VW Beetle'</span>,</div><div class="line">    team: <span class="string">'Autobot'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Soundwave'</span>,</div><div class="line">    form: <span class="string">'Walkman'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span></div><div class="line">  &#125;</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p>那么，问题来了，如果想得到一个包含所有变形（form）的列表该怎么做呢？<code>Array.map()</code>让一切变得简单。它的基本使用语法是这样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.map(callback(item));</div></pre></td></tr></table></figure></p>
+<p>当然，还有种更复杂点的语法场景，只不过不常用到：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.map(callback(item[, index], array])[, thisArg]);</div></pre></td></tr></table></figure></p>
+<p><code>callback</code>会遍历数组的每个元素，在其中返回的每一个数值将会组成新数组。<code>callback</code>有多种书写方式：<br>命名函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getForm</span>(<span class="params">transformer</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> transformer.form;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> robotsInDisguise = transformers.map(getForm);</div><div class="line"><span class="comment">/** robosInDisguise === ['Freightliner Truck', 'Gun', 'VW Beetle', 'Walkman'] */</span></div></pre></td></tr></table></figure></p>
+<p>匿名函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">robotsInDisguise = transformers.map(<span class="function"><span class="keyword">function</span>(<span class="params">transformer</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> transformer.form;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>箭头函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">robotsInDisguise = transformers.map(transformer =&gt; transformer.form);</div></pre></td></tr></table></figure></p>
+<p>ES2015的箭头函数和<code>Array.map()</code>搭配使用简直不能更爽了！</p>
+<h2 id="Array-filter"><a href="#Array-filter" class="headerlink" title="Array.filter()"></a>Array.filter()</h2><p>语法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.filter(callback(item));</div></pre></td></tr></table></figure></p>
+<p><code>callback</code>将数组元素当参数传入，并返回一个布尔值。当返回值为真时，该元素被加入新数组中，反之则被过滤掉。<br>现在我们把这些变形金刚过滤出<strong>汽车人</strong>(Autobots)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isAutobot</span>(<span class="params">transformer</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> transformer.team === ‘Autobot’;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> autobots = transformers.filter(isAutobot);</div><div class="line"><span class="comment">/**</span></div><div class="line">autobots ==  [</div><div class="line">  &#123;</div><div class="line">    name: 'Optimus Prime',</div><div class="line">    form: 'Freightliner Truck',</div><div class="line">    team: 'Autobot'</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: 'Bumblebee',</div><div class="line">    form: 'VW Beetle',</div><div class="line">    team: 'Autobot'</div><div class="line">  &#125;</div><div class="line">]</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h2 id="Array-reduce"><a href="#Array-reduce" class="headerlink" title="Array.reduce()"></a>Array.reduce()</h2><p><code>Array.reduce()</code>是通过遍历每个数组元素对其做运算，因此，也是三个API之间最富有技巧的，其使用语法也略显复杂：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.reduce(callback(previousValue, currentValue[, index], array]), initialValue)</div></pre></td></tr></table></figure></p>
+<p>谨记一条：我们是将数组元素通过遍历减少到一个值。比如现在有一组<strong>可组合变形金刚</strong>（译者注：我也不知道什么鬼，该怎么翻译，原词：Construction Transformers），它们能够组合成更大的变形金刚，我们可以通过代码来做出这样的组合：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> constructicons = [</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Scrapper'</span>,</div><div class="line">    form: <span class="string">'Freightliner Truck'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span>,</div><div class="line">    bodyPart: <span class="string">'rightLeg'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Hook'</span>,</div><div class="line">    form: <span class="string">'Mobile Crane'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span>,</div><div class="line">    bodyPart: <span class="string">'upperTorso'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Bonecrusher'</span>,</div><div class="line">    form: <span class="string">'Bulldozer'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span>,</div><div class="line">    bodyPart: <span class="string">'leftArm'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Scavenger'</span>,</div><div class="line">    form: <span class="string">'Excavator'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span>,</div><div class="line">    bodyPart: <span class="string">'rightArm'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Mixmaster'</span>,</div><div class="line">    form: <span class="string">'Concrete Mixer'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span>,</div><div class="line">    bodyPart: <span class="string">'leftLeg'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    name: <span class="string">'Long Haul'</span>,</div><div class="line">    form: <span class="string">'Dump Truck'</span>,</div><div class="line">    team: <span class="string">'Decepticon'</span>,</div><div class="line">    bodyPart: <span class="string">'lowerTorso'</span></div><div class="line">  &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
+<p>Reduce的<code>callback</code>需要至少两个参数。第一个是从上次遍历中返回的一个值，第二个是当前数组遍历到的一个值，返回值又将当做第一个参数被传入到下一次遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">assemble</span>(<span class="params">combiner, transformer</span>) </span>&#123;</div><div class="line">  <span class="comment">//每次遍历都会将当前的变形金刚（transformer）的名字加入到组合器（combiner）的form中去。</span></div><div class="line">  combiner.form[transformer.bodyPart] = transformer.name;</div><div class="line">  <span class="keyword">return</span> combiner;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，我们可以在调用reduce的时候，将<code>assemble</code>当做第一个参数传入，第二个参数是用来初次调用时的初始数据。接下来的例子便是我们提供一个仅仅有名字（name）和派别（team）的变形金刚，通过reduce中的<code>assemble</code>我们来组合成一个强大的变形金刚吧！</p>
+<p><img src="transform.gif" alt="transforming"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> devastator = constructicons.reduce(assemble, &#123;</div><div class="line">  name: ‘Devastator’,</div><div class="line">  team: ‘Decepticon’,</div><div class="line">  form: &#123;&#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">/*</span></div><div class="line">devastator == &#123;</div><div class="line">  name: ‘Devastator’,</div><div class="line">  team: ‘Decepticon’,</div><div class="line">  form: &#123;</div><div class="line">    leftArm: "Bonecrusher"</div><div class="line">    leftLeg: "Mixmaster"</div><div class="line">    lowerTorso: "Long Haul"</div><div class="line">    rightArm: "Scavenger"</div><div class="line">    rightLeg: "Scrapper"</div><div class="line">    upperTorso: "Hook"</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>这些三个基本API一旦组合起来使用，也是很强大的。在此只是根据自己的使用经验抛砖引玉，想进一步了解的同学可以移步万能的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="external">MDN有关Array API的文档</a>。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/译文/" rel="tag">#译文</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/array/" rel="tag">#array</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/29/array-filter-trick/" rel="next" title="Javascript中Array.filter()的妙用">
+                <i class="fa fa-chevron-left"></i> Javascript中Array.filter()的妙用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+<style>
+/* Default tab style */
+.payment-container{
+	width: 60%;
+	margin:0 auto;
+	display: none;
+	margin-top: 1em;
+}
+
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+.tabs a{
+	text-decoration: none;
+	color:#555;
+}
+.tabs nav ul {
+	border-top: 1px solid #A9B8BD;
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+/* Content */
+.qr-content-wrap {
+	position: relative;
+}
+
+.qr-content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.qr-content-wrap .tip{
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+
+.qr-content-wrap section.content-current {
+	display: block;
+}
+
+.qr-content-wrap section img {
+	width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+	.payment-container{
+		width: 85%;
+	}
+}
+
+/* Individual tab styles */
+
+/*****************************/
+/* Underline */
+/*****************************/
+
+.tabs-style-underline nav {
+	background: #fff;
+}
+
+.tabs-style-underline nav a {
+	padding: 0.25em 0 0.5em;
+	border-left: 1px solid #222;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+	border-bottom: 1px solid #999;
+}
+
+.tabs-style-underline nav li:last-child a {
+	border-right: 1px solid #222;
+}
+
+.tabs-style-underline nav li a::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	background: #222;
+	content: '';
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translate3d(0,150%,0);
+	transform: translate3d(0,150%,0);
+}
+
+.tabs-style-underline nav li.tab-current a::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.tabs-style-underline nav a span {
+	font-weight: 700;
+}
+section.donate{
+	text-align: center;
+	padding: 0 25px;
+}
+section.donate .tip{
+	margin-top: 1em;
+}
+section.donate .donate-circle{
+	font-size: 2em;
+    color: #fff;
+    border-radius: 1em;
+    border: 1px solid rgba(100, 162, 160, 0.5);
+    width: 2em;
+    background: #F38B09;
+    margin: 0 auto;
+}
+</style>
+<section class="donate" style="display:block;">
+	<div class="donate-circle">赏</div>
+	<p class="tip">如果文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+</section>
+<section class="payment-container">
+	<div class="tabs tabs-style-underline">
+		<nav>
+			<ul>
+				<li data-target="section-weixin" class="tab-current"><a href="#"><span>微信</span></a></li>
+				<li data-target="section-zfb"><a href="#"><span>支付宝</span></a></li>
+			</ul>
+		</nav>
+		<div class="qr-content-wrap">
+			<section class="content-current" id="section-weixin">
+				<p class="tip">微信环境下长按识别或保存</p>
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_wexin.jpg" alt="微信支付二维码">
+			</section>
+			<section id="section-zfb">
+				
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_zfb.jpg" alt="支付宝支付二维码">
+			</section>
+		</div><!-- /content -->
+	</div><!-- /tabs -->
+</section>
+<script>
+	(function(d) {
+		d.querySelectorAll(".donate-circle")[0].addEventListener("click",function(evt){
+			d.querySelectorAll(".donate")[0].style.display="none";
+			d.querySelectorAll(".payment-container")[0].style.display="block";
+		});
+		[].slice.call( d.querySelectorAll(".tabs ul li") ).forEach( function( el ) {
+			el.addEventListener("click",function(evt){
+				console.log(evt,this);
+				evt.preventDefault();
+				var idStr=this.getAttribute("data-target");
+				d.querySelectorAll(".tabs ul li.tab-current")[0].classList.remove("tab-current");
+				this.classList.add("tab-current");
+				d.querySelectorAll(".tabs .qr-content-wrap .content-current")[0].classList.remove("content-current");
+				d.getElementById(""+idStr).classList.add("content-current");
+
+			});
+		});
+	})(document);
+</script>
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/06/array-filter-map-reduce-in-js/"
+           data-title="Javascript Array中的filter、map和reduce" data-url="http://zerosoul.github.io/2016/12/06/array-filter-map-reduce-in-js/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="杨二小" />
+          <p class="site-author-name" itemprop="name">杨二小</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zerosoul" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/2365376/yanggc?tab=profile" target="_blank" title="stackoverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  stackoverflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanggc2014" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xxfs.com" title="西西弗斯" target="_blank">西西弗斯</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.laoono.com/" title="老衲前端" target="_blank">老衲前端</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hammx.com/" title="大周的博客" target="_blank">大周的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daraw.cn/" title="DaraW" target="_blank">DaraW</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面的话"><span class="nav-number">1.</span> <span class="nav-text">写在前面的话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#译文"><span class="nav-number">2.</span> <span class="nav-text">译文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">2.1.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter"><span class="nav-number">2.2.</span> <span class="nav-text">Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduce"><span class="nav-number">2.3.</span> <span class="nav-text">Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-map"><span class="nav-number">2.4.</span> <span class="nav-text">Array.map()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-filter"><span class="nav-number">2.5.</span> <span class="nav-text">Array.filter()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-reduce"><span class="nav-number">2.6.</span> <span class="nav-text">Array.reduce()</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨二小</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zerosoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
