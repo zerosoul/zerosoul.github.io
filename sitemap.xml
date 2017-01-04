@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zerosoul.github.io/about/index.html</loc>
+    
+    <lastmod>2017-01-04T08:36:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zerosoul.github.io/2016/12/06/array-filter-map-reduce-in-js/</loc>
     
     <lastmod>2016-12-06T09:46:54.000Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://zerosoul.github.io/2014/07/29/convert-query-params-to-json/</loc>
     
     <lastmod>2016-06-29T07:45:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zerosoul.github.io/about/index.html</loc>
-    
-    <lastmod>2016-06-27T07:59:24.000Z</lastmod>
     
   </url>
   
@@ -338,7 +338,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
+    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -359,7 +359,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
+    <loc>http://zerosoul.github.io/2013/07/21/about-running/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
@@ -373,7 +373,7 @@
   </url>
   
   <url>
-    <loc>http://zerosoul.github.io/2015/11/05/build-personal-site-with-hexo-and-github-pages/</loc>
+    <loc>http://zerosoul.github.io/2012/06/18/graduate-riding-part-three/</loc>
     
     <lastmod>2016-01-19T02:44:27.000Z</lastmod>
     
