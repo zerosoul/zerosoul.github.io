@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zerosoul.github.io/"/>
-  <updated>2016-12-06T09:46:54.000Z</updated>
+  <updated>2017-03-03T01:41:44.000Z</updated>
   <id>http://zerosoul.github.io/</id>
   
   <author>
@@ -14,6 +14,225 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端编码规范</title>
+    <link href="http://zerosoul.github.io/2017/03/03/fe-code-style-guide/"/>
+    <id>http://zerosoul.github.io/2017/03/03/fe-code-style-guide/</id>
+    <published>2017-03-03T01:25:05.000Z</published>
+    <updated>2017-03-03T01:41:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="code.jpg" alt="code style jpg"></p>
+<blockquote>
+<p>代码是写给人读的，只是机器偶尔执行一下。</p>
+</blockquote>
+<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><ul>
+<li>规范的初衷是为了代码的可维护性，让多人写出的代码像出自同一人之手</li>
+<li>该规范具有演化性，会随着实际情况做出相应的调整。开源地址：<a href="https://github.com/zerosoul/fe.code.guide" target="_blank" rel="external">fe.code.guide</a></li>
+<li>该规范适用于开发阶段，最后上线的代码不一定符合该规范，因为上线代码可能会经过打包、混淆和压缩</li>
+</ul>
+<h2 id="通则"><a href="#通则" class="headerlink" title="通则"></a>通则</h2><ul>
+<li><strong><a href="http://baike.baidu.com/subview/5018/6328024.htm#viewPageContent" target="_blank" rel="external">KISS原则</a></strong>:坚持简约，避免不必要的复杂化</li>
+<li><strong>所有代码小写</strong>（常量命名、特殊名词、纯字符串除外）</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line"><span class="tag">&lt;<span class="name">A</span> <span class="attr">HREF</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">A</span>&gt;</span></div><div class="line">//推荐</div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img.png"</span> <span class="attr">alt</span>=<span class="string">"Image"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">color: #E5E5E5;</div><div class="line">//推荐</div><div class="line">color: #e5e5e5;</div></pre></td></tr></table></figure>
+<ul>
+<li>命名规则（项目，目录，HTML、CSS、JS、图片等静态文件）</li>
+</ul>
+<p>小写，以下划线分割，例：my_project_name</p>
+<ul>
+<li>注释（建议以下情况使用注释）<ul>
+<li>难于理解的代码段</li>
+<li>可能存在错误的代码段</li>
+<li>浏览器特殊的HACK代码</li>
+<li>业务逻辑强相关的代码</li>
+</ul>
+</li>
+</ul>
+<p>代码是人写的，也是由人维护，所以尽可能确保代码具备描述性，做到不注自释。<br>好注释能表达出代码的上下文和目的，不要只是复述从代码就能读出的信息。</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="文档骨架"><a href="#文档骨架" class="headerlink" title="文档骨架"></a>文档骨架</h3><p>PC：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><em>强制浏览器使用标准模式渲染，保证页面效果统一。IE浏览器使用最新版本，即<a href="http://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do" target="_blank" rel="external">Edge Mode</a></em>。</p>
+<p>Mobile：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"</span> <span class="attr">name</span>=<span class="string">"viewport"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><em>强制浏览器使用标准模式渲染，保证页面效果统一</em></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
+<li><strong>使用双空格短缩进</strong></li>
+<li>在属性中始终书写双引号</li>
+<li>自关闭元素不要使用斜杠结尾（<a href="http://blog.jobbole.com/61514/" target="_blank" rel="external">参考此处</a>）</li>
+</ul>
+<p>常见的自关闭元素：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span>&gt;</span> <span class="tag">&lt;<span class="name">img</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span>&gt;</span> <span class="tag">&lt;<span class="name">link</span>&gt;</span> <span class="tag">&lt;<span class="name">meta</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>不常见的自关闭元素：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">area</span>&gt;</span> <span class="tag">&lt;<span class="name">base</span>&gt;</span> <span class="tag">&lt;<span class="name">col</span>&gt;</span> <span class="tag">&lt;<span class="name">command</span>&gt;</span> <span class="tag">&lt;<span class="name">embed</span>&gt;</span> <span class="tag">&lt;<span class="name">keygen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">param</span>&gt;</span> <span class="tag">&lt;<span class="name">source</span>&gt;</span> <span class="tag">&lt;<span class="name">track</span>&gt;</span> <span class="tag">&lt;<span class="name">wbr</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="引用CSS和JavaScript文件"><a href="#引用CSS和JavaScript文件" class="headerlink" title="引用CSS和JavaScript文件"></a>引用CSS和JavaScript文件</h3><p>按照HTML5规范，一般来说，当CSS和JS文件被引用时，都会默认以 <code>text/css</code> 和 <code>text/javascript</code> 的方式，没必要特意为其指定 <code>type</code> 类型。例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 外部 CSS --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"demo.css"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 文档内CSS --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="comment">/* ... */</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- Javascript --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"demo.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="精简标签"><a href="#精简标签" class="headerlink" title="精简标签"></a>精简标签</h3><p>书写HTML时尽可能减少冗余的标签。比如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 不推荐 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"avatar"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--推荐 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"avatar"</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>另外，尽量不要在HTML写行内style、JS代码，遵守<strong>结构和样式、行为分离</strong>的原则。</p>
+<h3 id="实用为王"><a href="#实用为王" class="headerlink" title="实用为王"></a>实用为王</h3><p>尽量遵循 HTML 标准和语义，但是不要以牺牲实用性为代价。任何时候都要尽量使用最少的标签并保持最小的复杂度。</p>
+<h3 id="属性顺序"><a href="#属性顺序" class="headerlink" title="属性顺序"></a>属性顺序</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"..."</span> <span class="attr">id</span>=<span class="string">"..."</span> <span class="attr">data-toggle</span>=<span class="string">"modal"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">  Demo link</div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>class</li>
+<li>id,name</li>
+<li>data-*</li>
+<li>src,for,type,href,value</li>
+<li>title,alt</li>
+<li>role,aria-*</li>
+</ul>
+<p><code>class</code>能更好地重用组件，所以打头阵；<code>id</code>更加特定和专属，尽量控制使用。</p>
+<h3 id="布尔属性"><a href="#布尔属性" class="headerlink" title="布尔属性"></a>布尔属性</h3><blockquote>
+<p>某一元素如果调用了布尔属性，则代表该值为真，否则为假。</p>
+</blockquote>
+<p>简言之：不要赋值。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">disabled</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">checked</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">selected</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 不推荐 */</span></div><div class="line"><span class="selector-class">.selector</span>, <span class="selector-class">.selector-secondary</span>, <span class="selector-class">.selector</span><span class="selector-attr">[type=text]</span> &#123;</div><div class="line">  <span class="attribute">padding</span>:<span class="number">15px</span>;</div><div class="line">  <span class="attribute">margin</span>:<span class="number">0px</span> <span class="number">0px</span> <span class="number">15px</span>;</div><div class="line">  <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(0, 0, 0, 0.5);</div><div class="line">  <span class="attribute">box-shadow</span>:<span class="number">0px</span> <span class="number">1px</span> <span class="number">2px</span> <span class="number">#CCC</span>,inset <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="number">#FFFFFF</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/* 推荐 */</span></div><div class="line"><span class="selector-class">.selector</span>,</div><div class="line"><span class="selector-class">.selector-secondary</span>,</div><div class="line"><span class="selector-class">.selector</span><span class="selector-attr">[type="text"]</span> &#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">15px</span>;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">15px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0,0,0,.5);</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="number">#ccc</span>, inset <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>多个选择器，请换行</li>
+<li>区块结束符<code>}</code>独占一行</li>
+<li>不要忘记最后一个声明语句的<code>;</code></li>
+<li>省略小数点前的<code>0</code>：<code>0.5</code>=&gt;<code>.5</code></li>
+<li>零值省略单位：<code>margin: 0px;</code>=&gt;<code>margin: 0</code></li>
+<li>只有一条声明可以写在一行</li>
+</ul>
+<h3 id="声明顺序"><a href="#声明顺序" class="headerlink" title="声明顺序"></a>声明顺序</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.declaration-order</span> &#123;</div><div class="line">  <span class="comment">/* 定位 */</span></div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">z-index</span>: <span class="number">100</span>;</div><div class="line"></div><div class="line">  <span class="comment">/* 盒模型 */</span></div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">float</span>: right;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line"></div><div class="line">  <span class="comment">/* 排版 */</span></div><div class="line">  <span class="attribute">font</span>: normal <span class="number">13px</span> <span class="string">"Helvetica Neue"</span>, sans-serif;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line"></div><div class="line">  <span class="comment">/* 视觉 */</span></div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#f5f5f5</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#e5e5e5</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>;</div><div class="line"></div><div class="line">  <span class="comment">/* 其它 */</span></div><div class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>相关属性的声明按组以以下顺序排列：</p>
+<ol>
+<li>定位（Positioning）</li>
+<li>盒模型（Box model）</li>
+<li>排版（Typographic）</li>
+<li>视觉（Visual）</li>
+</ol>
+<p><strong>定位排首位是因为它可能会让元素脱离文档流并重写盒模型的相关样式</strong></p>
+<h3 id="禁止使用-import"><a href="#禁止使用-import" class="headerlink" title="禁止使用@import"></a><strong>禁止使用<code>@import</code></strong></h3><p>原因：<a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/" target="_blank" rel="external">参考此文</a></p>
+<h3 id="正确放置媒体查询语句"><a href="#正确放置媒体查询语句" class="headerlink" title="正确放置媒体查询语句"></a><strong>正确放置媒体查询语句</strong></h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.element &#123; ... &#125;</div><div class="line">.element-avatar &#123; ... &#125;</div><div class="line">.element-selected &#123; ... &#125;</div><div class="line"></div><div class="line">@media (min-width: 480px) &#123;</div><div class="line">  .element &#123; ...&#125;</div><div class="line">  .element-avatar &#123; ... &#125;</div><div class="line">  .element-selected &#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>尽可能把媒体查询语句放在相关的规则集后面，不要单独存放到某个文件，也不要放到样式表最后。这样做是为了以后同步修改更方便，相信我，这样做能让后来维护代码的人少骂你几句。</p>
+<h3 id="简写虽好，但不要滥用"><a href="#简写虽好，但不要滥用" class="headerlink" title="简写虽好，但不要滥用"></a>简写虽好，但不要滥用</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 不推荐 */</span></div><div class="line"><span class="selector-class">.element</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>;</div><div class="line">  <span class="attribute">background</span>: red;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"image.jpg"</span>);</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span> <span class="number">3px</span> <span class="number">0</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 推荐 */</span></div><div class="line"><span class="selector-class">.element</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"image.jpg"</span>);</div><div class="line">  <span class="attribute">border-top-left-radius</span>: <span class="number">3px</span>;</div><div class="line">  <span class="attribute">border-top-right-radius</span>: <span class="number">3px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一些属性可以合并简写，比如：</p>
+<ul>
+<li>padding</li>
+<li>margin</li>
+<li>font</li>
+<li>background</li>
+<li>border</li>
+<li>border-radius</li>
+</ul>
+<p>属性简写需要非常清楚属性值的正确顺序，而且在大多数情况下并不需要设置属性简写中包含的所有值，所以建议尽量分开声明会更加清晰。使用简写前，想一想有没有必要，<strong>少于三个</strong>合并属性建议不要简写。</p>
+<p><em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties" target="_blank" rel="external">这里</a>有一篇关于简写的好文章</em></p>
+<h3 id="选择器命名采用-分隔"><a href="#选择器命名采用-分隔" class="headerlink" title="选择器命名采用-分隔"></a>选择器命名采用<code>-</code>分隔</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 不推荐 */</span></div><div class="line"> <span class="selector-class">.hotelTitle</span> &#123;</div><div class="line">     <span class="attribute">font-weight</span>: bold;</div><div class="line"> &#125;</div><div class="line"><span class="comment">/* 推荐 */</span></div><div class="line"> <span class="selector-class">.hotel-title</span> &#123;</div><div class="line">     <span class="attribute">font-weight</span>: bold;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>比使用驼峰更加清晰。</li>
+<li><strong>产品线-产品-模块-子模块</strong></li>
+</ul>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><ul>
+<li>JS 换行缩进：采用 4 空格</li>
+<li>结束行添加分号<code>;</code></li>
+<li>避免使用 eval()</li>
+<li>JS调试使用<code>console.log()</code>及<code>console.dir()</code>，避免使用<code>alert()</code>，线上版需要注释或删掉所有调试代码</li>
+</ul>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>最外层统一使用单引号：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不推荐</span></div><div class="line"><span class="keyword">var</span> x = <span class="string">"test"</span>;</div><div class="line"><span class="comment">// 推荐</span></div><div class="line"><span class="keyword">var</span> y = <span class="string">'foo'</span>,</div><div class="line">    z = <span class="string">'&lt;div id="test"&gt;&lt;/div&gt;'</span>;</div></pre></td></tr></table></figure>
+<h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> thisIsMyName;</div><div class="line"><span class="keyword">var</span> goodID;</div><div class="line"><span class="keyword">var</span> reportURL;</div><div class="line"><span class="keyword">var</span> AndroidVersion;</div><div class="line"><span class="keyword">var</span> iOSVersion;</div><div class="line"><span class="keyword">var</span> MAX_COUNT = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 不推荐</span></div><div class="line"><span class="keyword">var</span> body = $(<span class="string">'body'</span>);</div><div class="line"><span class="comment">// 推荐</span></div><div class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>标准变量采用驼峰式命名</li>
+<li>常量全大写，用下划线连接</li>
+<li>特殊处理：<code>ID</code>,<code>URL</code>,<code>Android</code>,<code>iOS</code></li>
+<li>构造函数，大写第一个字母</li>
+<li>jQuery变量首字符为 <code>$</code>, 私有变量:首字符为<code>_</code></li>
+</ul>
+<h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingWithItems</span>(<span class="params">items</span>) </span>&#123;</div><div class="line">    <span class="comment">// 使用一个var声明</span></div><div class="line">    <span class="keyword">var</span> value = <span class="number">10</span>,</div><div class="line">        result = value + <span class="number">10</span>,</div><div class="line">        i,</div><div class="line">        len;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, len = items.length; i &lt; len; i++) &#123;</div><div class="line">        result += <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个函数作用域中所有的变量声明尽量提到函数首部，用一个var声明，不允许出现两个连续的var声明。</p>
+<h2 id="Smarty模板"><a href="#Smarty模板" class="headerlink" title="Smarty模板"></a>Smarty模板</h2><h3 id="划清PHP与Smarty的界限"><a href="#划清PHP与Smarty的界限" class="headerlink" title="划清PHP与Smarty的界限"></a>划清PHP与Smarty的界限</h3><p>PHP只是负责输出数据，并保持干净。切勿将业务逻辑代码放入Smarty中。</p>
+<h3 id="组合大于继承"><a href="#组合大于继承" class="headerlink" title="组合大于继承"></a>组合大于继承</h3><p>尽量不使用继承，即使使用，继承关系不要超过两层。</p>
+<h3 id="逻辑尽可能简洁，判断不要超过三层"><a href="#逻辑尽可能简洁，判断不要超过三层" class="headerlink" title="逻辑尽可能简洁，判断不要超过三层"></a>逻辑尽可能简洁，判断不要超过三层</h3><p>Smarty模板只是负责展示数据，尽量不要掺入逻辑判断，但判断过多时，就应该思考是否应该把这部分判断逻辑放入PHP端？或者，产品的业务逻辑如此复杂，是否已经是走入了错误的方向？如果你有更好的解决方式，奔向PM理论一番吧，少年，如果能想到这一步，你已经在成长。</p>
+<p><a href="http://www.smarty.net/best_practices" target="_blank" rel="external">Smarty官方最佳实践</a></p>
+<h2 id="性能清单"><a href="#性能清单" class="headerlink" title="性能清单"></a>性能清单</h2><h3 id="常规"><a href="#常规" class="headerlink" title="常规"></a>常规</h3><ul>
+<li>是否启用HTTP2？</li>
+<li><strong>静态文件是否使用CDN？独立域名？</strong></li>
+<li><strong>静态文件域名是否做到无Cookie？</strong></li>
+<li>DNS预取功能是否开启？</li>
+</ul>
+<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><ul>
+<li>JavaScript/CSS/HTML文件是否合并、压缩？</li>
+<li>是否存在行内样式和JS？</li>
+<li><strong>CSS有没有使用<code>@import</code>？</strong></li>
+<li>静态文本文件有没有开启Gzip？</li>
+<li><strong>是否做到科学使用图片格式？（PNG,JPG,GIF…适用场景及尺寸合适）</strong></li>
+<li>图片有没有压缩处理？</li>
+<li>图片资源有没有开启浏览器缓存？</li>
+<li>SVG文件有没有压缩处理？</li>
+<li>浏览器缓存是否做到高效利用？</li>
+<li><strong>对于非关键资源有没有做到异步或者延迟处理？</strong></li>
+</ul>
+<h3 id="度量标准"><a href="#度量标准" class="headerlink" title="度量标准"></a>度量标准</h3><p>通常，页面的性能通过以下数据大体感知出：</p>
+<ul>
+<li>所有文件的数量</li>
+<li>所有文件的大小</li>
+<li>DomReady时间</li>
+<li>页面下载时间</li>
+</ul>
+<h3 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h3><ul>
+<li><strong>CSS在头部加载</strong></li>
+<li><strong>JS文件在文档底部加载</strong></li>
+<li><strong><code>script</code>标签开启<code>defer</code>特性</strong></li>
+<li><strong>假如JS文件在头部加载，放在CSS之后</strong></li>
+<li>60fps情况下页面依然可以滚动浏览</li>
+<li>禁用<code>document.write</code></li>
+<li>防止CSS 动画的滥用</li>
+</ul>
+<h2 id="硬件性能"><a href="#硬件性能" class="headerlink" title="硬件性能"></a>硬件性能</h2><ul>
+<li>CPU使用率</li>
+<li>内存使用率</li>
+<li>GPU使用率</li>
+</ul>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><ul>
+<li>全站HTTPS</li>
+<li>站外资源的引用开启HTTPS</li>
+<li>启用Robots.txt</li>
+<li><strong>XSS成为不可能</strong></li>
+<li>开启<code>Content-Security-Policy</code>，并且只允许特指的几个域名</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>在<code>html</code>标签内正确设置语言</li>
+<li>指定<code>charset</code></li>
+<li>HTML通过验证</li>
+<li>指定404页面</li>
+<li>指定页面打印样式</li>
+</ul>
+<p>##上线检查清单</p>
+<ul>
+<li>设计稿高度还原（移动端：750）</li>
+<li>对业务的理解（有些问题不一定需要靠技术手段解决，锻炼伪需求的辨别能力）</li>
+<li>html标签的简洁性，语义性</li>
+<li>功能实现优先级：html&gt;CSS&gt;img&amp;JS</li>
+<li>渐进增强，优雅降级（PC：&gt;=IE9，Mobile：&gt;=Android 4.0）</li>
+<li>交互是否完备</li>
+<li>模板和静态页的易用性（把交付，当做产品来做，换位思考，考虑后端开发的感受）e.g.链接的设置</li>
+<li>模块化（把代码，当做积木来做，为将来的维护少挖坑）</li>
+<li>广告区块有个占位就行，统一占位和样式</li>
+<li>readme.txt（命名命的好，代码结构清晰，不readme也行）</li>
+<li>知己知彼（smarty模板语言，php better）</li>
+<li>新技术的应用（语言、工具）</li>
+<li>雅虎军规</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;code.jpg&quot; alt=&quot;code style jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代码是写给人读的，只是机器偶尔执行一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;写在前面的话&quot;&gt;&lt;a href=&quot;#写在前面的话&quot; cl
+    
+    </summary>
+    
+      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="编码" scheme="http://zerosoul.github.io/tags/%E7%BC%96%E7%A0%81/"/>
+    
+      <category term="规范" scheme="http://zerosoul.github.io/tags/%E8%A7%84%E8%8C%83/"/>
+    
+      <category term="性能优化" scheme="http://zerosoul.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Javascript Array中的filter、map和reduce</title>
@@ -2182,81 +2401,6 @@
       <category term="笔记" scheme="http://zerosoul.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
       <category term="睡眠" scheme="http://zerosoul.github.io/tags/%E7%9D%A1%E7%9C%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>探索AJAX和JSONP</title>
-    <link href="http://zerosoul.github.io/2015/08/27/json-and-jsonp/"/>
-    <id>http://zerosoul.github.io/2015/08/27/json-and-jsonp/</id>
-    <published>2015-08-27T06:43:49.000Z</published>
-    <updated>2016-06-27T07:42:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前端开发有个问题不可避免：<strong>跨域获取异步数据</strong>。我比较推崇的解决方式是：<strong>用JSON传数据，靠JSONP来跨域</strong>。JSONP是旧有概念的延伸，所以兼容性非常好，这也是推崇的首要理由。</p>
-<p>JSON和JSONP虽然只有一个字母的差别，但其实他们根本不是一回事儿：<strong>JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。一个是描述信息的格式，一个是信息传递双方约定的方法。</strong></p>
-<h1 id="什么是JSON"><a href="#什么是JSON" class="headerlink" title="什么是JSON"></a>什么是JSON</h1><p>有关JSON的概念，曾经写过一篇文章专述，请<a href="http://zerosoul.github.io/2015/06/18/explore-json/">移步这里</a>。</p>
-<p>概括下其优点：</p>
-<ul>
-<li>基于纯文本，跨平台传递；</li>
-<li>Javascript原生支持，后台语言几乎全部支持；</li>
-<li>轻量级数据格式，占用字符少，特别适合网络传递；</li>
-<li>可读性较强，虽然比不上XML一目了然，但在合理的缩进之后还是易识别的；</li>
-<li>容易编写和解析；</li>
-</ul>
-<h1 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h1><h2 id="JSONP是怎么产生的"><a href="#JSONP是怎么产生的" class="headerlink" title="JSONP是怎么产生的"></a>JSONP是怎么产生的</h2><p>我试着用自己的方式来阐释一下这个问题：</p>
-<ol>
-<li>一个众所周知的问题，AJAX直接请求普通文件存在跨域访问的问题，甭管网页是静态的还是动态的，只要是跨域请求，一律不准；</li>
-<li>不过，WEB页面上调用js文件时则不受是否跨域的影响（不仅如此，凡是拥有<code>src</code>这个属性的标签都有跨域的能力，比如<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;iframe&gt;</code>）；</li>
-<li>于是可以判断，当前阶段如果想通过纯WEB端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js文件里，供客户端调用和进一步处理；</li>
-<li>JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON被javascript原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据；</li>
-<li>这样子解决方案就水到渠成了，WEB客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。</li>
-<li>客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。</li>
-<li>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个<code>callback</code>参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</li>
-</ol>
-<p>我想JSONP的发展历程大概就是这样子，应该八九不离十，下面看一看具体实现。</p>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>1.远程服务器<code>remote.server.com</code>根目录下有个<code>remote.js</code>文件代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="string">'我来自远程文件'</span>);</div></pre></td></tr></table></figure></p>
-<p>本地服务器<code>local.server.com</code>下有个测试页面<code>test.html</code>代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JSONP测试页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://remote.server.com/remote.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>毫无疑问，页面将会弹出一个提示窗体，显示跨域调用成功。<br>2.现在<code>test.html</code>页面定义一个函数，然后在远程<code>remote.js</code>中传入数据进行调用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JSONP测试页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> localHandler = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        alert(<span class="string">'我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：'</span> + data.result);</div><div class="line">    &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://remote.server.com/remote.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>remote.js文件代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localHandler(&#123;<span class="string">"result"</span>:<span class="string">"我是远程js带来的数据"</span>&#125;);</div></pre></td></tr></table></figure></p>
-<p>运行之后查看结果，页面成功弹出提示窗口，显示本地函数被跨域的远程js调用成功，并且还接收到了远程js带来的数据。很好，跨域远程获取数据的目的基本实现了，但是又一个问题出现了，怎么让远程js知道它应该调用的本地函数叫什么名字呢？毕竟是JSONP的服务者都要面对很多服务对象，而这些服务对象各自的本地函数都不相同啊？</p>
-<p>3.很容易想到，只要服务端提供的js脚本是动态生成的就行了，这样调用者可以传一个参数过去告诉服务端“我想要一段调用XXX函数的js代码，请你返回给我”，于是服务器就可以按照客户端的需求来生成js脚本并响应了。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JSONP测试页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">// 得到航班信息查询结果后的回调函数</span></div><div class="line">    <span class="keyword">var</span> flightHandler = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        alert(<span class="string">'你查询的航班结果是：票价 '</span> + data.price + <span class="string">' 元，'</span> + <span class="string">'余票 '</span> + data.tickets + <span class="string">' 张。'</span>);</div><div class="line">    &#125;;</div><div class="line">    <span class="comment">// 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）</span></div><div class="line">    <span class="keyword">var</span> url = <span class="string">"http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler"</span>;</div><div class="line">    <span class="comment">// 创建script标签，设置其属性</span></div><div class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">    script.setAttribute(<span class="string">'src'</span>, url);</div><div class="line">    <span class="comment">// 把script标签加入head，此时调用开始</span></div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script); </div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>这次的代码变化比较大，不再直接把远程js文件写死，而是编码实现动态查询，而这也正是JSONP客户端的核心部分。</p>
-<p>调用的url中传递了一个code参数，告诉服务器我要查的是<strong>CA1998</strong>次航班的信息，而<strong>callback</strong>参数则告诉服务器，我的本地回调函数叫做<strong>flightHandler</strong>，所以请把查询结果传入这个函数中进行调用。</p>
-<p>服务器很聪明，这个叫做flightResult.aspx的页面生成了一段这样的代码提供给test.html（服务端的实现这里就不演示了，与选用的语言无关，说到底就是拼接字符串）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">flightHandler(&#123;</div><div class="line">    <span class="string">"code"</span>: <span class="string">"CA1998"</span>,</div><div class="line">    <span class="string">"price"</span>: <span class="number">1780</span>,</div><div class="line">    <span class="string">"tickets"</span>: <span class="number">5</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>传递给flightHandler函数的是一个JSON，它描述了航班的基本信息。运行页面，成功弹出提示窗口，JSONP的执行全过程顺利完成。<br>4.什么？你用的是jQuery？那再来一个使用jQuery实现JSONP的例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JSONP测试页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">jquery.min.js</span>"&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </div><div class="line">            $.ajax(&#123;</div><div class="line">                 type: <span class="string">"get"</span>,</div><div class="line">                 <span class="keyword">async</span>: <span class="literal">false</span>,</div><div class="line">                 url: <span class="string">"http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998"</span>,</div><div class="line">                 dataType: <span class="string">"jsonp"</span>,</div><div class="line">                 jsonp: <span class="string">"callback"</span>,<span class="comment">//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)</span></div><div class="line">                 jsonpCallback:<span class="string">"flightHandler"</span>,<span class="comment">//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据</span></div><div class="line">                 success: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">                     alert(<span class="string">'您查询到航班信息：票价： '</span> + json.price + <span class="string">' 元，余票： '</span> + json.tickets + <span class="string">' 张。'</span>);</div><div class="line">                 &#125;,</div><div class="line">                 error: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                     alert(<span class="string">'fail'</span>);</div><div class="line">                 &#125;</div><div class="line">         &#125;);</div><div class="line">     &#125;);</div><div class="line">     <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>是不是有点奇怪？为什么这次没有写<code>flightHandler</code>这个函数呢？竟然也运行成功了！这就是jQuery的功劳了，在处理JSONP类型的ajax时（虽然jQuery也把JSONP归入了AJAX，但它们真的不是一回事儿），自动帮你生成回调函数并把数据取出来供success属性方法来调用，很爽有木有？</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li><p>AJAX和JSONP这两种技术在调用方式上<strong>看起来很像</strong>，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jQuery把JSONP作为AJAX的一种形式进行了封装；</p>
-</li>
-<li><p>AJAX和JSONP其实本质上是不同的东西。AJAX的核心是通过<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank" rel="external">XmlHttpRequest</a>获取非本页内容，而JSONP的核心则是动态添加<code>&lt;script&gt;</code>来调用服务器提供的js脚本。</p>
-</li>
-<li><p>AJAX与JSONP的区别不在于是否跨域，AJAX通过服务端代理一样可以实现跨域，JSONP本身也不排斥同域的数据的获取。</p>
-</li>
-<li><p>JSONP是一种方式或者说非强制性协议，如同AJAX一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用JSONP提供公开服务。</p>
-</li>
-</ul>
-<p>总而言之，JSONP不是AJAX的一个特例。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;前端开发有个问题不可避免：&lt;strong&gt;跨域获取异步数据&lt;/strong&gt;。我比较推崇的解决方式是：&lt;strong&gt;用JSON传数据，靠J
-    
-    </summary>
-    
-      <category term="技术" scheme="http://zerosoul.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="探索系列" scheme="http://zerosoul.github.io/tags/%E6%8E%A2%E7%B4%A2%E7%B3%BB%E5%88%97/"/>
-    
-      <category term="json" scheme="http://zerosoul.github.io/tags/json/"/>
-    
-      <category term="jquery" scheme="http://zerosoul.github.io/tags/jquery/"/>
-    
-      <category term="jsonp" scheme="http://zerosoul.github.io/tags/jsonp/"/>
-    
-      <category term="ajax" scheme="http://zerosoul.github.io/tags/ajax/"/>
     
   </entry>
   

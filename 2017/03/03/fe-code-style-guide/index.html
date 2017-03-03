@@ -1,0 +1,1180 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,编码,规范,性能优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨二小" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="代码是写给人读的，只是机器偶尔执行一下。
+
+写在前面的话
+规范的初衷是为了代码的可维护性，让多人写出的代码像出自同一人之手
+该规范具有演化性，会随着实际情况做出相应的调整。开源地址：fe.code.guide
+该规范适用于开发阶段，最后上线的代码不一定符合该规范，因为上线代码可能会经过打包、混淆和压缩
+
+通则
+KISS原则:坚持简约，避免不必要的复杂化
+所有代码小写（常量命名、特殊名词、纯字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端编码规范">
+<meta property="og:url" content="http://zerosoul.github.io/2017/03/03/fe-code-style-guide/index.html">
+<meta property="og:site_name" content="杨二小">
+<meta property="og:description" content="代码是写给人读的，只是机器偶尔执行一下。
+
+写在前面的话
+规范的初衷是为了代码的可维护性，让多人写出的代码像出自同一人之手
+该规范具有演化性，会随着实际情况做出相应的调整。开源地址：fe.code.guide
+该规范适用于开发阶段，最后上线的代码不一定符合该规范，因为上线代码可能会经过打包、混淆和压缩
+
+通则
+KISS原则:坚持简约，避免不必要的复杂化
+所有代码小写（常量命名、特殊名词、纯字符">
+<meta property="og:image" content="http://zerosoul.github.io/code.jpg">
+<meta property="og:updated_time" content="2017-03-03T01:41:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端编码规范">
+<meta name="twitter:description" content="代码是写给人读的，只是机器偶尔执行一下。
+
+写在前面的话
+规范的初衷是为了代码的可维护性，让多人写出的代码像出自同一人之手
+该规范具有演化性，会随着实际情况做出相应的调整。开源地址：fe.code.guide
+该规范适用于开发阶段，最后上线的代码不一定符合该规范，因为上线代码可能会经过打包、混淆和压缩
+
+通则
+KISS原则:坚持简约，避免不必要的复杂化
+所有代码小写（常量命名、特殊名词、纯字符">
+<meta name="twitter:image" content="http://zerosoul.github.io/code.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zerosoul.github.io/2017/03/03/fe-code-style-guide/"/>
+
+  <title> 前端编码规范 | 杨二小 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?25693b171c4e4f11b7e2c8f9ad7a2c5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杨二小</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Machine repeats,Human creates.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端编码规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-03T09:25:05+08:00" content="2017-03-03">
+              2017-03-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/03/fe-code-style-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/fe-code-style-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ><i class="fa fa-spinner"></i></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="code.jpg" alt="code style jpg"></p>
+<blockquote>
+<p>代码是写给人读的，只是机器偶尔执行一下。</p>
+</blockquote>
+<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><ul>
+<li>规范的初衷是为了代码的可维护性，让多人写出的代码像出自同一人之手</li>
+<li>该规范具有演化性，会随着实际情况做出相应的调整。开源地址：<a href="https://github.com/zerosoul/fe.code.guide" target="_blank" rel="external">fe.code.guide</a></li>
+<li>该规范适用于开发阶段，最后上线的代码不一定符合该规范，因为上线代码可能会经过打包、混淆和压缩</li>
+</ul>
+<h2 id="通则"><a href="#通则" class="headerlink" title="通则"></a>通则</h2><ul>
+<li><strong><a href="http://baike.baidu.com/subview/5018/6328024.htm#viewPageContent" target="_blank" rel="external">KISS原则</a></strong>:坚持简约，避免不必要的复杂化</li>
+<li><strong>所有代码小写</strong>（常量命名、特殊名词、纯字符串除外）</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line"><span class="tag">&lt;<span class="name">A</span> <span class="attr">HREF</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">A</span>&gt;</span></div><div class="line">//推荐</div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img.png"</span> <span class="attr">alt</span>=<span class="string">"Image"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//不推荐</div><div class="line">color: #E5E5E5;</div><div class="line">//推荐</div><div class="line">color: #e5e5e5;</div></pre></td></tr></table></figure>
+<ul>
+<li>命名规则（项目，目录，HTML、CSS、JS、图片等静态文件）</li>
+</ul>
+<p>小写，以下划线分割，例：my_project_name</p>
+<ul>
+<li>注释（建议以下情况使用注释）<ul>
+<li>难于理解的代码段</li>
+<li>可能存在错误的代码段</li>
+<li>浏览器特殊的HACK代码</li>
+<li>业务逻辑强相关的代码</li>
+</ul>
+</li>
+</ul>
+<p>代码是人写的，也是由人维护，所以尽可能确保代码具备描述性，做到不注自释。<br>好注释能表达出代码的上下文和目的，不要只是复述从代码就能读出的信息。</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="文档骨架"><a href="#文档骨架" class="headerlink" title="文档骨架"></a>文档骨架</h3><p>PC：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><em>强制浏览器使用标准模式渲染，保证页面效果统一。IE浏览器使用最新版本，即<a href="http://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do" target="_blank" rel="external">Edge Mode</a></em>。</p>
+<p>Mobile：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"</span> <span class="attr">name</span>=<span class="string">"viewport"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><em>强制浏览器使用标准模式渲染，保证页面效果统一</em></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
+<li><strong>使用双空格短缩进</strong></li>
+<li>在属性中始终书写双引号</li>
+<li>自关闭元素不要使用斜杠结尾（<a href="http://blog.jobbole.com/61514/" target="_blank" rel="external">参考此处</a>）</li>
+</ul>
+<p>常见的自关闭元素：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">hr</span>&gt;</span> <span class="tag">&lt;<span class="name">img</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span>&gt;</span> <span class="tag">&lt;<span class="name">link</span>&gt;</span> <span class="tag">&lt;<span class="name">meta</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>不常见的自关闭元素：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">area</span>&gt;</span> <span class="tag">&lt;<span class="name">base</span>&gt;</span> <span class="tag">&lt;<span class="name">col</span>&gt;</span> <span class="tag">&lt;<span class="name">command</span>&gt;</span> <span class="tag">&lt;<span class="name">embed</span>&gt;</span> <span class="tag">&lt;<span class="name">keygen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">param</span>&gt;</span> <span class="tag">&lt;<span class="name">source</span>&gt;</span> <span class="tag">&lt;<span class="name">track</span>&gt;</span> <span class="tag">&lt;<span class="name">wbr</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="引用CSS和JavaScript文件"><a href="#引用CSS和JavaScript文件" class="headerlink" title="引用CSS和JavaScript文件"></a>引用CSS和JavaScript文件</h3><p>按照HTML5规范，一般来说，当CSS和JS文件被引用时，都会默认以 <code>text/css</code> 和 <code>text/javascript</code> 的方式，没必要特意为其指定 <code>type</code> 类型。例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 外部 CSS --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"demo.css"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 文档内CSS --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="comment">/* ... */</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- Javascript --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"demo.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="精简标签"><a href="#精简标签" class="headerlink" title="精简标签"></a>精简标签</h3><p>书写HTML时尽可能减少冗余的标签。比如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 不推荐 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"avatar"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--推荐 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"avatar"</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>另外，尽量不要在HTML写行内style、JS代码，遵守<strong>结构和样式、行为分离</strong>的原则。</p>
+<h3 id="实用为王"><a href="#实用为王" class="headerlink" title="实用为王"></a>实用为王</h3><p>尽量遵循 HTML 标准和语义，但是不要以牺牲实用性为代价。任何时候都要尽量使用最少的标签并保持最小的复杂度。</p>
+<h3 id="属性顺序"><a href="#属性顺序" class="headerlink" title="属性顺序"></a>属性顺序</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"..."</span> <span class="attr">id</span>=<span class="string">"..."</span> <span class="attr">data-toggle</span>=<span class="string">"modal"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">  Demo link</div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>class</li>
+<li>id,name</li>
+<li>data-*</li>
+<li>src,for,type,href,value</li>
+<li>title,alt</li>
+<li>role,aria-*</li>
+</ul>
+<p><code>class</code>能更好地重用组件，所以打头阵；<code>id</code>更加特定和专属，尽量控制使用。</p>
+<h3 id="布尔属性"><a href="#布尔属性" class="headerlink" title="布尔属性"></a>布尔属性</h3><blockquote>
+<p>某一元素如果调用了布尔属性，则代表该值为真，否则为假。</p>
+</blockquote>
+<p>简言之：不要赋值。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">disabled</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">checked</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">selected</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 不推荐 */</span></div><div class="line"><span class="selector-class">.selector</span>, <span class="selector-class">.selector-secondary</span>, <span class="selector-class">.selector</span><span class="selector-attr">[type=text]</span> &#123;</div><div class="line">  <span class="attribute">padding</span>:<span class="number">15px</span>;</div><div class="line">  <span class="attribute">margin</span>:<span class="number">0px</span> <span class="number">0px</span> <span class="number">15px</span>;</div><div class="line">  <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(0, 0, 0, 0.5);</div><div class="line">  <span class="attribute">box-shadow</span>:<span class="number">0px</span> <span class="number">1px</span> <span class="number">2px</span> <span class="number">#CCC</span>,inset <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="number">#FFFFFF</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/* 推荐 */</span></div><div class="line"><span class="selector-class">.selector</span>,</div><div class="line"><span class="selector-class">.selector-secondary</span>,</div><div class="line"><span class="selector-class">.selector</span><span class="selector-attr">[type="text"]</span> &#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">15px</span>;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">15px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0,0,0,.5);</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="number">#ccc</span>, inset <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>多个选择器，请换行</li>
+<li>区块结束符<code>}</code>独占一行</li>
+<li>不要忘记最后一个声明语句的<code>;</code></li>
+<li>省略小数点前的<code>0</code>：<code>0.5</code>=&gt;<code>.5</code></li>
+<li>零值省略单位：<code>margin: 0px;</code>=&gt;<code>margin: 0</code></li>
+<li>只有一条声明可以写在一行</li>
+</ul>
+<h3 id="声明顺序"><a href="#声明顺序" class="headerlink" title="声明顺序"></a>声明顺序</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.declaration-order</span> &#123;</div><div class="line">  <span class="comment">/* 定位 */</span></div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">z-index</span>: <span class="number">100</span>;</div><div class="line"></div><div class="line">  <span class="comment">/* 盒模型 */</span></div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">float</span>: right;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line"></div><div class="line">  <span class="comment">/* 排版 */</span></div><div class="line">  <span class="attribute">font</span>: normal <span class="number">13px</span> <span class="string">"Helvetica Neue"</span>, sans-serif;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line"></div><div class="line">  <span class="comment">/* 视觉 */</span></div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#f5f5f5</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#e5e5e5</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>;</div><div class="line"></div><div class="line">  <span class="comment">/* 其它 */</span></div><div class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>相关属性的声明按组以以下顺序排列：</p>
+<ol>
+<li>定位（Positioning）</li>
+<li>盒模型（Box model）</li>
+<li>排版（Typographic）</li>
+<li>视觉（Visual）</li>
+</ol>
+<p><strong>定位排首位是因为它可能会让元素脱离文档流并重写盒模型的相关样式</strong></p>
+<h3 id="禁止使用-import"><a href="#禁止使用-import" class="headerlink" title="禁止使用@import"></a><strong>禁止使用<code>@import</code></strong></h3><p>原因：<a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/" target="_blank" rel="external">参考此文</a></p>
+<h3 id="正确放置媒体查询语句"><a href="#正确放置媒体查询语句" class="headerlink" title="正确放置媒体查询语句"></a><strong>正确放置媒体查询语句</strong></h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.element &#123; ... &#125;</div><div class="line">.element-avatar &#123; ... &#125;</div><div class="line">.element-selected &#123; ... &#125;</div><div class="line"></div><div class="line">@media (min-width: 480px) &#123;</div><div class="line">  .element &#123; ...&#125;</div><div class="line">  .element-avatar &#123; ... &#125;</div><div class="line">  .element-selected &#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>尽可能把媒体查询语句放在相关的规则集后面，不要单独存放到某个文件，也不要放到样式表最后。这样做是为了以后同步修改更方便，相信我，这样做能让后来维护代码的人少骂你几句。</p>
+<h3 id="简写虽好，但不要滥用"><a href="#简写虽好，但不要滥用" class="headerlink" title="简写虽好，但不要滥用"></a>简写虽好，但不要滥用</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 不推荐 */</span></div><div class="line"><span class="selector-class">.element</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>;</div><div class="line">  <span class="attribute">background</span>: red;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"image.jpg"</span>);</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span> <span class="number">3px</span> <span class="number">0</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 推荐 */</span></div><div class="line"><span class="selector-class">.element</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"image.jpg"</span>);</div><div class="line">  <span class="attribute">border-top-left-radius</span>: <span class="number">3px</span>;</div><div class="line">  <span class="attribute">border-top-right-radius</span>: <span class="number">3px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一些属性可以合并简写，比如：</p>
+<ul>
+<li>padding</li>
+<li>margin</li>
+<li>font</li>
+<li>background</li>
+<li>border</li>
+<li>border-radius</li>
+</ul>
+<p>属性简写需要非常清楚属性值的正确顺序，而且在大多数情况下并不需要设置属性简写中包含的所有值，所以建议尽量分开声明会更加清晰。使用简写前，想一想有没有必要，<strong>少于三个</strong>合并属性建议不要简写。</p>
+<p><em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties" target="_blank" rel="external">这里</a>有一篇关于简写的好文章</em></p>
+<h3 id="选择器命名采用-分隔"><a href="#选择器命名采用-分隔" class="headerlink" title="选择器命名采用-分隔"></a>选择器命名采用<code>-</code>分隔</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 不推荐 */</span></div><div class="line"> <span class="selector-class">.hotelTitle</span> &#123;</div><div class="line">     <span class="attribute">font-weight</span>: bold;</div><div class="line"> &#125;</div><div class="line"><span class="comment">/* 推荐 */</span></div><div class="line"> <span class="selector-class">.hotel-title</span> &#123;</div><div class="line">     <span class="attribute">font-weight</span>: bold;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>比使用驼峰更加清晰。</li>
+<li><strong>产品线-产品-模块-子模块</strong></li>
+</ul>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><ul>
+<li>JS 换行缩进：采用 4 空格</li>
+<li>结束行添加分号<code>;</code></li>
+<li>避免使用 eval()</li>
+<li>JS调试使用<code>console.log()</code>及<code>console.dir()</code>，避免使用<code>alert()</code>，线上版需要注释或删掉所有调试代码</li>
+</ul>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>最外层统一使用单引号：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不推荐</span></div><div class="line"><span class="keyword">var</span> x = <span class="string">"test"</span>;</div><div class="line"><span class="comment">// 推荐</span></div><div class="line"><span class="keyword">var</span> y = <span class="string">'foo'</span>,</div><div class="line">    z = <span class="string">'&lt;div id="test"&gt;&lt;/div&gt;'</span>;</div></pre></td></tr></table></figure>
+<h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> thisIsMyName;</div><div class="line"><span class="keyword">var</span> goodID;</div><div class="line"><span class="keyword">var</span> reportURL;</div><div class="line"><span class="keyword">var</span> AndroidVersion;</div><div class="line"><span class="keyword">var</span> iOSVersion;</div><div class="line"><span class="keyword">var</span> MAX_COUNT = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 不推荐</span></div><div class="line"><span class="keyword">var</span> body = $(<span class="string">'body'</span>);</div><div class="line"><span class="comment">// 推荐</span></div><div class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>标准变量采用驼峰式命名</li>
+<li>常量全大写，用下划线连接</li>
+<li>特殊处理：<code>ID</code>,<code>URL</code>,<code>Android</code>,<code>iOS</code></li>
+<li>构造函数，大写第一个字母</li>
+<li>jQuery变量首字符为 <code>$</code>, 私有变量:首字符为<code>_</code></li>
+</ul>
+<h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingWithItems</span>(<span class="params">items</span>) </span>&#123;</div><div class="line">    <span class="comment">// 使用一个var声明</span></div><div class="line">    <span class="keyword">var</span> value = <span class="number">10</span>,</div><div class="line">        result = value + <span class="number">10</span>,</div><div class="line">        i,</div><div class="line">        len;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, len = items.length; i &lt; len; i++) &#123;</div><div class="line">        result += <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个函数作用域中所有的变量声明尽量提到函数首部，用一个var声明，不允许出现两个连续的var声明。</p>
+<h2 id="Smarty模板"><a href="#Smarty模板" class="headerlink" title="Smarty模板"></a>Smarty模板</h2><h3 id="划清PHP与Smarty的界限"><a href="#划清PHP与Smarty的界限" class="headerlink" title="划清PHP与Smarty的界限"></a>划清PHP与Smarty的界限</h3><p>PHP只是负责输出数据，并保持干净。切勿将业务逻辑代码放入Smarty中。</p>
+<h3 id="组合大于继承"><a href="#组合大于继承" class="headerlink" title="组合大于继承"></a>组合大于继承</h3><p>尽量不使用继承，即使使用，继承关系不要超过两层。</p>
+<h3 id="逻辑尽可能简洁，判断不要超过三层"><a href="#逻辑尽可能简洁，判断不要超过三层" class="headerlink" title="逻辑尽可能简洁，判断不要超过三层"></a>逻辑尽可能简洁，判断不要超过三层</h3><p>Smarty模板只是负责展示数据，尽量不要掺入逻辑判断，但判断过多时，就应该思考是否应该把这部分判断逻辑放入PHP端？或者，产品的业务逻辑如此复杂，是否已经是走入了错误的方向？如果你有更好的解决方式，奔向PM理论一番吧，少年，如果能想到这一步，你已经在成长。</p>
+<p><a href="http://www.smarty.net/best_practices" target="_blank" rel="external">Smarty官方最佳实践</a></p>
+<h2 id="性能清单"><a href="#性能清单" class="headerlink" title="性能清单"></a>性能清单</h2><h3 id="常规"><a href="#常规" class="headerlink" title="常规"></a>常规</h3><ul>
+<li>是否启用HTTP2？</li>
+<li><strong>静态文件是否使用CDN？独立域名？</strong></li>
+<li><strong>静态文件域名是否做到无Cookie？</strong></li>
+<li>DNS预取功能是否开启？</li>
+</ul>
+<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><ul>
+<li>JavaScript/CSS/HTML文件是否合并、压缩？</li>
+<li>是否存在行内样式和JS？</li>
+<li><strong>CSS有没有使用<code>@import</code>？</strong></li>
+<li>静态文本文件有没有开启Gzip？</li>
+<li><strong>是否做到科学使用图片格式？（PNG,JPG,GIF…适用场景及尺寸合适）</strong></li>
+<li>图片有没有压缩处理？</li>
+<li>图片资源有没有开启浏览器缓存？</li>
+<li>SVG文件有没有压缩处理？</li>
+<li>浏览器缓存是否做到高效利用？</li>
+<li><strong>对于非关键资源有没有做到异步或者延迟处理？</strong></li>
+</ul>
+<h3 id="度量标准"><a href="#度量标准" class="headerlink" title="度量标准"></a>度量标准</h3><p>通常，页面的性能通过以下数据大体感知出：</p>
+<ul>
+<li>所有文件的数量</li>
+<li>所有文件的大小</li>
+<li>DomReady时间</li>
+<li>页面下载时间</li>
+</ul>
+<h3 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h3><ul>
+<li><strong>CSS在头部加载</strong></li>
+<li><strong>JS文件在文档底部加载</strong></li>
+<li><strong><code>script</code>标签开启<code>defer</code>特性</strong></li>
+<li><strong>假如JS文件在头部加载，放在CSS之后</strong></li>
+<li>60fps情况下页面依然可以滚动浏览</li>
+<li>禁用<code>document.write</code></li>
+<li>防止CSS 动画的滥用</li>
+</ul>
+<h2 id="硬件性能"><a href="#硬件性能" class="headerlink" title="硬件性能"></a>硬件性能</h2><ul>
+<li>CPU使用率</li>
+<li>内存使用率</li>
+<li>GPU使用率</li>
+</ul>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><ul>
+<li>全站HTTPS</li>
+<li>站外资源的引用开启HTTPS</li>
+<li>启用Robots.txt</li>
+<li><strong>XSS成为不可能</strong></li>
+<li>开启<code>Content-Security-Policy</code>，并且只允许特指的几个域名</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>在<code>html</code>标签内正确设置语言</li>
+<li>指定<code>charset</code></li>
+<li>HTML通过验证</li>
+<li>指定404页面</li>
+<li>指定页面打印样式</li>
+</ul>
+<p>##上线检查清单</p>
+<ul>
+<li>设计稿高度还原（移动端：750）</li>
+<li>对业务的理解（有些问题不一定需要靠技术手段解决，锻炼伪需求的辨别能力）</li>
+<li>html标签的简洁性，语义性</li>
+<li>功能实现优先级：html&gt;CSS&gt;img&amp;JS</li>
+<li>渐进增强，优雅降级（PC：&gt;=IE9，Mobile：&gt;=Android 4.0）</li>
+<li>交互是否完备</li>
+<li>模板和静态页的易用性（把交付，当做产品来做，换位思考，考虑后端开发的感受）e.g.链接的设置</li>
+<li>模块化（把代码，当做积木来做，为将来的维护少挖坑）</li>
+<li>广告区块有个占位就行，统一占位和样式</li>
+<li>readme.txt（命名命的好，代码结构清晰，不readme也行）</li>
+<li>知己知彼（smarty模板语言，php better）</li>
+<li>新技术的应用（语言、工具）</li>
+<li>雅虎军规</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/编码/" rel="tag">#编码</a>
+          
+            <a href="/tags/规范/" rel="tag">#规范</a>
+          
+            <a href="/tags/性能优化/" rel="tag">#性能优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/06/array-filter-map-reduce-in-js/" rel="next" title="Javascript Array中的filter、map和reduce">
+                <i class="fa fa-chevron-left"></i> Javascript Array中的filter、map和reduce
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+<style>
+/* Default tab style */
+.payment-container{
+	width: 60%;
+	margin:0 auto;
+	display: none;
+	margin-top: 1em;
+}
+
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+.tabs a{
+	text-decoration: none;
+	color:#555;
+}
+.tabs nav ul {
+	border-top: 1px solid #A9B8BD;
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+/* Content */
+.qr-content-wrap {
+	position: relative;
+}
+
+.qr-content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.qr-content-wrap .tip{
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+
+.qr-content-wrap section.content-current {
+	display: block;
+}
+
+.qr-content-wrap section img {
+	width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+	.payment-container{
+		width: 85%;
+	}
+}
+
+/* Individual tab styles */
+
+/*****************************/
+/* Underline */
+/*****************************/
+
+.tabs-style-underline nav {
+	background: #fff;
+}
+
+.tabs-style-underline nav a {
+	padding: 0.25em 0 0.5em;
+	border-left: 1px solid #222;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+	border-bottom: 1px solid #999;
+}
+
+.tabs-style-underline nav li:last-child a {
+	border-right: 1px solid #222;
+}
+
+.tabs-style-underline nav li a::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	background: #222;
+	content: '';
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translate3d(0,150%,0);
+	transform: translate3d(0,150%,0);
+}
+
+.tabs-style-underline nav li.tab-current a::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.tabs-style-underline nav a span {
+	font-weight: 700;
+}
+section.donate{
+	text-align: center;
+	padding: 0 25px;
+}
+section.donate .tip{
+	margin-top: 1em;
+}
+section.donate .donate-circle{
+	font-size: 2em;
+    color: #fff;
+    border-radius: 1em;
+    border: 1px solid rgba(100, 162, 160, 0.5);
+    width: 2em;
+    background: #F38B09;
+    margin: 0 auto;
+}
+</style>
+<section class="donate" style="display:block;">
+	<div class="donate-circle">赏</div>
+	<p class="tip">如果文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+</section>
+<section class="payment-container">
+	<div class="tabs tabs-style-underline">
+		<nav>
+			<ul>
+				<li data-target="section-weixin" class="tab-current"><a href="#"><span>微信</span></a></li>
+				<li data-target="section-zfb"><a href="#"><span>支付宝</span></a></li>
+			</ul>
+		</nav>
+		<div class="qr-content-wrap">
+			<section class="content-current" id="section-weixin">
+				<p class="tip">微信环境下长按识别或保存</p>
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_wexin.jpg" alt="微信支付二维码">
+			</section>
+			<section id="section-zfb">
+				
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_zfb.jpg" alt="支付宝支付二维码">
+			</section>
+		</div><!-- /content -->
+	</div><!-- /tabs -->
+</section>
+<script>
+	(function(d) {
+		d.querySelectorAll(".donate-circle")[0].addEventListener("click",function(evt){
+			d.querySelectorAll(".donate")[0].style.display="none";
+			d.querySelectorAll(".payment-container")[0].style.display="block";
+		});
+		[].slice.call( d.querySelectorAll(".tabs ul li") ).forEach( function( el ) {
+			el.addEventListener("click",function(evt){
+				console.log(evt,this);
+				evt.preventDefault();
+				var idStr=this.getAttribute("data-target");
+				d.querySelectorAll(".tabs ul li.tab-current")[0].classList.remove("tab-current");
+				this.classList.add("tab-current");
+				d.querySelectorAll(".tabs .qr-content-wrap .content-current")[0].classList.remove("content-current");
+				d.getElementById(""+idStr).classList.add("content-current");
+
+			});
+		});
+	})(document);
+</script>
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/03/fe-code-style-guide/"
+           data-title="前端编码规范" data-url="http://zerosoul.github.io/2017/03/03/fe-code-style-guide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="杨二小" />
+          <p class="site-author-name" itemprop="name">杨二小</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">137</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zerosoul" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/2365376/yanggc?tab=profile" target="_blank" title="stackoverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  stackoverflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanggc2014" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xxfs.com" title="西西弗斯" target="_blank">西西弗斯</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.laoono.com/" title="老衲前端" target="_blank">老衲前端</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hammx.com/" title="大周的博客" target="_blank">大周的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daraw.cn/" title="DaraW" target="_blank">DaraW</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面的话"><span class="nav-number">1.</span> <span class="nav-text">写在前面的话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通则"><span class="nav-number">2.</span> <span class="nav-text">通则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">3.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档骨架"><span class="nav-number">3.1.</span> <span class="nav-text">文档骨架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">3.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用CSS和JavaScript文件"><span class="nav-number">3.3.</span> <span class="nav-text">引用CSS和JavaScript文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精简标签"><span class="nav-number">3.4.</span> <span class="nav-text">精简标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实用为王"><span class="nav-number">3.5.</span> <span class="nav-text">实用为王</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性顺序"><span class="nav-number">3.6.</span> <span class="nav-text">属性顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔属性"><span class="nav-number">3.7.</span> <span class="nav-text">布尔属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">4.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明顺序"><span class="nav-number">4.2.</span> <span class="nav-text">声明顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止使用-import"><span class="nav-number">4.3.</span> <span class="nav-text">禁止使用@import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确放置媒体查询语句"><span class="nav-number">4.4.</span> <span class="nav-text">正确放置媒体查询语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简写虽好，但不要滥用"><span class="nav-number">4.5.</span> <span class="nav-text">简写虽好，但不要滥用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器命名采用-分隔"><span class="nav-number">4.6.</span> <span class="nav-text">选择器命名采用-分隔</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript"><span class="nav-number">5.</span> <span class="nav-text">Javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引号"><span class="nav-number">5.1.</span> <span class="nav-text">引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量命名"><span class="nav-number">5.2.</span> <span class="nav-text">变量命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明"><span class="nav-number">5.3.</span> <span class="nav-text">变量声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Smarty模板"><span class="nav-number">6.</span> <span class="nav-text">Smarty模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#划清PHP与Smarty的界限"><span class="nav-number">6.1.</span> <span class="nav-text">划清PHP与Smarty的界限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合大于继承"><span class="nav-number">6.2.</span> <span class="nav-text">组合大于继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑尽可能简洁，判断不要超过三层"><span class="nav-number">6.3.</span> <span class="nav-text">逻辑尽可能简洁，判断不要超过三层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能清单"><span class="nav-number">7.</span> <span class="nav-text">性能清单</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常规"><span class="nav-number">7.1.</span> <span class="nav-text">常规</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源"><span class="nav-number">7.2.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#度量标准"><span class="nav-number">7.3.</span> <span class="nav-text">度量标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染性能"><span class="nav-number">7.4.</span> <span class="nav-text">渲染性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件性能"><span class="nav-number">8.</span> <span class="nav-text">硬件性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全"><span class="nav-number">9.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">10.</span> <span class="nav-text">其它</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨二小</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zerosoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
