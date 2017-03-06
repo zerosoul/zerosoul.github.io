@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zerosoul.github.io/"/>
-  <updated>2017-03-03T01:41:44.000Z</updated>
+  <updated>2017-03-06T02:25:37.000Z</updated>
   <id>http://zerosoul.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>前端编码规范</title>
+    <title>无规矩不成方圆--前端编码规范</title>
     <link href="http://zerosoul.github.io/2017/03/03/fe-code-style-guide/"/>
     <id>http://zerosoul.github.io/2017/03/03/fe-code-style-guide/</id>
     <published>2017-03-03T01:25:05.000Z</published>
-    <updated>2017-03-03T01:41:44.000Z</updated>
+    <updated>2017-03-06T02:25:37.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="code.jpg" alt="code style jpg"></p>
 <blockquote>
@@ -193,8 +193,7 @@
 <li>指定404页面</li>
 <li>指定页面打印样式</li>
 </ul>
-<p>##上线检查清单</p>
-<ul>
+<h2 id="上线检查清单"><a href="#上线检查清单" class="headerlink" title="上线检查清单"></a>上线检查清单</h2><ul>
 <li>设计稿高度还原（移动端：750）</li>
 <li>对业务的理解（有些问题不一定需要靠技术手段解决，锻炼伪需求的辨别能力）</li>
 <li>html标签的简洁性，语义性</li>
@@ -1265,13 +1264,13 @@
       <category term="读书笔记" scheme="http://zerosoul.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="理财" scheme="http://zerosoul.github.io/tags/%E7%90%86%E8%B4%A2/"/>
     
       <category term="富爸爸穷爸爸" scheme="http://zerosoul.github.io/tags/%E5%AF%8C%E7%88%B8%E7%88%B8%E7%A9%B7%E7%88%B8%E7%88%B8/"/>
     
       <category term="财商" scheme="http://zerosoul.github.io/tags/%E8%B4%A2%E5%95%86/"/>
+    
+      <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
