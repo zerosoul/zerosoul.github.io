@@ -103,7 +103,7 @@ Fet">
 好了，废话不多说，下面看看都有哪些新特性：
 Fet">
 <meta property="og:image" content="http://zerosoul.github.io/qiaobusi.jpg">
-<meta property="og:updated_time" content="2017-03-31T02:38:59.000Z">
+<meta property="og:updated_time" content="2017-03-31T02:46:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性">
 <meta name="twitter:description" content="伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得唠唠。
@@ -359,9 +359,9 @@ Fet">
 <p>这次新版本的发布不仅让web更为强大，同时也简化了当前代码的维护，使得web开发更得心应手。前端工程师利用这些改进能够给用户带来更好的体验，想想都有些小激动呢。</p>
 <p>好了，废话不多说，下面看看都有哪些新特性：</p>
 <h1 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h1><p>Fetch是<code>XMLHttpRequest</code>的改进版本。它能够以更简洁的方式异步获取资源，不仅如此，它还利用ECMAScript 2015(ES6)中的<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects" target="_blank" rel="external">Promises</a>,简化和链式响应操作。相对于<code>XMLHttpRequest</code>，Fetch API更简洁，更具有可读性，从而也就更易维护。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> jsonURLEndpoint = <span class="string">"https://svn.webkit.org/repository/webkit/trunk/Source/WebCore/features.json"</span>;</div><div class="line">fetch(jsonURLEndpoint, &#123;</div><div class="line">    method: <span class="string">"get"</span></div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    response.json().then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(json);</div><div class="line">    &#125;);</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.error(error);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>想了解更多请参考：<a href="https://fetch.spec.whatwg.org/" target="_blank" rel="external">Fetch Living Standard</a></p>
+<p>想了解更多请参考：<a href="https://fetch.spec.whatwg.org/" target="_blank" rel="external">Fetch标准</a></p>
 <h1 id="CSS栅格-CSS-Grid-Layout"><a href="#CSS栅格-CSS-Grid-Layout" class="headerlink" title="CSS栅格(CSS Grid Layout)"></a>CSS栅格(CSS Grid Layout)</h1><p>CSS栅格基于容器的行与列，给前端工程师带来一种强大的新布局方式。通过CSS提供的这种可控的页面布局工具，可以针对不同视口做出复杂的平面排版设计。以前利用CSS中的奇淫技巧才能实现的打印样式，像浮动和Flexbox，现在可以通过CSS栅格轻松实现。</p>
-<p>想了解更多请参考：<a href="https://webkit.org/blog/7434/css-grid-layout-a-new-layout-module-for-the-web/" target="_blank" rel="external">CSS Grid Layout: A New Layout Module for the Web</a></p>
+<p>想了解更多请参考：<a href="https://webkit.org/blog/7434/css-grid-layout-a-new-layout-module-for-the-web/" target="_blank" rel="external">CSS栅格系统: 一种新的布局方式</a></p>
 <h1 id="ECMAScript-2016-amp-ECMAScript-2017"><a href="#ECMAScript-2016-amp-ECMAScript-2017" class="headerlink" title="ECMAScript 2016 &amp; ECMAScript 2017"></a>ECMAScript 2016 &amp; ECMAScript 2017</h1><p>ECMAScript 2016 和 ECMAScript 2017是Javascript的最新语言标准，Safari 10.1新增了一些支持。当然，对ECMAScript 2016只是做了些微小的工作，毕竟2016版的标准由来已久，但2017版的标准却带来了不小的改进。</p>
 <p><a href="https://www.ecma-international.org/ecma-262/7.0/" target="_blank" rel="external">ECMAScript 2016</a>带来的改进包括：</p>
 <ul>
@@ -378,9 +378,9 @@ Fet">
 <h1 id="IndexDB-2-0"><a href="#IndexDB-2-0" class="headerlink" title="IndexDB 2.0"></a>IndexDB 2.0</h1><p>新版本的IndexDB有了更大的提升。它更快，与标准更兼容，并且支持IndexDB 2.0的新特性。IndexedDB 2.0加入了对二进制数据的支持，比如索引键，这样就不用再将其序列化为字符串或者对象数组。不仅如此，还有对象存储和索引重命名，<code>IDBObjectStore</code>的<code>getKey()</code>和<code>IDBIndex</code>的<code>getPrimaryKey()</code>。</p>
 <p>想了解更多请参考文档：<a href="https://www.w3.org/TR/IndexedDB-2/" target="_blank" rel="external">Indexed Database API 2.0</a></p>
 <h1 id="自定义元素-Custom-Elements"><a href="#自定义元素-Custom-Elements" class="headerlink" title="自定义元素(Custom Elements)"></a>自定义元素(Custom Elements)</h1><p>前端工程师不用再依赖Javascript框架来创建可复用组件啦，自定义元素可以轻松做到。和那些内置元素一样，自定义元素也可以通过特性（attributes）设置和获取值，并且还可以通过回调函数响应用户的交互。</p>
-<p>了解更多请参考：<a href="https://webkit.org/blog/7027/introducing-custom-elements/" target="_blank" rel="external">Introducing Custom Elements</a></p>
+<p>了解更多请参考：<a href="https://webkit.org/blog/7027/introducing-custom-elements/" target="_blank" rel="external">自定义元素简介</a></p>
 <h1 id="游戏手柄（Gamepad）"><a href="#游戏手柄（Gamepad）" class="headerlink" title="游戏手柄（Gamepad）"></a>游戏手柄（Gamepad）</h1><p>Gamepad API 让Web App使用游戏手柄成为可能。在macOS中任何无需通过额外驱动就可以使用的游戏手柄，Web App都可以完美兼容，当然，iOS中的MFi游戏手柄也同样支持。</p>
-<p>了解更多请参考：<a href="https://www.w3.org/TR/gamepad/" target="_blank" rel="external">Gamepad specifications</a></p>
+<p>了解更多请参考：<a href="https://www.w3.org/TR/gamepad/" target="_blank" rel="external">Gamepad规范</a></p>
 <h1 id="指针锁"><a href="#指针锁" class="headerlink" title="指针锁"></a>指针锁</h1><p>macOS中的Safari通过在元素中使用指针锁，可以让鼠标指针隐藏，同时还可以获取鼠标移动的数据。这个在开发Web游戏中特别有用。指针锁还扩展了<code>MouseEvents</code>接口，新增了<code>movementX</code>和<code>movementY</code>两个属性，即使鼠标移出了可视区域，依然能获取流信息。鼠标锁于某个元素时，Safari还会显示提示栏通知用户鼠标指针已隐藏。第一次按<code>ESC</code>键，会关闭提示栏，再次按<code>ESC</code>，将会释放指针锁。</p>
 <p>更多信息请移步：<a href="https://www.w3.org/TR/pointerlock/" target="_blank" rel="external">Pointer Lock 规范</a></p>
 <h1 id="全屏下的键盘输入"><a href="#全屏下的键盘输入" class="headerlink" title="全屏下的键盘输入"></a>全屏下的键盘输入</h1><p>WebKit通常会限制在全屏模式下的键盘输入，随着macOS Safari 10.1的更新，这一限制已去掉。</p>
