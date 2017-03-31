@@ -1,0 +1,1027 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="翻译,前端,iOS,safari," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨二小" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得唠唠。
+这次新版本的发布不仅让web更为强大，同时也简化了当前代码的维护，使得web开发更得心应手。前端工程师利用这些改进能够给用户带来更好的体验，想想都有些小激动呢。
+好了，废话不多说，下面看看都有哪些新特性：
+Fet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性">
+<meta property="og:url" content="http://zerosoul.github.io/2017/03/31/new-web-features-in-safari-10-1/index.html">
+<meta property="og:site_name" content="杨二小">
+<meta property="og:description" content="伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得唠唠。
+这次新版本的发布不仅让web更为强大，同时也简化了当前代码的维护，使得web开发更得心应手。前端工程师利用这些改进能够给用户带来更好的体验，想想都有些小激动呢。
+好了，废话不多说，下面看看都有哪些新特性：
+Fet">
+<meta property="og:image" content="http://zerosoul.github.io/qiaobusi.jpg">
+<meta property="og:updated_time" content="2017-03-31T02:38:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性">
+<meta name="twitter:description" content="伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得唠唠。
+这次新版本的发布不仅让web更为强大，同时也简化了当前代码的维护，使得web开发更得心应手。前端工程师利用这些改进能够给用户带来更好的体验，想想都有些小激动呢。
+好了，废话不多说，下面看看都有哪些新特性：
+Fet">
+<meta name="twitter:image" content="http://zerosoul.github.io/qiaobusi.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zerosoul.github.io/2017/03/31/new-web-features-in-safari-10-1/"/>
+
+  <title> 你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性 | 杨二小 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?25693b171c4e4f11b7e2c8f9ad7a2c5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">杨二小</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Machine repeats,Human creates.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-31T09:29:24+08:00" content="2017-03-31">
+              2017-03-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/它山之石/" itemprop="url" rel="index">
+                    <span itemprop="name">它山之石</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/31/new-web-features-in-safari-10-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/31/new-web-features-in-safari-10-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ><i class="fa fa-spinner"></i></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="qiaobusi.jpg" alt="乔布斯与HTML5"></p>
+<p>伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得唠唠。</p>
+<p>这次新版本的发布不仅让web更为强大，同时也简化了当前代码的维护，使得web开发更得心应手。前端工程师利用这些改进能够给用户带来更好的体验，想想都有些小激动呢。</p>
+<p>好了，废话不多说，下面看看都有哪些新特性：</p>
+<h1 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h1><p>Fetch是<code>XMLHttpRequest</code>的改进版本。它能够以更简洁的方式异步获取资源，不仅如此，它还利用ECMAScript 2015(ES6)中的<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects" target="_blank" rel="external">Promises</a>,简化和链式响应操作。相对于<code>XMLHttpRequest</code>，Fetch API更简洁，更具有可读性，从而也就更易维护。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> jsonURLEndpoint = <span class="string">"https://svn.webkit.org/repository/webkit/trunk/Source/WebCore/features.json"</span>;</div><div class="line">fetch(jsonURLEndpoint, &#123;</div><div class="line">    method: <span class="string">"get"</span></div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    response.json().then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(json);</div><div class="line">    &#125;);</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.error(error);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>想了解更多请参考：<a href="https://fetch.spec.whatwg.org/" target="_blank" rel="external">Fetch Living Standard</a></p>
+<h1 id="CSS栅格-CSS-Grid-Layout"><a href="#CSS栅格-CSS-Grid-Layout" class="headerlink" title="CSS栅格(CSS Grid Layout)"></a>CSS栅格(CSS Grid Layout)</h1><p>CSS栅格基于容器的行与列，给前端工程师带来一种强大的新布局方式。通过CSS提供的这种可控的页面布局工具，可以针对不同视口做出复杂的平面排版设计。以前利用CSS中的奇淫技巧才能实现的打印样式，像浮动和Flexbox，现在可以通过CSS栅格轻松实现。</p>
+<p>想了解更多请参考：<a href="https://webkit.org/blog/7434/css-grid-layout-a-new-layout-module-for-the-web/" target="_blank" rel="external">CSS Grid Layout: A New Layout Module for the Web</a></p>
+<h1 id="ECMAScript-2016-amp-ECMAScript-2017"><a href="#ECMAScript-2016-amp-ECMAScript-2017" class="headerlink" title="ECMAScript 2016 &amp; ECMAScript 2017"></a>ECMAScript 2016 &amp; ECMAScript 2017</h1><p>ECMAScript 2016 和 ECMAScript 2017是Javascript的最新语言标准，Safari 10.1新增了一些支持。当然，对ECMAScript 2016只是做了些微小的工作，毕竟2016版的标准由来已久，但2017版的标准却带来了不小的改进。</p>
+<p><a href="https://www.ecma-international.org/ecma-262/7.0/" target="_blank" rel="external">ECMAScript 2016</a>带来的改进包括：</p>
+<ul>
+<li>求幂运算符（<code>x ** y</code>可以替代<code>Math.pow(x,y)</code>，更简洁了！）</li>
+<li><code>Array.prototype.includes</code>（与<code>Array.prototype.indexOf</code>类似，只不过能对<code>NaN</code>做出识别）</li>
+</ul>
+<p><a href="https://tc39.github.io/ecma262/" target="_blank" rel="external">ECMAScript 2017</a>带来了:</p>
+<ul>
+<li><code>async</code>和<code>await</code>语法，</li>
+<li>共享内存对象，包括原子类型（Atomics）和（缓冲数组）Shared Array Buffers</li>
+<li><code>String.prototype.padStart</code>,<code>String.prototype.padEnd</code>,<code>String.prototype.values</code>和<code>String.prototype.entries</code></li>
+<li>允许在函数参数列表和调用中使用逗号</li>
+</ul>
+<h1 id="IndexDB-2-0"><a href="#IndexDB-2-0" class="headerlink" title="IndexDB 2.0"></a>IndexDB 2.0</h1><p>新版本的IndexDB有了更大的提升。它更快，与标准更兼容，并且支持IndexDB 2.0的新特性。IndexedDB 2.0加入了对二进制数据的支持，比如索引键，这样就不用再将其序列化为字符串或者对象数组。不仅如此，还有对象存储和索引重命名，<code>IDBObjectStore</code>的<code>getKey()</code>和<code>IDBIndex</code>的<code>getPrimaryKey()</code>。</p>
+<p>想了解更多请参考文档：<a href="https://www.w3.org/TR/IndexedDB-2/" target="_blank" rel="external">Indexed Database API 2.0</a></p>
+<h1 id="自定义元素-Custom-Elements"><a href="#自定义元素-Custom-Elements" class="headerlink" title="自定义元素(Custom Elements)"></a>自定义元素(Custom Elements)</h1><p>前端工程师不用再依赖Javascript框架来创建可复用组件啦，自定义元素可以轻松做到。和那些内置元素一样，自定义元素也可以通过特性（attributes）设置和获取值，并且还可以通过回调函数响应用户的交互。</p>
+<p>了解更多请参考：<a href="https://webkit.org/blog/7027/introducing-custom-elements/" target="_blank" rel="external">Introducing Custom Elements</a></p>
+<h1 id="游戏手柄（Gamepad）"><a href="#游戏手柄（Gamepad）" class="headerlink" title="游戏手柄（Gamepad）"></a>游戏手柄（Gamepad）</h1><p>Gamepad API 让Web App使用游戏手柄成为可能。在macOS中任何无需通过额外驱动就可以使用的游戏手柄，Web App都可以完美兼容，当然，iOS中的MFi游戏手柄也同样支持。</p>
+<p>了解更多请参考：<a href="https://www.w3.org/TR/gamepad/" target="_blank" rel="external">Gamepad specifications</a></p>
+<h1 id="指针锁"><a href="#指针锁" class="headerlink" title="指针锁"></a>指针锁</h1><p>macOS中的Safari通过在元素中使用指针锁，可以让鼠标指针隐藏，同时还可以获取鼠标移动的数据。这个在开发Web游戏中特别有用。指针锁还扩展了<code>MouseEvents</code>接口，新增了<code>movementX</code>和<code>movementY</code>两个属性，即使鼠标移出了可视区域，依然能获取流信息。鼠标锁于某个元素时，Safari还会显示提示栏通知用户鼠标指针已隐藏。第一次按<code>ESC</code>键，会关闭提示栏，再次按<code>ESC</code>，将会释放指针锁。</p>
+<p>更多信息请移步：<a href="https://www.w3.org/TR/pointerlock/" target="_blank" rel="external">Pointer Lock 规范</a></p>
+<h1 id="全屏下的键盘输入"><a href="#全屏下的键盘输入" class="headerlink" title="全屏下的键盘输入"></a>全屏下的键盘输入</h1><p>WebKit通常会限制在全屏模式下的键盘输入，随着macOS Safari 10.1的更新，这一限制已去掉。</p>
+<h1 id="交互式的表单验证"><a href="#交互式的表单验证" class="headerlink" title="交互式的表单验证"></a>交互式的表单验证</h1><p>在旧浏览器时代，你知道我指的是哪一款o(╯□╰)o，表单验证一直是件头痛的事情，后来HTML5引入了一些表单元素的特性，解决了一些常见的验证需求，比如必填，约束数据类型等。Safari 10.1更进一步，引入了<code>checkValidity()</code>和<code>reportValidity()</code>两个扩展接口，让提示更标准化，大大减少了Javascript代码。</p>
+<p>了解更多：<a href="https://webkit.org/blog/7099/html-interactive-form-validation/" target="_blank" rel="external">HTML交互式表单验证</a></p>
+<h1 id="输入事件"><a href="#输入事件" class="headerlink" title="输入事件"></a>输入事件</h1><p>输入事件简化了富文本输入的实现。新增的<code>beforeinput</code>监听并截获默认的输入行为，并通过新特性强化了该事件。</p>
+<p>了解更多：<a href="https://webkit.org/blog/7358/enhanced-editing-with-input-events/" target="_blank" rel="external">使用输入事件增强编辑体验</a></p>
+<h1 id="HTML5的下载特性"><a href="#HTML5的下载特性" class="headerlink" title="HTML5的下载特性"></a>HTML5的下载特性</h1><p><code>a</code>标签中的<code>download</code>特性标识了是个可下载的链接，用户点击后往往会直接下载资源而非跳转新页面。不仅如此，前端工程师也可以完全使用Javascript来创建blob数据当做文件资源来下载。如果<code>download</code>指定了值，那么就相当于重命名了下载文件的名字。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://webkit.org/favicon.ico"</span> <span class="attr">download</span>=<span class="string">"webkit-favicon.ico"</span>&gt;</span>Download Favicon<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>了解更多：<a href="https://html.spec.whatwg.org/multipage/semantics.html#downloading-resources" target="_blank" rel="external">HTML5中下载资源</a></p>
+<h1 id="HTML媒体捕捉"><a href="#HTML媒体捕捉" class="headerlink" title="HTML媒体捕捉"></a>HTML媒体捕捉</h1><p>在新版的Safari中，HTML媒体捕捉扩展了其捕捉类型，可以使用设备上的相机和麦克来获取用户输入。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"imageCapture"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span> <span class="attr">capture</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"videoCapture"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"video/*"</span> <span class="attr">capture</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"audioCapture"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"audio/*"</span> <span class="attr">capture</span>&gt;</span>`</div></pre></td></tr></table></figure>
+<p>更多细节请移步：<a href="https://www.w3.org/TR/html-media-capture/" target="_blank" rel="external">HTML媒体捕捉</a></p>
+<h1 id="改进了fixed和sticky元素的定位"><a href="#改进了fixed和sticky元素的定位" class="headerlink" title="改进了fixed和sticky元素的定位"></a>改进了<code>fixed</code>和<code>sticky</code>元素的定位</h1><p>当捏合放大（pinch-to-zoom）时，固定和粘连元素的定位表现有了提升，这得归功于<strong>视觉窗口</strong>(visual viewports)。有了视觉窗口，输入元素获取焦点时不再会禁用固定和粘连元素的定位了。</p>
+<h1 id="改进的Web调试"><a href="#改进的Web调试" class="headerlink" title="改进的Web调试"></a>改进的Web调试</h1><p>WebKit新增了针对Web Worker的调试支持，同时对正在调试和即将执行的语句高亮，这样，就能清楚看出哪条代码即将执行，在一些控制流程非常复杂或者多条语句写在了一行中，这种改进的体验非常棒。</p>
+<p>更详细的介绍请移步：<a href="https://webkit.org/blog/7219/javascript-debugging-improvements/" target="_blank" rel="external">Javascript调试改进</a></p>
+<h1 id="CSS全范围色彩（Wide-Gamut-Colors）"><a href="#CSS全范围色彩（Wide-Gamut-Colors）" class="headerlink" title="CSS全范围色彩（Wide-Gamut Colors）"></a>CSS全范围色彩（Wide-Gamut Colors）</h1><p>现在的设备能够支持色域更广的颜色。随着新版本Safari的发行，前端工程师能够扩展出更多的色彩想象力，包括Display P3色彩域。通过<code>color-gamut</code>媒体查询可以测试出显示器是否支持该特性，然后用CSS新增的<code>color()</code>函数，定义出新的颜色。</p>
+<pre><code class="CSS">@<span class="keyword">media</span> (color-gamut:p3) {
+    <span class="selector-class">.brightred</span> {
+        <span class="attribute">color</span>: <span class="built_in">color</span>(display-p3 1.0 0 0);
+    }
+}
+</code></pre>
+<p>更多请访问：<a href="https://drafts.csswg.org/css-color/" target="_blank" rel="external">CSS颜色模块标准</a></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>这篇文章翻译自<a href="https://webkit.org/blog/7477/new-web-features-in-safari-10-1/" target="_blank" rel="external">New Web Features in Safari 10.1</a>，内容略有删减，有些特性我也没搞懂，比如<code>color-gamut</code>，所以可能会有词不达意的地方，望见谅。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/safari/" rel="tag">#safari</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/03/fe-code-style-guide/" rel="next" title="无规矩不成方圆--前端编码规范">
+                <i class="fa fa-chevron-left"></i> 无规矩不成方圆--前端编码规范
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+<style>
+/* Default tab style */
+.payment-container{
+	width: 60%;
+	margin:0 auto;
+	display: none;
+	margin-top: 1em;
+}
+
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+/* Nav */
+.tabs nav {
+	text-align: center;
+}
+.tabs a{
+	text-decoration: none;
+	color:#555;
+}
+.tabs nav ul {
+	border-top: 1px solid #A9B8BD;
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 0.75em;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+/* Content */
+.qr-content-wrap {
+	position: relative;
+}
+
+.qr-content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.qr-content-wrap .tip{
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+
+.qr-content-wrap section.content-current {
+	display: block;
+}
+
+.qr-content-wrap section img {
+	width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+	.payment-container{
+		width: 85%;
+	}
+}
+
+/* Individual tab styles */
+
+/*****************************/
+/* Underline */
+/*****************************/
+
+.tabs-style-underline nav {
+	background: #fff;
+}
+
+.tabs-style-underline nav a {
+	padding: 0.25em 0 0.5em;
+	border-left: 1px solid #222;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+	border-bottom: 1px solid #999;
+}
+
+.tabs-style-underline nav li:last-child a {
+	border-right: 1px solid #222;
+}
+
+.tabs-style-underline nav li a::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 6px;
+	background: #222;
+	content: '';
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translate3d(0,150%,0);
+	transform: translate3d(0,150%,0);
+}
+
+.tabs-style-underline nav li.tab-current a::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.tabs-style-underline nav a span {
+	font-weight: 700;
+}
+section.donate{
+	text-align: center;
+	padding: 0 25px;
+}
+section.donate .tip{
+	margin-top: 1em;
+}
+section.donate .donate-circle{
+	font-size: 2em;
+    color: #fff;
+    border-radius: 1em;
+    border: 1px solid rgba(100, 162, 160, 0.5);
+    width: 2em;
+    background: #F38B09;
+    margin: 0 auto;
+}
+</style>
+<section class="donate" style="display:block;">
+	<div class="donate-circle">赏</div>
+	<p class="tip">如果文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+</section>
+<section class="payment-container">
+	<div class="tabs tabs-style-underline">
+		<nav>
+			<ul>
+				<li data-target="section-weixin" class="tab-current"><a href="#"><span>微信</span></a></li>
+				<li data-target="section-zfb"><a href="#"><span>支付宝</span></a></li>
+			</ul>
+		</nav>
+		<div class="qr-content-wrap">
+			<section class="content-current" id="section-weixin">
+				<p class="tip">微信环境下长按识别或保存</p>
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_wexin.jpg" alt="微信支付二维码">
+			</section>
+			<section id="section-zfb">
+				
+				<img  class="nofancy" src="http://7xo6wq.com1.z0.glb.clouddn.com/pay_zfb.jpg" alt="支付宝支付二维码">
+			</section>
+		</div><!-- /content -->
+	</div><!-- /tabs -->
+</section>
+<script>
+	(function(d) {
+		d.querySelectorAll(".donate-circle")[0].addEventListener("click",function(evt){
+			d.querySelectorAll(".donate")[0].style.display="none";
+			d.querySelectorAll(".payment-container")[0].style.display="block";
+		});
+		[].slice.call( d.querySelectorAll(".tabs ul li") ).forEach( function( el ) {
+			el.addEventListener("click",function(evt){
+				console.log(evt,this);
+				evt.preventDefault();
+				var idStr=this.getAttribute("data-target");
+				d.querySelectorAll(".tabs ul li.tab-current")[0].classList.remove("tab-current");
+				this.classList.add("tab-current");
+				d.querySelectorAll(".tabs .qr-content-wrap .content-current")[0].classList.remove("content-current");
+				d.getElementById(""+idStr).classList.add("content-current");
+
+			});
+		});
+	})(document);
+</script>
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/31/new-web-features-in-safari-10-1/"
+           data-title="你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性" data-url="http://zerosoul.github.io/2017/03/31/new-web-features-in-safari-10-1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="杨二小" />
+          <p class="site-author-name" itemprop="name">杨二小</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">139</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zerosoul" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/2365376/yanggc?tab=profile" target="_blank" title="stackoverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  stackoverflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanggc2014" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xxfs.com" title="西西弗斯" target="_blank">西西弗斯</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.laoono.com/" title="老衲前端" target="_blank">老衲前端</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hammx.com/" title="大周的博客" target="_blank">大周的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daraw.cn/" title="DaraW" target="_blank">DaraW</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fetch"><span class="nav-number">1.</span> <span class="nav-text">Fetch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS栅格-CSS-Grid-Layout"><span class="nav-number">2.</span> <span class="nav-text">CSS栅格(CSS Grid Layout)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript-2016-amp-ECMAScript-2017"><span class="nav-number">3.</span> <span class="nav-text">ECMAScript 2016 & ECMAScript 2017</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IndexDB-2-0"><span class="nav-number">4.</span> <span class="nav-text">IndexDB 2.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义元素-Custom-Elements"><span class="nav-number">5.</span> <span class="nav-text">自定义元素(Custom Elements)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#游戏手柄（Gamepad）"><span class="nav-number">6.</span> <span class="nav-text">游戏手柄（Gamepad）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指针锁"><span class="nav-number">7.</span> <span class="nav-text">指针锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全屏下的键盘输入"><span class="nav-number">8.</span> <span class="nav-text">全屏下的键盘输入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互式的表单验证"><span class="nav-number">9.</span> <span class="nav-text">交互式的表单验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入事件"><span class="nav-number">10.</span> <span class="nav-text">输入事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5的下载特性"><span class="nav-number">11.</span> <span class="nav-text">HTML5的下载特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML媒体捕捉"><span class="nav-number">12.</span> <span class="nav-text">HTML媒体捕捉</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#改进了fixed和sticky元素的定位"><span class="nav-number">13.</span> <span class="nav-text">改进了fixed和sticky元素的定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#改进的Web调试"><span class="nav-number">14.</span> <span class="nav-text">改进的Web调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS全范围色彩（Wide-Gamut-Colors）"><span class="nav-number">15.</span> <span class="nav-text">CSS全范围色彩（Wide-Gamut Colors）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">16.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨二小</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zerosoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

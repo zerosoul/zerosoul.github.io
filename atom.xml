@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zerosoul.github.io/"/>
-  <updated>2017-03-06T02:25:37.000Z</updated>
+  <updated>2017-03-31T02:38:59.000Z</updated>
   <id>http://zerosoul.github.io/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你可能不知道的Safari 10.1(iOS 10.3)Web开发新特性</title>
+    <link href="http://zerosoul.github.io/2017/03/31/new-web-features-in-safari-10-1/"/>
+    <id>http://zerosoul.github.io/2017/03/31/new-web-features-in-safari-10-1/</id>
+    <published>2017-03-31T01:29:24.000Z</published>
+    <updated>2017-03-31T02:38:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="qiaobusi.jpg" alt="乔布斯与HTML5"></p>
+<p>伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得唠唠。</p>
+<p>这次新版本的发布不仅让web更为强大，同时也简化了当前代码的维护，使得web开发更得心应手。前端工程师利用这些改进能够给用户带来更好的体验，想想都有些小激动呢。</p>
+<p>好了，废话不多说，下面看看都有哪些新特性：</p>
+<h1 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h1><p>Fetch是<code>XMLHttpRequest</code>的改进版本。它能够以更简洁的方式异步获取资源，不仅如此，它还利用ECMAScript 2015(ES6)中的<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects" target="_blank" rel="external">Promises</a>,简化和链式响应操作。相对于<code>XMLHttpRequest</code>，Fetch API更简洁，更具有可读性，从而也就更易维护。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> jsonURLEndpoint = <span class="string">"https://svn.webkit.org/repository/webkit/trunk/Source/WebCore/features.json"</span>;</div><div class="line">fetch(jsonURLEndpoint, &#123;</div><div class="line">    method: <span class="string">"get"</span></div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    response.json().then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(json);</div><div class="line">    &#125;);</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.error(error);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>想了解更多请参考：<a href="https://fetch.spec.whatwg.org/" target="_blank" rel="external">Fetch Living Standard</a></p>
+<h1 id="CSS栅格-CSS-Grid-Layout"><a href="#CSS栅格-CSS-Grid-Layout" class="headerlink" title="CSS栅格(CSS Grid Layout)"></a>CSS栅格(CSS Grid Layout)</h1><p>CSS栅格基于容器的行与列，给前端工程师带来一种强大的新布局方式。通过CSS提供的这种可控的页面布局工具，可以针对不同视口做出复杂的平面排版设计。以前利用CSS中的奇淫技巧才能实现的打印样式，像浮动和Flexbox，现在可以通过CSS栅格轻松实现。</p>
+<p>想了解更多请参考：<a href="https://webkit.org/blog/7434/css-grid-layout-a-new-layout-module-for-the-web/" target="_blank" rel="external">CSS Grid Layout: A New Layout Module for the Web</a></p>
+<h1 id="ECMAScript-2016-amp-ECMAScript-2017"><a href="#ECMAScript-2016-amp-ECMAScript-2017" class="headerlink" title="ECMAScript 2016 &amp; ECMAScript 2017"></a>ECMAScript 2016 &amp; ECMAScript 2017</h1><p>ECMAScript 2016 和 ECMAScript 2017是Javascript的最新语言标准，Safari 10.1新增了一些支持。当然，对ECMAScript 2016只是做了些微小的工作，毕竟2016版的标准由来已久，但2017版的标准却带来了不小的改进。</p>
+<p><a href="https://www.ecma-international.org/ecma-262/7.0/" target="_blank" rel="external">ECMAScript 2016</a>带来的改进包括：</p>
+<ul>
+<li>求幂运算符（<code>x ** y</code>可以替代<code>Math.pow(x,y)</code>，更简洁了！）</li>
+<li><code>Array.prototype.includes</code>（与<code>Array.prototype.indexOf</code>类似，只不过能对<code>NaN</code>做出识别）</li>
+</ul>
+<p><a href="https://tc39.github.io/ecma262/" target="_blank" rel="external">ECMAScript 2017</a>带来了:</p>
+<ul>
+<li><code>async</code>和<code>await</code>语法，</li>
+<li>共享内存对象，包括原子类型（Atomics）和（缓冲数组）Shared Array Buffers</li>
+<li><code>String.prototype.padStart</code>,<code>String.prototype.padEnd</code>,<code>String.prototype.values</code>和<code>String.prototype.entries</code></li>
+<li>允许在函数参数列表和调用中使用逗号</li>
+</ul>
+<h1 id="IndexDB-2-0"><a href="#IndexDB-2-0" class="headerlink" title="IndexDB 2.0"></a>IndexDB 2.0</h1><p>新版本的IndexDB有了更大的提升。它更快，与标准更兼容，并且支持IndexDB 2.0的新特性。IndexedDB 2.0加入了对二进制数据的支持，比如索引键，这样就不用再将其序列化为字符串或者对象数组。不仅如此，还有对象存储和索引重命名，<code>IDBObjectStore</code>的<code>getKey()</code>和<code>IDBIndex</code>的<code>getPrimaryKey()</code>。</p>
+<p>想了解更多请参考文档：<a href="https://www.w3.org/TR/IndexedDB-2/" target="_blank" rel="external">Indexed Database API 2.0</a></p>
+<h1 id="自定义元素-Custom-Elements"><a href="#自定义元素-Custom-Elements" class="headerlink" title="自定义元素(Custom Elements)"></a>自定义元素(Custom Elements)</h1><p>前端工程师不用再依赖Javascript框架来创建可复用组件啦，自定义元素可以轻松做到。和那些内置元素一样，自定义元素也可以通过特性（attributes）设置和获取值，并且还可以通过回调函数响应用户的交互。</p>
+<p>了解更多请参考：<a href="https://webkit.org/blog/7027/introducing-custom-elements/" target="_blank" rel="external">Introducing Custom Elements</a></p>
+<h1 id="游戏手柄（Gamepad）"><a href="#游戏手柄（Gamepad）" class="headerlink" title="游戏手柄（Gamepad）"></a>游戏手柄（Gamepad）</h1><p>Gamepad API 让Web App使用游戏手柄成为可能。在macOS中任何无需通过额外驱动就可以使用的游戏手柄，Web App都可以完美兼容，当然，iOS中的MFi游戏手柄也同样支持。</p>
+<p>了解更多请参考：<a href="https://www.w3.org/TR/gamepad/" target="_blank" rel="external">Gamepad specifications</a></p>
+<h1 id="指针锁"><a href="#指针锁" class="headerlink" title="指针锁"></a>指针锁</h1><p>macOS中的Safari通过在元素中使用指针锁，可以让鼠标指针隐藏，同时还可以获取鼠标移动的数据。这个在开发Web游戏中特别有用。指针锁还扩展了<code>MouseEvents</code>接口，新增了<code>movementX</code>和<code>movementY</code>两个属性，即使鼠标移出了可视区域，依然能获取流信息。鼠标锁于某个元素时，Safari还会显示提示栏通知用户鼠标指针已隐藏。第一次按<code>ESC</code>键，会关闭提示栏，再次按<code>ESC</code>，将会释放指针锁。</p>
+<p>更多信息请移步：<a href="https://www.w3.org/TR/pointerlock/" target="_blank" rel="external">Pointer Lock 规范</a></p>
+<h1 id="全屏下的键盘输入"><a href="#全屏下的键盘输入" class="headerlink" title="全屏下的键盘输入"></a>全屏下的键盘输入</h1><p>WebKit通常会限制在全屏模式下的键盘输入，随着macOS Safari 10.1的更新，这一限制已去掉。</p>
+<h1 id="交互式的表单验证"><a href="#交互式的表单验证" class="headerlink" title="交互式的表单验证"></a>交互式的表单验证</h1><p>在旧浏览器时代，你知道我指的是哪一款o(╯□╰)o，表单验证一直是件头痛的事情，后来HTML5引入了一些表单元素的特性，解决了一些常见的验证需求，比如必填，约束数据类型等。Safari 10.1更进一步，引入了<code>checkValidity()</code>和<code>reportValidity()</code>两个扩展接口，让提示更标准化，大大减少了Javascript代码。</p>
+<p>了解更多：<a href="https://webkit.org/blog/7099/html-interactive-form-validation/" target="_blank" rel="external">HTML交互式表单验证</a></p>
+<h1 id="输入事件"><a href="#输入事件" class="headerlink" title="输入事件"></a>输入事件</h1><p>输入事件简化了富文本输入的实现。新增的<code>beforeinput</code>监听并截获默认的输入行为，并通过新特性强化了该事件。</p>
+<p>了解更多：<a href="https://webkit.org/blog/7358/enhanced-editing-with-input-events/" target="_blank" rel="external">使用输入事件增强编辑体验</a></p>
+<h1 id="HTML5的下载特性"><a href="#HTML5的下载特性" class="headerlink" title="HTML5的下载特性"></a>HTML5的下载特性</h1><p><code>a</code>标签中的<code>download</code>特性标识了是个可下载的链接，用户点击后往往会直接下载资源而非跳转新页面。不仅如此，前端工程师也可以完全使用Javascript来创建blob数据当做文件资源来下载。如果<code>download</code>指定了值，那么就相当于重命名了下载文件的名字。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://webkit.org/favicon.ico"</span> <span class="attr">download</span>=<span class="string">"webkit-favicon.ico"</span>&gt;</span>Download Favicon<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>了解更多：<a href="https://html.spec.whatwg.org/multipage/semantics.html#downloading-resources" target="_blank" rel="external">HTML5中下载资源</a></p>
+<h1 id="HTML媒体捕捉"><a href="#HTML媒体捕捉" class="headerlink" title="HTML媒体捕捉"></a>HTML媒体捕捉</h1><p>在新版的Safari中，HTML媒体捕捉扩展了其捕捉类型，可以使用设备上的相机和麦克来获取用户输入。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"imageCapture"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span> <span class="attr">capture</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"videoCapture"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"video/*"</span> <span class="attr">capture</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"audioCapture"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"audio/*"</span> <span class="attr">capture</span>&gt;</span>`</div></pre></td></tr></table></figure>
+<p>更多细节请移步：<a href="https://www.w3.org/TR/html-media-capture/" target="_blank" rel="external">HTML媒体捕捉</a></p>
+<h1 id="改进了fixed和sticky元素的定位"><a href="#改进了fixed和sticky元素的定位" class="headerlink" title="改进了fixed和sticky元素的定位"></a>改进了<code>fixed</code>和<code>sticky</code>元素的定位</h1><p>当捏合放大（pinch-to-zoom）时，固定和粘连元素的定位表现有了提升，这得归功于<strong>视觉窗口</strong>(visual viewports)。有了视觉窗口，输入元素获取焦点时不再会禁用固定和粘连元素的定位了。</p>
+<h1 id="改进的Web调试"><a href="#改进的Web调试" class="headerlink" title="改进的Web调试"></a>改进的Web调试</h1><p>WebKit新增了针对Web Worker的调试支持，同时对正在调试和即将执行的语句高亮，这样，就能清楚看出哪条代码即将执行，在一些控制流程非常复杂或者多条语句写在了一行中，这种改进的体验非常棒。</p>
+<p>更详细的介绍请移步：<a href="https://webkit.org/blog/7219/javascript-debugging-improvements/" target="_blank" rel="external">Javascript调试改进</a></p>
+<h1 id="CSS全范围色彩（Wide-Gamut-Colors）"><a href="#CSS全范围色彩（Wide-Gamut-Colors）" class="headerlink" title="CSS全范围色彩（Wide-Gamut Colors）"></a>CSS全范围色彩（Wide-Gamut Colors）</h1><p>现在的设备能够支持色域更广的颜色。随着新版本Safari的发行，前端工程师能够扩展出更多的色彩想象力，包括Display P3色彩域。通过<code>color-gamut</code>媒体查询可以测试出显示器是否支持该特性，然后用CSS新增的<code>color()</code>函数，定义出新的颜色。</p>
+<pre><code class="CSS">@<span class="keyword">media</span> (color-gamut:p3) {
+    <span class="selector-class">.brightred</span> {
+        <span class="attribute">color</span>: <span class="built_in">color</span>(display-p3 1.0 0 0);
+    }
+}
+</code></pre>
+<p>更多请访问：<a href="https://drafts.csswg.org/css-color/" target="_blank" rel="external">CSS颜色模块标准</a></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>这篇文章翻译自<a href="https://webkit.org/blog/7477/new-web-features-in-safari-10-1/" target="_blank" rel="external">New Web Features in Safari 10.1</a>，内容略有删减，有些特性我也没搞懂，比如<code>color-gamut</code>，所以可能会有词不达意的地方，望见谅。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;qiaobusi.jpg&quot; alt=&quot;乔布斯与HTML5&quot;&gt;&lt;/p&gt;
+&lt;p&gt;伴随着 iOS 10.3 和 macOS Sierra 10.12.4 的更新，一个新版本的Safari也随之而来，其中有许多值得一提的web新特性让前端工程师激动不已，恩，值得
+    
+    </summary>
+    
+      <category term="它山之石" scheme="http://zerosoul.github.io/categories/%E5%AE%83%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
+    
+    
+      <category term="翻译" scheme="http://zerosoul.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="前端" scheme="http://zerosoul.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="iOS" scheme="http://zerosoul.github.io/tags/iOS/"/>
+    
+      <category term="safari" scheme="http://zerosoul.github.io/tags/safari/"/>
+    
+  </entry>
   
   <entry>
     <title>无规矩不成方圆--前端编码规范</title>
@@ -1264,13 +1345,13 @@
       <category term="读书笔记" scheme="http://zerosoul.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="理财" scheme="http://zerosoul.github.io/tags/%E7%90%86%E8%B4%A2/"/>
     
       <category term="富爸爸穷爸爸" scheme="http://zerosoul.github.io/tags/%E5%AF%8C%E7%88%B8%E7%88%B8%E7%A9%B7%E7%88%B8%E7%88%B8/"/>
     
       <category term="财商" scheme="http://zerosoul.github.io/tags/%E8%B4%A2%E5%95%86/"/>
-    
-      <category term="读书笔记" scheme="http://zerosoul.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -2328,78 +2409,6 @@
       <category term="blog" scheme="http://zerosoul.github.io/tags/blog/"/>
     
       <category term="nodejs" scheme="http://zerosoul.github.io/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读《Power Sleep》</title>
-    <link href="http://zerosoul.github.io/2015/10/23/reading-power-sleep/"/>
-    <id>http://zerosoul.github.io/2015/10/23/reading-power-sleep/</id>
-    <published>2015-10-23T03:41:50.000Z</published>
-    <updated>2016-06-23T09:51:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="baby.jpg" alt="deep sleep"></p>
-<h1 id="首先你应该知道的"><a href="#首先你应该知道的" class="headerlink" title="首先你应该知道的"></a>首先你应该知道的</h1><h2 id="1-不是睡的越多越好"><a href="#1-不是睡的越多越好" class="headerlink" title="1. 不是睡的越多越好"></a>1. 不是睡的越多越好</h2><p>不要轻信“每天睡眠时间至少要8小时。”这样的话。有的人可能一天只睡4、5个小时，却比睡8、9个小时的人更精力充沛。不同成长阶段、不同体质的人的睡眠时间是不一样的，婴儿每天需要更多的睡眠时间，而老年可能每天睡5、6个小时就足够了。</p>
-<p><strong>高质量的睡眠跟睡眠的长度（时间）关系不大，跟睡眠的深度有关。</strong></p>
-<h2 id="2-睡眠有其阶段性和周期性"><a href="#2-睡眠有其阶段性和周期性" class="headerlink" title="2. 睡眠有其阶段性和周期性"></a>2. 睡眠有其阶段性和周期性</h2><p>这部分比较偏理论，可以自己阅读原书了解。只说一点——人睡着的头3，4个小时里大部分是深度睡眠阶段。</p>
-<h2 id="3-人体的睡眠生物钟"><a href="#3-人体的睡眠生物钟" class="headerlink" title="3. 人体的睡眠生物钟"></a>3. 人体的睡眠生物钟</h2><p>身体里有个潜在的系统称之为睡眠生物钟，它告诉身体什么时候感到累，什么时候清醒。它还控制人睡的有多深，睡多久。</p>
-<h1 id="影响睡眠的主要因素"><a href="#影响睡眠的主要因素" class="headerlink" title="影响睡眠的主要因素"></a>影响睡眠的主要因素</h1><h2 id="1-体温"><a href="#1-体温" class="headerlink" title="1. 体温"></a>1. 体温</h2><p>人的体温在一天当中并不是恒定在 37 摄氏度的，而是有一定的起伏波动。当体温升高，人往往感到清醒。当体温降低，人往往感到困乏，疲劳，和懒。体温的升降是身体感到清醒和疲乏的信号。</p>
-<h2 id="2-阳光"><a href="#2-阳光" class="headerlink" title="2. 阳光"></a>2. 阳光</h2><p>人体在身处黑暗的环境中时会分泌褪黑激素。简单说褪黑激素的作用就是让我们犯困想睡觉，而褪黑激素含量和白天接触阳光的水平密切相关。</p>
-<p>接触更多的阳光延缓可以使体温升高，可以让人清醒更久。接触阳光不够使得体温下降，使得人感到瞌睡，疲劳，不协调。</p>
-<h2 id="3-运动量"><a href="#3-运动量" class="headerlink" title="3. 运动量"></a>3. 运动量</h2><p>运动锻炼可以快速提高体温，对于睡眠系统也是很有益处的。要想获得更好的睡眠质量，应该在白天做一定量的有氧运动，晚上睡觉前2小时内避免运动（ML除外）。</p>
-<h1 id="如何获得更好的睡眠？（干货篇）"><a href="#如何获得更好的睡眠？（干货篇）" class="headerlink" title="如何获得更好的睡眠？（干货篇）"></a>如何获得更好的睡眠？（干货篇）</h1><ul>
-<li><p>锻炼可以调节体温，舒缓压力。制定一个适合自己的运动锻炼计划，实际上，这并不会花费你太多的时间和金钱，最重要的是正确的方法和坚持。</p>
-</li>
-<li><p>在白天拉起窗帘，多去户外晒晒太阳。现在的人（尤其是在城市里的办公室族）普遍缺少在户外接触阳光的时间。尽量不带太阳镜（某些特殊情况下除外）。白天可在室内增加使用人造光源。</p>
-</li>
-<li><p>午时小睡片刻，但尽量控制在45分钟内。过长会让你越睡越昏困。</p>
-</li>
-<li><p>养成规律的起床和睡觉时间，并且不要随意改变。周末也不要懒床，应按照正常的时间作息。</p>
-</li>
-<li><p>觉是没法“补”的。</p>
-</li>
-<li><p>咖啡因和尼古丁对提高你的睡眠质量没有好处。酒精也一样（酒精会抑制深度睡眠阶段和 REM）。</p>
-</li>
-<li><p>安眠药是睡眠系统的毒药，它会把短期失眠变成长期失眠。</p>
-</li>
-<li><p>千万不要把安眠药和酒一起服用，这是拿你的生命在开玩笑。</p>
-</li>
-<li><p>坚持多喝水，少喝那些垃圾（碳酸饮料，咖啡，酒）</p>
-</li>
-<li><p>（尤其是晚餐和夜宵）少食用含脂量高、难消化、含糖和碳水化合物高的食物。晚上消化系统任务越重，睡眠的质量就越差。</p>
-</li>
-<li><p>床的舒适度和睡姿很重要，不要趴着睡。如果你躺在床上翻来覆去、辗转反侧，很可能不是因为觉得睡姿不舒服而是因为你没有放松。</p>
-</li>
-<li><p>压力会影响睡眠。</p>
-</li>
-<li><p>数羊并不能帮助你睡眠。</p>
-</li>
-<li><p>如果躺在床上超过 30 分钟还睡不着，那就起床！一直等到睡意来袭再回到床上。</p>
-</li>
-<li><p>除了睡觉和做爱，不要让你的床有其他用途。不要在床上看电视、玩手机、吃东西、煲电话粥、争吵、想事情。不要把与睡觉无关的东西放在床上。</p>
-</li>
-<li><p>晚上洗个热水澡，但是不要洗完澡马上睡觉（这个时间间隔至少要 60-90 分钟）。</p>
-</li>
-<li><p>让屋内保持安静和凉爽会有助于睡眠。</p>
-</li>
-<li><p>晚上不要开着灯睡觉，试着让环境更黑暗。</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;baby.jpg&quot; alt=&quot;deep sleep&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;首先你应该知道的&quot;&gt;&lt;a href=&quot;#首先你应该知道的&quot; class=&quot;headerlink&quot; title=&quot;首先你应该知道的&quot;&gt;&lt;/a&gt;首先你应该知道的&lt;/h1&gt;&lt;h2 
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://zerosoul.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="笔记" scheme="http://zerosoul.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="睡眠" scheme="http://zerosoul.github.io/tags/%E7%9D%A1%E7%9C%A0/"/>
     
   </entry>
   
